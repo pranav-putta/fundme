@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">FundMe</string>
     <string name="splash_title">Codealizer Studios</string>
+    <string name="facebook_app_id">330485700642563</string>
+    <string name="fund_me">Fund Me</string>
+    <string name="text_login_logo_subtitle">a simpler way to donate</string>
+    <string name="text_login_sign_up_button">Sign Up</string>
+    <string name="text_login_more_info_button">More Info</string>
+    <string name="text_login_facebook_button">login with facebook</string>
+    <string name="text_login_google_button">login with google</string>
+    <string name="text_login_title">Already have an account?</string>
+    <string name="text_login_button">Login here</string>
+    <string name="content_description_login_logo">login logo image</string>
+    <string name="content_description_login_background">login background</string>
 </resources>
