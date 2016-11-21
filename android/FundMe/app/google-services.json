@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "385150988875",
+    "firebase_url": "https://fundme-d9ecd.firebaseio.com",
+    "project_id": "fundme-d9ecd",
+    "storage_bucket": "fundme-d9ecd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385150988875:android:616c0497f557062d",
+        "android_client_info": {
+          "package_name": "net.codealizer.fundme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "385150988875-aq4dsa2rjg5gh5lbk9ojvd5oueq3s8sc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "net.codealizer.fundme",
+            "certificate_hash": "0A387F65CEC096F77F6FB6D1005D6F92933C1FEF"
+          }
+        },
+        {
+          "client_id": "385150988875-0g2vkp2grn2n7t4q7usglkqf1mpccphb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxlP_D7wT3MNOPzja0m6554lFsx8tRF0Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "385150988875-0g2vkp2grn2n7t4q7usglkqf1mpccphb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
