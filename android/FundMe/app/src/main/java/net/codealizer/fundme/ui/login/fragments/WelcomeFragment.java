@@ -12,7 +12,7 @@ import net.codealizer.fundme.R;
 import net.codealizer.fundme.util.ServiceManager;
 import net.codealizer.fundme.util.SignUpOption;
 import net.codealizer.fundme.util.listeners.OnProgressScreenListener;
-import net.codealizer.fundme.util.listeners.SignUpOptionsSelectedListener;
+import net.codealizer.fundme.util.listeners.OnSignUpOptionSelected;
 
 /**
  * Created by Pranav on 11/20/16.
@@ -25,7 +25,9 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
     private Button signUpWithEmailButton;
 
     private OnProgressScreenListener progressScreenListener;
+    private OnSignUpOptionSelected signUpOptionSelected;
 
+    public static final String KEY_PROGRESS_LISTENER = "net.codealizer.fundme.ui.login.fragments.WelcomeFragment.KEY_PROGRESS_LISTENER";
     public static final String KEY_SIGN_UP_LISTENER = "net.codealizer.fundme.ui.login.fragments.WelcomeFragment.KEY_SIGN_UP_LISTENER";
 
     @Nullable
@@ -42,9 +44,6 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initialize() {
-        // Get Fragment arguments
-        progressScreenListener = (OnProgressScreenListener) getArguments().getSerializable(KEY_SIGN_UP_LISTENER);
-
         //Initialize UI Elements
         signUpWithEmailButton = (Button) getView().findViewById(R.id.email_signup_button);
         signUpWithFacebookButton = (Button) getView().findViewById(R.id.facebook_signup_button);
@@ -62,12 +61,19 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.email_signup_button:
-                progressScreenListener.onScreenProgress();
+                progressScreenListener.onScreenProgress(0);
                 break;
             case R.id.facebook_signup_button:
+                signUpOptionSelected.onSignUpOptionSelected(SignUpOption.FACEBOOK);
                 break;
             case R.id.google_signup_button:
+                signUpOptionSelected.onSignUpOptionSelected(SignUpOption.GOOGLE);
                 break;
         }
+    }
+
+    public void setListeners(OnProgressScreenListener listener, OnSignUpOptionSelected signupListener) {
+        this.progressScreenListener = listener;
+        this.signUpOptionSelected = signupListener;
     }
 }

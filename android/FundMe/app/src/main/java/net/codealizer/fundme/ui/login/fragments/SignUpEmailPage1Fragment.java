@@ -53,7 +53,6 @@ public class SignUpEmailPage1Fragment extends Fragment implements View.OnClickLi
         email = (EditText) getView().findViewById(R.id.signup_email);
         progress = (ProgressBar) getView().findViewById(R.id.progress);
 
-        listener = (OnProgressScreenListener) getArguments().getSerializable(WelcomeFragment.KEY_SIGN_UP_LISTENER);
 
         email.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -90,7 +89,7 @@ public class SignUpEmailPage1Fragment extends Fragment implements View.OnClickLi
 
         if (valid) {
             Pair<String, String> pair = new Pair<>("email", email.getText().toString());
-            listener.onScreenProgress(pair);
+            listener.onScreenProgress(1, pair);
         } else {
             Toast.makeText(getActivity(), "Email is being used", Toast.LENGTH_LONG).show();
         }
@@ -118,5 +117,9 @@ public class SignUpEmailPage1Fragment extends Fragment implements View.OnClickLi
             email.setVisibility(View.VISIBLE);
             progress.setVisibility(View.INVISIBLE);
         }
+    }
+
+    public void setListeners(OnProgressScreenListener listeners) {
+        this.listener = listeners;
     }
 }

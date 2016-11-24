@@ -50,7 +50,6 @@ public class SignUpEmailPage2Fragment extends Fragment implements View.OnClickLi
         lastName = (EditText) getView().findViewById(R.id.signup_last_name);
         password = (EditText) getView().findViewById(R.id.signup_password);
 
-        listener = (OnProgressScreenListener) getArguments().getSerializable(WelcomeFragment.KEY_SIGN_UP_LISTENER);
 
         password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -91,7 +90,11 @@ public class SignUpEmailPage2Fragment extends Fragment implements View.OnClickLi
             Pair<String, String> lastNamePair = new Pair<>("last_name", last);
             Pair<String, String> passwordPair = new Pair<>("password", pass);
 
-            listener.onScreenProgress(firstNamePair, lastNamePair, passwordPair);
+            listener.onScreenProgress(2, firstNamePair, lastNamePair, passwordPair);
         }
+    }
+
+    public void setListeners(OnProgressScreenListener listener) {
+        this.listener = listener;
     }
 }

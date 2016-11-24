@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -36,6 +35,7 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
+import net.codealizer.fundme.MainActivity;
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.assets.User;
 import net.codealizer.fundme.ui.components.NonSwipeableViewPager;
@@ -49,17 +49,16 @@ import net.codealizer.fundme.util.SignUpOption;
 import net.codealizer.fundme.util.UserSessionManager;
 import net.codealizer.fundme.util.listeners.OnAuthenticatedListener;
 import net.codealizer.fundme.util.listeners.OnProgressScreenListener;
-import net.codealizer.fundme.util.listeners.SignUpOptionsSelectedListener;
+import net.codealizer.fundme.util.listeners.OnSignUpOptionSelected;
 
 import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.Arrays;
 
-public class SignUpActivity extends AppCompatActivity implements SignUpOptionsSelectedListener, Serializable, OnAuthenticatedListener, OnProgressScreenListener, GoogleApiClient.OnConnectionFailedListener {
+public class SignUpActivity extends AppCompatActivity implements OnSignUpOptionSelected, OnAuthenticatedListener, OnProgressScreenListener, GoogleApiClient.OnConnectionFailedListener {
 
     // Number of pages in the slide wizard
-    private static final int NUM_PAGES = 5;
     private static final int RC_SIGN_IN = 9000;
 
     // UI Elements
@@ -96,7 +95,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpOptionsSe
     private void initialize() {
         // Initialize UI Elements
         mViewPager = (NonSwipeableViewPager) findViewById(R.id.signup_pager);
-        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), this);
+        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), this, this);
 
         mViewPager.setAdapter(mPagerAdapter);
 
@@ -115,6 +114,9 @@ public class SignUpActivity extends AppCompatActivity implements SignUpOptionsSe
         decorView.setSystemUiVisibility(uiOptions);
     }
 
+    /**
+     * Specify what to do when the back button on the actionbar is pressed
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -126,6 +128,11 @@ public class SignUpActivity extends AppCompatActivity implements SignUpOptionsSe
         return true;
     }
 
+    /**
+     * Specify what to do when the back button on the device is pressed
+     * NOTE: If back button is pressed the view pager will move back one slide
+     * If the viewpager is on the first page, the activity will be closed and Login Activity will resume
+     */
     @Override
     public void onBackPressed() {
         int item = mViewPager.getCurrentItem();
@@ -137,6 +144,11 @@ public class SignUpActivity extends AppCompatActivity implements SignUpOptionsSe
         }
     }
 
+    /**
+     * Specify what to do when a user chooses to sign up with a social login
+     *
+     * @param option Facebook sign up or Google sign up
+     */
     @Override
     public void onSignUpOptionSelected(SignUpOption option) {
         switch (option) {
@@ -167,6 +179,10 @@ public class SignUpActivity extends AppCompatActivity implements SignUpOptionsSe
 
         UserSessionManager manager = new UserSessionManager(this);
         manager.login(data);
+
+        finish();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     /**
@@ -191,14 +207,19 @@ public class SignUpActivity extends AppCompatActivity implements SignUpOptionsSe
         AlertDialogManager.showNetworkErrorDialog(this);
     }
 
+    /**
+     * Progresses the screen forward when the user clicks the "Next" button dialog
+     *
+     * @param data Retrieves all user data passed on the screen, and stores it into a local bundle data
+     */
     @Override
-    public void onScreenProgress(Pair<String, String>... data) {
+    public void onScreenProgress(int screen, Pair<String, String>... data) {
         for (Pair<String, String> d : data) {
             SignUpActivity.this.data.putString(d.first, d.second);
         }
 
-        if (mViewPager.getCurrentItem() < 3) {
-            mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+        if (screen < 3) {
+            mViewPager.setCurrentItem(screen + 1);
         } else {
             progressDialog = AlertDialogManager.showProgressDialog(SignUpActivity.this);
             AuthenticationManager.attemptEmailSignup(SignUpActivity.this.data, SignUpActivity.this);
@@ -249,6 +270,9 @@ public class SignUpActivity extends AppCompatActivity implements SignUpOptionsSe
         });
     }
 
+    /**
+     * Specifies what to do when the google login result comes back from the user
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -304,6 +328,9 @@ public class SignUpActivity extends AppCompatActivity implements SignUpOptionsSe
         }
     }
 
+    /**
+     * Specifies what to do if the google login experiences an error
+     */
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         if (progressDialog != null)
@@ -311,36 +338,38 @@ public class SignUpActivity extends AppCompatActivity implements SignUpOptionsSe
         AlertDialogManager.showMessageDialog("Something went wrong", connectionResult.getErrorMessage(), this);
     }
 
+    /**
+     * Adapter for the sign up scroll page (View Pager)
+     */
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
 
         OnProgressScreenListener listener;
+        OnSignUpOptionSelected signupListener;
 
-        ScreenSlidePagerAdapter(FragmentManager fm, OnProgressScreenListener listener) {
+        ScreenSlidePagerAdapter(FragmentManager fm, OnProgressScreenListener listener, OnSignUpOptionSelected signupListener) {
             super(fm);
 
             this.listener = listener;
+            this.signupListener = signupListener;
         }
 
         @Override
         public Fragment getItem(int position) {
-            Bundle args = new Bundle();
-            args.putSerializable(WelcomeFragment.KEY_SIGN_UP_LISTENER, listener);
-
             if (position == 0) {
                 WelcomeFragment fragment = new WelcomeFragment();
-                fragment.setArguments(args);
+                fragment.setListeners(listener, signupListener);
                 return fragment;
             } else if (position == 1) {
                 SignUpEmailPage1Fragment fragment = new SignUpEmailPage1Fragment();
-                fragment.setArguments(args);
+                fragment.setListeners(listener);
                 return fragment;
             } else if (position == 2) {
                 SignUpEmailPage2Fragment fragment = new SignUpEmailPage2Fragment();
-                fragment.setArguments(args);
+                fragment.setListeners(listener);
                 return fragment;
             } else if (position == 3) {
                 SignUpEmailPage3Fragment fragment = new SignUpEmailPage3Fragment();
-                fragment.setArguments(args);
+                fragment.setListeners(listener);
                 return fragment;
             }
 

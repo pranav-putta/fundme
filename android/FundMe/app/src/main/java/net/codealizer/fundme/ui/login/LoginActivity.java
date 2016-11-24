@@ -30,6 +30,7 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
+import net.codealizer.fundme.MainActivity;
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
 import net.codealizer.fundme.util.AuthenticationManager;
@@ -162,7 +163,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     /**
      * Initializes all facebook functions
      */
-    private void initFacebook() {
+     private void initFacebook() {
         FacebookSdk.sdkInitialize(getApplicationContext());
 
         mCallbackManager = CallbackManager.Factory.create();
@@ -268,6 +269,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         UserSessionManager manager = new UserSessionManager(this);
         manager.login(data);
+
+        finish();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     /**

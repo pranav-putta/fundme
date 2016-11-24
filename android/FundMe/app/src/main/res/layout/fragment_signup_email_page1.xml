@@ -34,9 +34,9 @@
         android:text="Next" />
 
     <ProgressBar
+        android:id="@+id/progress"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/progress"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 </LinearLayout>

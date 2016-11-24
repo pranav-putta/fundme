@@ -2,6 +2,7 @@ package net.codealizer.fundme.ui.login;
 
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -16,12 +17,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -30,6 +33,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import net.codealizer.fundme.MainActivity;
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
 import net.codealizer.fundme.util.AuthenticationManager;
@@ -70,6 +74,8 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
     private void initialize() {
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        Toolbar toolbar  = (Toolbar) findViewById(R.id.signin_toolbar);
+
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -93,9 +99,17 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
         });
 
         // Setup actionbar
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+
+        View decorView = getWindow().getDecorView();
+        // Hide Status Bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
     }
 
     private void populateAutoComplete() {
@@ -188,16 +202,29 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
         }
     }
 
+    /**
+     * Verify email, ensure that it is valid
+     * @param email String value of the email from its respective edit text
+     * @return returns true if the email was valid, false otherwise
+     */
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
         return email.contains("@");
     }
 
+    /**
+     * Very password, ensure that it is valid
+     * @param password String value of the password from its respective edit text
+     * @return returns true if the password was valid, false otherwise
+     */
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
         return password.length() > 4;
     }
 
+    /**
+     * Loads contact filling for the email field
+     */
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return new CursorLoader(this,
@@ -214,7 +241,9 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
                 // a primary email address if the user hasn't specified one.
                 ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
     }
-
+    /**
+     * Loads contact filling for the email field
+     */
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
         List<String> emails = new ArrayList<>();
@@ -226,18 +255,26 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
 
         addEmailsToAutoComplete(emails);
     }
-
+    /**
+     * Loads contact filling for the email field
+     */
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
 
     }
 
+    /**
+     * Generates menu for actionbar
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_sign_in, menu);
         return true;
     }
 
+    /**
+     * Generates action listeners in response to menu items being selected
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -252,6 +289,9 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
         return true;
     }
 
+    /**
+     * Generates contaact filling for the email field
+     */
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
@@ -261,6 +301,10 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
         mEmailView.setAdapter(adapter);
     }
 
+    /**
+     * Callback when the authentication of the user was successful
+     * @param data User data to save into local sql database
+     */
     @Override
     public void onAuthenticationSuccessful(User data) {
         Toast.makeText(this, "Logged in!", Toast.LENGTH_SHORT).show();
@@ -270,8 +314,15 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
         UserSessionManager manager = new UserSessionManager(this);
         manager.login(data);
 
+        finish();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
+    /**
+     * Callback when the authentication of the user was unsuccessful
+     * @param message Message to display to the user abotu the error
+     */
     @Override
     public void onAuthenticationFailed(String message) {
         AlertDialogManager.showMessageDialog("Couldn't Login", message, this);
@@ -280,6 +331,9 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
             progressDialog.dismiss();
     }
 
+    /**
+     * Callback when the application was not able to retrieve information
+     */
     @Override
     public void onNetworkError() {
         if (progressDialog != null)
@@ -287,6 +341,10 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
         AlertDialogManager.showNetworkErrorDialog(this);
     }
 
+    /**
+     * Callback for the forgot password response
+     * @param response response to display to the user
+     */
     @Override
     public void onAlertCallback(String response) {
         progressDialog = AlertDialogManager.showProgressDialog(this);

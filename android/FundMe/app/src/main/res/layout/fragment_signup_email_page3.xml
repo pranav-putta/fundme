@@ -1,32 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/signup_birthday_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin">
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_toLeftOf="@+id/signup_birthday_select">
 
         <AutoCompleteTextView
             android:id="@+id/signup_birthday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:hint="Birthday"
-            android:inputType="date"
+            android:inputType="none"
             android:maxLines="1"
             android:singleLine="true" />
 
     </android.support.design.widget.TextInputLayout>
 
+    <Button
+        android:id="@+id/signup_birthday_select"
+        style="@style/TextAppearance.AppCompat.Widget.Button.Inverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/signup_birthday_container"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/signup_birthday_container"
+        android:layout_marginRight="@dimen/activity_vertical_margin"
+        android:background="@drawable/next_button_bg"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="Select" />
+
     <Spinner
         android:id="@+id/signup_gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/signup_birthday_container"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
@@ -40,9 +57,10 @@
         style="@style/TextAppearance.AppCompat.Widget.Button.Inverse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/signup_gender"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:background="@drawable/next_button_bg"
         android:foreground="?android:attr/selectableItemBackground"
         android:text="Finish" />
-</LinearLayout>
+</RelativeLayout>

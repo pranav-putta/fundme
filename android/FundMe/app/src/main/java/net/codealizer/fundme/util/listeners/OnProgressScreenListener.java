@@ -8,8 +8,8 @@ import java.io.Serializable;
  * Created by Pranav on 11/20/16.
  */
 
-public interface OnProgressScreenListener extends Serializable {
+public interface OnProgressScreenListener {
 
-    void onScreenProgress(Pair<String, String>... data);
+    void onScreenProgress(int screen, Pair<String, String>... data);
 
 }

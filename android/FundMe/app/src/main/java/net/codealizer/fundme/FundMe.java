@@ -17,13 +17,14 @@ import java.io.FileNotFoundException;
 
 public class FundMe extends Application {
 
-    public static final String API_DOMAIN = "10.0.0.226";
-    public static final String API_APP_CODE = "1234567890";
-    public static final int API_PORT = 9000;
-
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Initialize the Facebook SDK before executing any other operations,
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
+
 
     }
 }

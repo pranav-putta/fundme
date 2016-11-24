@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 
+import net.codealizer.fundme.MainActivity;
 import net.codealizer.fundme.ui.login.LoginActivity;
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.util.UserSessionManager;
@@ -25,17 +26,20 @@ public class LaunchActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        // Initialize the Facebook SDK before executing any other operations,
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                UserSessionManager sessionManager = new UserSessionManager(LaunchActivity.this);
+                if (sessionManager.isUserLoggedIn()) {
+                    Intent intent = new Intent(LaunchActivity.this, MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(LaunchActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+            }
+        }, 1000);
 
-        UserSessionManager sessionManager = new UserSessionManager(LaunchActivity.this);
-        if (sessionManager.isUserLoggedIn()) {
-
-        } else {
-            Intent intent = new Intent(LaunchActivity.this, LoginActivity.class);
-            startActivity(intent);
-        }
 
     }
 }
