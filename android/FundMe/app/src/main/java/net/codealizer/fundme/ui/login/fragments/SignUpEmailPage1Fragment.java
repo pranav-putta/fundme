@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
-import net.codealizer.fundme.util.AuthenticationManager;
+import net.codealizer.fundme.util.firebase.AuthenticationManager;
 import net.codealizer.fundme.util.ServiceManager;
 import net.codealizer.fundme.util.listeners.OnEmailValidatedListener;
 import net.codealizer.fundme.util.listeners.OnProgressScreenListener;

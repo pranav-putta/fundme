@@ -33,13 +33,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import net.codealizer.fundme.MainActivity;
+import net.codealizer.fundme.FundMe;
+import net.codealizer.fundme.ui.main.MainActivity;
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
-import net.codealizer.fundme.util.AuthenticationManager;
+import net.codealizer.fundme.util.firebase.AuthenticationManager;
 import net.codealizer.fundme.assets.User;
 import net.codealizer.fundme.util.ServiceManager;
-import net.codealizer.fundme.util.UserSessionManager;
 import net.codealizer.fundme.util.listeners.OnAlertCallbackListener;
 import net.codealizer.fundme.util.listeners.OnAuthenticatedListener;
 
@@ -49,7 +49,7 @@ import java.util.List;
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
- * A login screen that offers login via email/password.
+ * A startLogin screen that offers startLogin via email/password.
  */
 public class SignInActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>, OnAuthenticatedListener, OnAlertCallbackListener {
 
@@ -72,7 +72,7 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
     }
 
     private void initialize() {
-        // Set up the login form.
+        // Set up the startLogin form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         Toolbar toolbar  = (Toolbar) findViewById(R.id.signin_toolbar);
 
@@ -156,16 +156,16 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
     }
 
     /**
-     * Attempts to sign in or register the account specified by the login form.
+     * Attempts to sign in or register the account specified by the startLogin form.
      * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
+     * errors are presented and no actual startLogin attempt is made.
      */
     private void attemptLogin() {
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
 
-        // Store values at the time of the login attempt.
+        // Store values at the time of the startLogin attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
@@ -191,12 +191,12 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
+            // There was an error; don't attempt startLogin and focus the first
             // form field with an error.
             focusView.requestFocus();
         } else {
             // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
+            // perform the user startLogin attempt.
             progressDialog = AlertDialogManager.showProgressDialog(this);
             AuthenticationManager.attemptEmailLogin(email, password, this, this);
         }
@@ -311,11 +311,12 @@ public class SignInActivity extends AppCompatActivity implements LoaderCallbacks
         if (progressDialog != null)
             progressDialog.dismiss();
 
-        UserSessionManager manager = new UserSessionManager(this);
-        manager.login(data);
+        FundMe.userDataManager.startLogin(data);
 
         finish();
         Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
         startActivity(intent);
     }
 

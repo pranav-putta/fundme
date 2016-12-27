@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/card_profile_items_title"
+        style="@style/TextAppearance.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_vertical_margin"
+        android:text="@string/title_items"
+        android:textColor="@color/colorPrimary" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/card_profile_items_list"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_below="@id/card_profile_items_title"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        app:reverseLayout="true" />
+
+    <TextView
+        android:id="@+id/card_profile_items_empty_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/card_profile_items_empty_text"
+        android:visibility="invisible" />
+
+</RelativeLayout>

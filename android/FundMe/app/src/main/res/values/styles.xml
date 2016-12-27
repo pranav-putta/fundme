@@ -16,6 +16,18 @@
 
     </style>
 
+    <style name="AppTheme.Search">
+        <!--<item name="colorPrimary">#4CAF50</item>
+        <item name="colorPrimaryDark">#388E3C</item>
+        <item name="colorAccent">#FFEB3B</item>-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+
     <style name="AppTheme.Light.NoActionBar" parent="AppTheme.Light">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
@@ -30,6 +42,13 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
+
+    </style>
+
+    <style name="AppTheme.Toolbar" parent="AppTheme">
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
 
     </style>
 
@@ -57,5 +76,22 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.AccentButton" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.ColoredButton" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.WhiteButton" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">@color/md_white_1000</item>
+    </style>
+
+    <style name="menu_labels_style">
+        <item name="android:background">@drawable/fab_label_background</item>
+        <item name="android:textColor">@color/md_white_1000</item>
+    </style>
 
 </resources>

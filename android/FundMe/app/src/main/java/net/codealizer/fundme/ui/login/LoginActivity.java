@@ -28,14 +28,14 @@ import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.plus.Plus;
-import com.google.android.gms.plus.model.people.Person;
 
-import net.codealizer.fundme.MainActivity;
+import net.codealizer.fundme.FundMe;
+import net.codealizer.fundme.ui.main.MainActivity;
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
-import net.codealizer.fundme.util.AuthenticationManager;
+import net.codealizer.fundme.util.firebase.AuthenticationManager;
 import net.codealizer.fundme.assets.User;
-import net.codealizer.fundme.util.UserSessionManager;
+import net.codealizer.fundme.util.ServiceManager;
 import net.codealizer.fundme.util.listeners.OnAuthenticatedListener;
 
 import org.json.JSONObject;
@@ -74,25 +74,30 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.login_more_info:
-                openWebHomepage();
-                break;
-            case R.id.facebook_login_button:
-                loginWithFacebook();
-                break;
-            case R.id.login_button:
-                startLoginActivity();
-                break;
-            case R.id.login_sign_up:
-                Intent intent = new Intent(this, SignUpActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.google_login_button:
-                Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
-                startActivityForResult(signInIntent, RC_SIGN_IN);
-                break;
 
+        if (ServiceManager.isNetworkAvailable(this)) {
+            switch (view.getId()) {
+                case R.id.login_more_info:
+                    openWebHomepage();
+                    break;
+                case R.id.facebook_login_button:
+                    loginWithFacebook();
+                    break;
+                case R.id.login_button:
+                    startLoginActivity();
+                    break;
+                case R.id.login_sign_up:
+                    Intent intent = new Intent(this, SignUpActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.google_login_button:
+                    Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+                    startActivityForResult(signInIntent, RC_SIGN_IN);
+                    break;
+
+            }
+        } else {
+            AlertDialogManager.showNetworkErrorDialog(this);
         }
     }
 
@@ -163,7 +168,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     /**
      * Initializes all facebook functions
      */
-     private void initFacebook() {
+    private void initFacebook() {
         FacebookSdk.sdkInitialize(getApplicationContext());
 
         mCallbackManager = CallbackManager.Factory.create();
@@ -180,7 +185,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Log.i("LoginActivity", response.toString());
                         dialog.dismiss();
 
-                        //Get Facebook data from login
+                        //Get Facebook data from startLogin
                         String token = loginResult.getAccessToken().getToken();
                         AuthenticationManager.attemptFacebookLogin(object, token, LoginActivity.this, LoginActivity.this);
                     }
@@ -194,18 +199,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onCancel() {
-
+                if (progressDialog != null) {
+                    progressDialog.hide();
+                }
             }
 
             @Override
             public void onError(FacebookException error) {
+                error.printStackTrace();
                 Toast.makeText(LoginActivity.this, "Facebook Error", Toast.LENGTH_SHORT).show();
+                if (progressDialog != null) {
+                    progressDialog.hide();
+                }
             }
         });
     }
 
     /**
-     * Initializes all google login functions
+     * Initializes all google startLogin functions
      */
     private void initGoogle() {
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -223,7 +234,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     /**
-     * Attempts to login with facebook on login button click
+     * Attempts to startLogin with facebook on startLogin button click
      */
     private void loginWithFacebook() {
         progressDialog = AlertDialogManager.showProgressDialog(this);
@@ -231,24 +242,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     /**
-     * Attempts to login to firebase database with the google authentication credential
+     * Attempts to startLogin to firebase database with the google authentication credential
      *
      * @param data Data retrieved by the google sign in attempt
      */
     private void loginWithGoogle(Intent data) {
         GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-        if (result.isSuccess()) {
+        if (result.isSuccess() && googleApiClient.hasConnectedApi(Plus.API)) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
-            Person person = Plus.PeopleApi.getCurrentPerson(googleApiClient);
 
             progressDialog = AlertDialogManager.showProgressDialog(this);
-            AuthenticationManager.attemptGoogleLogin(acct, this, this, person);
+            AuthenticationManager.attemptGoogleLogin(acct, this, this);
+        } else {
+            onAuthenticationFailed("Could nto connect to your Google account");
         }
     }
 
     /**
-     * Runs the login activity
+     * Runs the startLogin activity
      */
     private void startLoginActivity() {
         Intent intent = new Intent(this, SignInActivity.class);
@@ -267,11 +279,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (progressDialog != null)
             progressDialog.dismiss();
 
-        UserSessionManager manager = new UserSessionManager(this);
-        manager.login(data);
+        FundMe.userDataManager.startLogin(data);
 
         finish();
         Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 

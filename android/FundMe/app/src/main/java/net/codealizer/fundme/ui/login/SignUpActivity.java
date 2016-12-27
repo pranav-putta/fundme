@@ -33,27 +33,24 @@ import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.plus.Plus;
-import com.google.android.gms.plus.model.people.Person;
 
-import net.codealizer.fundme.MainActivity;
+import net.codealizer.fundme.FundMe;
+import net.codealizer.fundme.ui.main.MainActivity;
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.assets.User;
 import net.codealizer.fundme.ui.components.NonSwipeableViewPager;
 import net.codealizer.fundme.ui.login.fragments.SignUpEmailPage1Fragment;
 import net.codealizer.fundme.ui.login.fragments.SignUpEmailPage2Fragment;
-import net.codealizer.fundme.ui.login.fragments.SignUpEmailPage3Fragment;
 import net.codealizer.fundme.ui.login.fragments.WelcomeFragment;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
-import net.codealizer.fundme.util.AuthenticationManager;
+import net.codealizer.fundme.util.firebase.AuthenticationManager;
 import net.codealizer.fundme.util.SignUpOption;
-import net.codealizer.fundme.util.UserSessionManager;
 import net.codealizer.fundme.util.listeners.OnAuthenticatedListener;
 import net.codealizer.fundme.util.listeners.OnProgressScreenListener;
 import net.codealizer.fundme.util.listeners.OnSignUpOptionSelected;
 
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.util.Arrays;
 
 public class SignUpActivity extends AppCompatActivity implements OnSignUpOptionSelected, OnAuthenticatedListener, OnProgressScreenListener, GoogleApiClient.OnConnectionFailedListener {
@@ -145,7 +142,7 @@ public class SignUpActivity extends AppCompatActivity implements OnSignUpOptionS
     }
 
     /**
-     * Specify what to do when a user chooses to sign up with a social login
+     * Specify what to do when a user chooses to sign up with a social startLogin
      *
      * @param option Facebook sign up or Google sign up
      */
@@ -177,11 +174,11 @@ public class SignUpActivity extends AppCompatActivity implements OnSignUpOptionS
         if (progressDialog != null)
             progressDialog.dismiss();
 
-        UserSessionManager manager = new UserSessionManager(this);
-        manager.login(data);
+        FundMe.userDataManager.startLogin(data);
 
         finish();
         Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
@@ -218,11 +215,11 @@ public class SignUpActivity extends AppCompatActivity implements OnSignUpOptionS
             SignUpActivity.this.data.putString(d.first, d.second);
         }
 
-        if (screen < 3) {
+        if (screen < 2) {
             mViewPager.setCurrentItem(screen + 1);
         } else {
             progressDialog = AlertDialogManager.showProgressDialog(SignUpActivity.this);
-            AuthenticationManager.attemptEmailSignup(SignUpActivity.this.data, SignUpActivity.this);
+            AuthenticationManager.attemptEmailSignup(SignUpActivity.this.data, SignUpActivity.this, this);
         }
     }
 
@@ -246,7 +243,7 @@ public class SignUpActivity extends AppCompatActivity implements OnSignUpOptionS
                         Log.i("LoginActivity", response.toString());
                         dialog.dismiss();
 
-                        //Get Facebook data from login
+                        //Get Facebook data from startLogin
                         String token = loginResult.getAccessToken().getToken();
                         AuthenticationManager.attemptFacebookLogin(object, token, SignUpActivity.this, SignUpActivity.this);
                     }
@@ -271,7 +268,7 @@ public class SignUpActivity extends AppCompatActivity implements OnSignUpOptionS
     }
 
     /**
-     * Specifies what to do when the google login result comes back from the user
+     * Specifies what to do when the google startLogin result comes back from the user
      */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -286,7 +283,7 @@ public class SignUpActivity extends AppCompatActivity implements OnSignUpOptionS
     }
 
     /**
-     * Initializes all google login functions
+     * Initializes all google startLogin functions
      */
     private void initGoogle() {
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -304,7 +301,7 @@ public class SignUpActivity extends AppCompatActivity implements OnSignUpOptionS
     }
 
     /**
-     * Attempts to login with facebook on login button click
+     * Attempts to startLogin with facebook on startLogin button click
      */
     private void loginWithFacebook() {
         progressDialog = AlertDialogManager.showProgressDialog(this);
@@ -312,7 +309,7 @@ public class SignUpActivity extends AppCompatActivity implements OnSignUpOptionS
     }
 
     /**
-     * Attempts to login to firebase database with the google authentication credential
+     * Attempts to startLogin to firebase database with the google authentication credential
      *
      * @param data Data retrieved by the google sign in attempt
      */
@@ -321,15 +318,14 @@ public class SignUpActivity extends AppCompatActivity implements OnSignUpOptionS
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
-            Person person = Plus.PeopleApi.getCurrentPerson(googleApiClient);
 
             progressDialog = AlertDialogManager.showProgressDialog(this);
-            AuthenticationManager.attemptGoogleLogin(acct, this, this, person);
+            AuthenticationManager.attemptGoogleLogin(acct, this, this);
         }
     }
 
     /**
-     * Specifies what to do if the google login experiences an error
+     * Specifies what to do if the google startLogin experiences an error
      */
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
@@ -367,10 +363,6 @@ public class SignUpActivity extends AppCompatActivity implements OnSignUpOptionS
                 SignUpEmailPage2Fragment fragment = new SignUpEmailPage2Fragment();
                 fragment.setListeners(listener);
                 return fragment;
-            } else if (position == 3) {
-                SignUpEmailPage3Fragment fragment = new SignUpEmailPage3Fragment();
-                fragment.setListeners(listener);
-                return fragment;
             }
 
             return null;
@@ -378,7 +370,7 @@ public class SignUpActivity extends AppCompatActivity implements OnSignUpOptionS
 
         @Override
         public int getCount() {
-            return 4;
+            return 3;
         }
     }
 }

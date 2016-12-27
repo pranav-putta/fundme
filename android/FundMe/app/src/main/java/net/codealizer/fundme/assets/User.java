@@ -1,8 +1,15 @@
 package net.codealizer.fundme.assets;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
+import net.codealizer.fundme.util.SignUpOption;
+
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Pranav on 11/19/16.
@@ -11,50 +18,78 @@ import java.lang.reflect.Field;
 public class User {
 
     public String uid;
-    public String first_name;
-    public String last_name;
+    public String firstName;
+    public String lastName;
     public String email;
-    public String birthday;
-    public String gender;
-    public String profile_pic;
-    public String last_logged_in;
+    public String profilePic;
+    public String lastLoggedIn;
+    public double moneyRaised;
+    public double rating;
 
-    private static final String KEY_FIRST_NAME = "first_name";
-    private static final String KEY_LAST_NAME = "last_name";
+    private String profilePicture;
+
+    private ArrayList<String> organizationUids;
+    private ArrayList<String> itemUids;
+
+    private ArrayList<Organization> organizations = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<>();
+    public List<String> joinedOrganizations = new ArrayList<>();
+
+    private static final String KEY_FIRST_NAME = "firstName";
+    private static final String KEY_LAST_NAME = "lastName";
     private static final String KEY_EMAIL = "email";
-    private static final String KEY_BIRTHDAY = "birthday";
-    private static final String KEY_GENDER = "gender";
-    private static final String KEY_PROFILE_PIC = "profile_pic";
-    private static final String KEY_LAST_LOGGED_IN = "last_logged_in";
-
-    public User(String UID, String firstName, String lastName, String email, String birthday, String gender, String profilePic) {
-        this.uid = UID;
-        this.first_name = firstName;
-        this.last_name = lastName;
-        this.email = email;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.profile_pic = profilePic;
-    }
+    private static final String KEY_PROFILE_PIC = "profilePictureURL";
+    private static final String KEY_LAST_LOGGED_IN = "lastLoggedIn";
+    private static final String KEY_MONEY_RAISED = "moneyRaised";
+    private static final String KEY_RATING = "rating";
+    private static final String KEY_ORGANIZATIONS = "organizations";
+    private static final String KEY_ITEMS = "items";
+    private static final String KEY_MEMEBRS = "joinedOrganizations";
 
 
     public User(String uid, Bundle data) {
         this.uid = uid;
-        this.first_name = data.getString(KEY_FIRST_NAME, "");
-        this.last_name = data.getString(KEY_LAST_NAME, "");
+        this.firstName = data.getString(KEY_FIRST_NAME, "");
+        this.lastName = data.getString(KEY_LAST_NAME, "");
         this.email = data.getString(KEY_EMAIL, "");
-        this.birthday = data.getString(KEY_BIRTHDAY, "");
-        this.gender = data.getString(KEY_GENDER, "");
-        this.profile_pic = data.getString(KEY_PROFILE_PIC, "");
-        this.last_logged_in = data.getString(KEY_LAST_LOGGED_IN, String.valueOf(System.currentTimeMillis()));
+        this.profilePic = data.getString(KEY_PROFILE_PIC, "");
+        this.lastLoggedIn = data.getString(KEY_LAST_LOGGED_IN, String.valueOf(System.currentTimeMillis()));
+        this.moneyRaised = Double.parseDouble(data.getString(KEY_MONEY_RAISED, "0"));
+        this.rating = Double.parseDouble(data.getString(KEY_RATING, "0"));
+        this.organizations = (ArrayList<Organization>) data.get(KEY_ORGANIZATIONS);
+        this.items = (ArrayList<Item>) data.get(KEY_ITEMS);
+        this.organizationUids = data.getStringArrayList("organizationUids");
+        this.itemUids = data.getStringArrayList("itemUids");
+        this.joinedOrganizations = data.getStringArrayList("joinedOrganizations");
 
-        if (this.birthday == null || this.birthday.isEmpty()) {
-            this.birthday = "";
+        if (this.organizations == null) {
+            organizations = new ArrayList<>();
         }
+
+        if (this.items == null) {
+            items = new ArrayList<>();
+        }
+
+        if (this.organizationUids == null) {
+            organizationUids = new ArrayList<>();
+        }
+
+        if (this.itemUids == null) {
+            itemUids = new ArrayList<>();
+        }
+
+        if (this.joinedOrganizations == null) {
+            joinedOrganizations = new ArrayList<>();
+        }
+
     }
 
     public User(String uid) {
         this.uid = uid;
+    }
+
+    public User() {
+
     }
 
     public String getUid() {
@@ -65,20 +100,20 @@ public class User {
         this.uid = uid;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -89,37 +124,101 @@ public class User {
         this.email = email;
     }
 
-    public String getBirthday() {
-        return birthday;
+    public String getProfilePic() {
+        if (profilePic.isEmpty() || profilePic.equals("")) {
+            return "http://i.imgur.com/ZPk83zW.jpg";
+        } else {
+            return profilePic;
+        }
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
     }
 
-    public String getGender() {
-        return gender;
+    public String getLastLoggedIn() {
+        return lastLoggedIn;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setLastLoggedIn(String lastLoggedIn) {
+        this.lastLoggedIn = lastLoggedIn;
     }
 
-    public String getProfile_pic() {
-        return profile_pic;
+    public double getMoneyRaised() {
+        return moneyRaised;
     }
 
-    public void setProfile_pic(String profile_pic) {
-        this.profile_pic = profile_pic;
+    public void setMoneyRaised(double moneyRaised) {
+        this.moneyRaised = moneyRaised;
     }
 
-    public String getLast_logged_in() {
-        return last_logged_in;
+    public double getRating() {
+        return rating;
     }
 
-    public void setLast_logged_in(String last_logged_in) {
-        this.last_logged_in = last_logged_in;
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 
+    public String getProfilePicture() {
+        return profilePicture;
+    }
 
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
+    public List<Organization> getOrganizations() {
+        return organizations;
+    }
+
+    public void setOrganizations(ArrayList<Organization> organizations) {
+        this.organizations = organizations;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
+
+    public void addItem(Item item) {
+        items.add(item);
+        itemUids.add(item.getUid());
+    }
+
+    public String getName() {
+        return firstName + " " + lastName;
+    }
+
+    public ArrayList<String> getOrganizationUids() {
+        return organizationUids;
+    }
+
+    public void setOrganizationUids(ArrayList<String> organizationUids) {
+        this.organizationUids = organizationUids;
+    }
+
+    public ArrayList<String> getItemUids() {
+        return itemUids;
+    }
+
+    public void setItemUids(ArrayList<String> itemUids) {
+        this.itemUids = itemUids;
+    }
+
+    public void addOrganization(Organization organization) {
+        organizations.add(organization);
+        organizationUids.add(organization.getUid());
+    }
+
+    public List<String> getJoinedOrganizations() {
+        return joinedOrganizations;
+    }
+
+    public void setJoinedOrganizations(List<String> joinedOrganizations) {
+        this.joinedOrganizations = joinedOrganizations;
+    }
 }

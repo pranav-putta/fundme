@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_item_container"
+    android:layout_width="170dp"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/title_margin"
+    android:background="@drawable/ripple"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:orientation="vertical"
+    card_view:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <ImageView
+            android:id="@+id/item_item_backdrop"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="75"
+            android:fitsSystemWindows="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/item" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/title_margin"
+            android:layout_marginRight="@dimen/title_margin"
+            android:layout_weight="25"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:id="@+id/item_item_title"
+                style="@style/TextAppearance.AppCompat"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="70"
+                android:fontFamily="sans-serif-bold"
+                android:gravity="center_vertical"
+                android:text="iPad" />
+
+            <TextView
+                android:id="@+id/item_item_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="30"
+                android:gravity="center"
+                android:background="@drawable/progress_counter_green"
+                android:textColor="@color/md_white_1000"
+                style="@style/TextAppearance.AppCompat"
+                android:text="$40"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

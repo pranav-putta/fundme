@@ -62,7 +62,7 @@ public class SignUpEmailPage3Fragment extends Fragment implements View.OnClickLi
         birthdaySelect = (Button) getView().findViewById(R.id.signup_birthday_select);
 
         calendar = Calendar.getInstance();
-        format = new SimpleDateFormat("dd-MM-yyy", Locale.US);
+        format = new SimpleDateFormat("MM-dd-yyy", Locale.US);
         datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {

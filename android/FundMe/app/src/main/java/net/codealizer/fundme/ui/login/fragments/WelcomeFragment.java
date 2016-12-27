@@ -27,8 +27,8 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
     private OnProgressScreenListener progressScreenListener;
     private OnSignUpOptionSelected signUpOptionSelected;
 
-    public static final String KEY_PROGRESS_LISTENER = "net.codealizer.fundme.ui.login.fragments.WelcomeFragment.KEY_PROGRESS_LISTENER";
-    public static final String KEY_SIGN_UP_LISTENER = "net.codealizer.fundme.ui.login.fragments.WelcomeFragment.KEY_SIGN_UP_LISTENER";
+    public static final String KEY_PROGRESS_LISTENER = "net.codealizer.fundme.ui.startLogin.fragments.WelcomeFragment.KEY_PROGRESS_LISTENER";
+    public static final String KEY_SIGN_UP_LISTENER = "net.codealizer.fundme.ui.startLogin.fragments.WelcomeFragment.KEY_SIGN_UP_LISTENER";
 
     @Nullable
     @Override

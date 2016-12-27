@@ -4,18 +4,16 @@ import android.app.Application;
 
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import net.codealizer.fundme.util.firebase.UserDataManager;
 
 /**
  * Created by Pranav on 11/18/16.
  */
 
 public class FundMe extends Application {
+
+    public static UserDataManager userDataManager;
 
     @Override
     public void onCreate() {
@@ -25,6 +23,10 @@ public class FundMe extends Application {
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
 
+        openSession();
+    }
 
+    public void openSession() {
+        userDataManager = new UserDataManager(this);
     }
 }
