@@ -25,17 +25,21 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import net.codealizer.fundme.FundMe;
 import net.codealizer.fundme.R;
-import net.codealizer.fundme.SearchActivity;
+import net.codealizer.fundme.assets.Notification;
 import net.codealizer.fundme.assets.User;
-import net.codealizer.fundme.ui.main.fragments.ExploreFragment;
+import net.codealizer.fundme.ui.main.fragments.ShopFragment;
 import net.codealizer.fundme.ui.main.fragments.HomeFragment;
+import net.codealizer.fundme.ui.main.fragments.NotificationsFragment;
 import net.codealizer.fundme.ui.main.fragments.ProfileFragment;
 import net.codealizer.fundme.ui.main.fragments.SettingsFragment;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
 import net.codealizer.fundme.ui.util.CircleTransform;
 
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG_NOTIFICATIONS = "notifications";
 
     // UI Elements
 
@@ -58,8 +62,7 @@ public class MainActivity extends AppCompatActivity {
     // tags used to attach the fragments
     private static final String TAG_HOME = "home";
     private static final String TAG_PROFILE = "profile";
-    private static final String TAG_EXPLORE = "explore";
-    private static final String TAG_SETTINGS = "settings";
+    private static final String TAG_SHOP = "shop";
     public static String CURRENT_TAG = TAG_HOME;
 
     // toolbar titles respected to selected nav menu item
@@ -155,6 +158,11 @@ public class MainActivity extends AppCompatActivity {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imgProfile);
 
+        List<Notification> notificationList = FundMe.userDataManager.getUser().getNotifications();
+
+        if (notificationList.size() > 0) {
+            navigationView.getMenu().getItem(2).setActionView(R.layout.menu_dot);
+        }
     }
 
     /***
@@ -185,13 +193,18 @@ public class MainActivity extends AppCompatActivity {
         Runnable mPendingRunnable = new Runnable() {
             @Override
             public void run() {
-                // update the main content by replacing fragments
-                Fragment fragment = getHomeFragment();
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
-                        android.R.anim.fade_out);
-                fragmentTransaction.replace(R.id.frame, fragment, CURRENT_TAG);
-                fragmentTransaction.commitAllowingStateLoss();
+                if (getHomeFragment() instanceof ShopFragment) {
+                    Intent intent = new Intent(MainActivity.this, ShopActivity.class);
+                    startActivity(intent);
+                } else {
+                    // update the main content by replacing fragments
+                    Fragment fragment = getHomeFragment();
+                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+                            android.R.anim.fade_out);
+                    fragmentTransaction.replace(R.id.frame, fragment, CURRENT_TAG);
+                    fragmentTransaction.commitAllowingStateLoss();
+                }
             }
         };
 
@@ -220,12 +233,11 @@ public class MainActivity extends AppCompatActivity {
                 ProfileFragment profileFragment = new ProfileFragment();
                 return profileFragment;
             case 2:
-                ExploreFragment exploreFragment = new ExploreFragment();
-                return exploreFragment;
+                NotificationsFragment notificationsFragment = new NotificationsFragment();
+                return notificationsFragment;
             case 3:
-                // settings fragment
-                SettingsFragment settingsFragment = new SettingsFragment();
-                return settingsFragment;
+                ShopFragment fragment = new ShopFragment();
+                return fragment;
             default:
                 return new HomeFragment();
         }
@@ -258,17 +270,14 @@ public class MainActivity extends AppCompatActivity {
                         navItemIndex = 1;
                         CURRENT_TAG = TAG_PROFILE;
                         break;
-                    case R.id.nav_explore:
+                    case R.id.nav_notifications:
                         navItemIndex = 2;
-                        CURRENT_TAG = TAG_EXPLORE;
+                        CURRENT_TAG = TAG_NOTIFICATIONS;
                         break;
-                    case R.id.nav_settings:
+                    case R.id.nav_shop:
                         navItemIndex = 3;
-                        CURRENT_TAG = TAG_SETTINGS;
+                        CURRENT_TAG = TAG_SHOP;
                         break;
-                    case R.id.nav_about_us:
-
-                        return true;
                     case R.id.nav_logout:
                         FundMe.userDataManager.logout();
                         return true;

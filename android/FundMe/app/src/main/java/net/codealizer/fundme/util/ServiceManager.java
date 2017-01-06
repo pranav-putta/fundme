@@ -1,6 +1,7 @@
 package net.codealizer.fundme.util;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,9 +10,12 @@ import android.location.Address;
 import android.location.LocationListener;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.util.Base64;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -19,13 +23,17 @@ import android.view.inputmethod.InputMethodManager;
 import net.codealizer.fundme.util.listeners.OnDownloadListener;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.net.HttpURLConnection;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -39,6 +47,8 @@ public class ServiceManager {
 
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1;
+
+    public static Uri uri;
 
     public static String strSeparator = "__,__";
 
@@ -101,12 +111,46 @@ public class ServiceManager {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    public static void captureImage(Activity activity) {
+    public static Uri captureImage(Activity activity) {
+        File filename = null;
+        try {
+            filename = createImageFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        uri = FileProvider.getUriForFile(activity, activity.getApplicationContext().getPackageName() + ".provider", filename);
+
+
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, "New Picture");
+        values.put(MediaStore.Images.Media.DESCRIPTION, "From your Camera");
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+
 
         if (intent.resolveActivity(activity.getPackageManager()) != null) {
             activity.startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
         }
+
+
+
+        return uri;
+    }
+
+    private static File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DCIM), "Camera");
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        return image;
     }
 
     public static void chooseImage(Activity activity) {
@@ -159,7 +203,7 @@ public class ServiceManager {
         } else if (days == 0) {
             return hours + " hours ago";
         } else {
-            return days + "days ago";
+            return days + " days ago";
         }
     }
 

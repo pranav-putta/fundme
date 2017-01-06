@@ -83,6 +83,7 @@
 
     <style name="AppTheme.ColoredButton" parent="ThemeOverlay.AppCompat.Light">
         <item name="colorAccent">@color/colorPrimary</item>
+
     </style>
 
     <style name="AppTheme.WhiteButton" parent="ThemeOverlay.AppCompat.Light">

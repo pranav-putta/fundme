@@ -25,14 +25,18 @@ public class User {
     public String lastLoggedIn;
     public double moneyRaised;
     public double rating;
+    public double virtualMoney;
+    public String address;
+    public List<String> itemsBought;
+    private List<Notification> notifications;
 
     private String profilePicture;
 
-    private ArrayList<String> organizationUids;
-    private ArrayList<String> itemUids;
+    private List<String> organizationUids;
+    private List<String> itemUids;
 
-    private ArrayList<Organization> organizations = new ArrayList<>();
-    private ArrayList<Item> items = new ArrayList<>();
+    private List<Organization> organizations = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
     public List<String> joinedOrganizations = new ArrayList<>();
 
     private static final String KEY_FIRST_NAME = "firstName";
@@ -45,7 +49,25 @@ public class User {
     private static final String KEY_ORGANIZATIONS = "organizations";
     private static final String KEY_ITEMS = "items";
     private static final String KEY_MEMEBRS = "joinedOrganizations";
+    private static final String KEY_VIRTUAL_MONEY = "virtualMoney";
 
+    public User (DatabaseUser user) {
+        uid = user.uid;
+        firstName = user.firstName;
+        lastName = user.lastName;
+        email = user.email;
+        profilePic = user.profilePictureURL;
+        lastLoggedIn = user.lastLoggedIn;
+        moneyRaised = user.moneyRaised;
+        rating = user.rating;
+        organizationUids = user.organizationUids;
+        itemUids = user.itemUids;
+        joinedOrganizations = user.joinedOrganizations;
+        virtualMoney = user.virtualMoney;
+        address = user.address;
+        itemsBought = user.itemsBought;
+        notifications = Notification.fromJson(user.notifications);
+    }
 
     public User(String uid, Bundle data) {
         this.uid = uid;
@@ -61,6 +83,10 @@ public class User {
         this.organizationUids = data.getStringArrayList("organizationUids");
         this.itemUids = data.getStringArrayList("itemUids");
         this.joinedOrganizations = data.getStringArrayList("joinedOrganizations");
+        this.virtualMoney = Double.parseDouble(data.getString(KEY_VIRTUAL_MONEY, "0"));
+        this.address = data.getString("address", "");
+        this.itemsBought = data.getStringArrayList("itemsBought");
+        this.notifications = Notification.fromJson(data.getStringArrayList("notifications"));
 
         if (this.organizations == null) {
             organizations = new ArrayList<>();
@@ -80,6 +106,14 @@ public class User {
 
         if (this.joinedOrganizations == null) {
             joinedOrganizations = new ArrayList<>();
+        }
+
+        if (this.itemsBought == null) {
+            itemsBought = new ArrayList<>();
+        }
+
+        if (this.notifications == null) {
+            notifications = new ArrayList<>();
         }
 
     }
@@ -176,6 +210,14 @@ public class User {
         this.organizations = organizations;
     }
 
+    public double getVirtualMoney() {
+        return virtualMoney;
+    }
+
+    public void setVirtualMoney(double virtualMoney) {
+        this.virtualMoney = virtualMoney;
+    }
+
     public List<Item> getItems() {
         return items;
     }
@@ -193,7 +235,7 @@ public class User {
         return firstName + " " + lastName;
     }
 
-    public ArrayList<String> getOrganizationUids() {
+    public List<String> getOrganizationUids() {
         return organizationUids;
     }
 
@@ -201,7 +243,7 @@ public class User {
         this.organizationUids = organizationUids;
     }
 
-    public ArrayList<String> getItemUids() {
+    public List<String> getItemUids() {
         return itemUids;
     }
 
@@ -220,5 +262,41 @@ public class User {
 
     public void setJoinedOrganizations(List<String> joinedOrganizations) {
         this.joinedOrganizations = joinedOrganizations;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<String> getItemsBought() {
+        return itemsBought;
+    }
+
+    public void setItemsBought(List<String> itemsBought) {
+        this.itemsBought = itemsBought;
+    }
+
+    public List<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
+    }
+
+    public void addNotification(Notification notification) {
+        this.notifications.add(notification);
+    }
+
+    public void removeItemBought(String uid) {
+        itemsBought.remove(uid);
+    }
+
+    public void removeNotification(Notification notification) {
+        this.notifications.remove(notification);
     }
 }

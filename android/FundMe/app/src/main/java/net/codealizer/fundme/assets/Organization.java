@@ -28,6 +28,7 @@ public class Organization implements Parcelable {
     public List<String> loved;
     public List<String> members;
     public int viewed;
+    public int moneyRaised;
 
     public static final Parcelable.Creator<Organization> CREATOR
             = new Parcelable.Creator<Organization>() {
@@ -54,9 +55,10 @@ public class Organization implements Parcelable {
         loved = ServiceManager.convertStringToArray(in.readString());
         viewed = in.readInt();
         members = ServiceManager.convertStringToArray(in.readString());
+        moneyRaised = in.readInt();
     }
 
-    public Organization(String title, String description, double price, int zipCode, long dateCreated, Bitmap image, String link, List<String> loved, int viewed, List<String> members) {
+    public Organization(String title, String description, double price, int zipCode, long dateCreated, Bitmap image, String link, List<String> loved, int viewed, List<String> members, int moneyRaised) {
         this.title = title;
         this.description = description;
         this.price = price;
@@ -68,6 +70,7 @@ public class Organization implements Parcelable {
         this.loved = loved;
         this.viewed = viewed;
         this.members = members;
+        this.moneyRaised = moneyRaised;
 
         if (loved == null) {
             this.loved = new ArrayList<>();
@@ -101,6 +104,7 @@ public class Organization implements Parcelable {
         parcel.writeString(ServiceManager.convertArrayToString(loved));
         parcel.writeInt(viewed);
         parcel.writeString(ServiceManager.convertArrayToString(members));
+        parcel.writeInt(moneyRaised);
     }
 
     public String getUid() {
@@ -201,6 +205,14 @@ public class Organization implements Parcelable {
 
     public List<String> getMembers() {
         return members;
+    }
+
+    public int getMoneyRaised() {
+        return moneyRaised;
+    }
+
+    public void setMoneyRaised(int moneyRaised) {
+        this.moneyRaised = moneyRaised;
     }
 
     public void setMembers(List<String> members) {

@@ -33,8 +33,10 @@ import com.google.android.gms.location.FusedLocationProviderApi;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import net.codealizer.fundme.R;
+import net.codealizer.fundme.assets.Comment;
 import net.codealizer.fundme.assets.Item;
 import net.codealizer.fundme.assets.User;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
@@ -60,6 +62,7 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
 
     private static final int RC_PERMISSION_LOCATION = 1;
     private static final long LOCATION_INTERVAL = 1000;
+    private static final int RC_PERMISSION_IMAGE = 2000;
     FloatingActionButton chooseImageButton;
 
     ImageView imageCover;
@@ -69,6 +72,7 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
     AppCompatEditText priceEditText;
     AppCompatEditText locationEditText;
     TagsEditText tagsEditText;
+    MaterialSpinner condition;
 
     ImageButton findLocationButton;
     Button saveButton;
@@ -127,11 +131,14 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == ServiceManager.REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap image = (Bitmap) extras.get("data");
-            imageCover.setImageBitmap(image);
-            hasImageChanged = true;
+        if (requestCode == ServiceManager.REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK && ServiceManager.uri != null) {
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), ServiceManager.uri);
+                imageCover.setImageBitmap(ServiceManager.ImageHelper.compressImage(bitmap));
+                hasImageChanged = true;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else if (requestCode == ServiceManager.REQUEST_PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri uri = data.getData();
 
@@ -175,14 +182,22 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
-        if (findLocationClicked) {
-            startCurrentLocation();
+        if (requestCode == RC_PERMISSION_LOCATION) {
+            if (findLocationClicked) {
+                startCurrentLocation();
+            }
+        } else if (requestCode == RC_PERMISSION_IMAGE) {
+            choosePicture();
         }
     }
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        Toast.makeText(this, "Cannot find your location", Toast.LENGTH_LONG).show();
+        if (requestCode == RC_PERMISSION_LOCATION) {
+            Toast.makeText(this, "Cannot find your location", Toast.LENGTH_LONG).show();
+        } else if (requestCode == RC_PERMISSION_IMAGE) {
+            Toast.makeText(this, "Couldn't create an image destination", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
@@ -219,6 +234,7 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
         priceEditText = (AppCompatEditText) findViewById(R.id.create_item_price);
         tagsEditText = (TagsEditText) findViewById(R.id.create_item_tags);
         locationEditText = (AppCompatEditText) findViewById(R.id.create_item_location);
+        condition = (MaterialSpinner) findViewById(R.id.create_item_condition);
 
         chooseImageButton.setOnClickListener(this);
         imageCover.setOnClickListener(this);
@@ -233,19 +249,23 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int end) {
-                if (!s.toString().equals(current)) {
-                    priceEditText.removeTextChangedListener(this);
+                try {
+                    if (!s.toString().equals(current)) {
+                        priceEditText.removeTextChangedListener(this);
 
-                    String cleanString = s.toString().replaceAll("[$,.]", "");
+                        String cleanString = s.toString().replaceAll("[$,.]", "");
 
-                    double parsed = Double.parseDouble(cleanString);
-                    String formatted = NumberFormat.getCurrencyInstance().format((parsed / 100));
+                        double parsed = Double.parseDouble(cleanString);
+                        String formatted = NumberFormat.getCurrencyInstance().format((parsed / 100));
 
-                    current = formatted;
-                    priceEditText.setText(formatted);
-                    priceEditText.setSelection(formatted.length());
+                        current = formatted;
+                        priceEditText.setText(formatted);
+                        priceEditText.setSelection(formatted.length());
 
-                    priceEditText.addTextChangedListener(this);
+                        priceEditText.addTextChangedListener(this);
+                    }
+                } catch (Exception ex) {
+
                 }
             }
 
@@ -254,6 +274,7 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
 
             }
         });
+        condition.setItems("Used", "Acceptable", "Good", "Very good", "Brand New");
 
         buildGoogleApiClient();
         mGoogleApiClient.connect();
@@ -268,6 +289,7 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
             priceEditText.setText(String.valueOf(Math.round(item.getPrice())));
             tagsEditText.setText(ServiceManager.convertArrayToString(item.getTags()).replaceAll("__,__", " "));
             locationEditText.setText(String.valueOf(item.getZipCode()));
+            condition.setSelectedIndex(item.getCondition() - 1);
 
             hasImageChanged = true;
 
@@ -276,7 +298,12 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void choosePicture() {
-        AlertDialogManager.showChoosePictureDialog(this);
+        String perms[] = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        if (EasyPermissions.hasPermissions(this, perms)) {
+            AlertDialogManager.showChoosePictureDialog(this);
+        } else {
+            EasyPermissions.requestPermissions(this, "Your images will be used for backdrops", RC_PERMISSION_IMAGE, perms);
+        }
     }
 
     private void selectLocation(Location location) {
@@ -342,14 +369,16 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
             String rawTags = tagsEditText.getText().toString();
             List<String> tags = Arrays.asList(rawTags.split(" "));
             List<String> loved = new ArrayList<>();
+            List<String> itemsBought = new ArrayList<>();
             int viewed = 0;
+            int cond = condition.getSelectedIndex() + 1;
 
             dialog = AlertDialogManager.showProgressDialog(this);
 
             if (getIntent().hasExtra(KEY_EDIT_ITEM)) {
                 DatabaseManager.createItem(item, this, this, true);
             } else {
-                DatabaseManager.createItem(new Item(title, description, price, zipCode, dateCreated, image, tags, loved, viewed), this, this, false);
+                DatabaseManager.createItem(new Item(title, description, price, zipCode, dateCreated, image, tags, loved, viewed, itemsBought, false, new ArrayList<Comment>(), cond), this, this, false);
 
             }
         }
@@ -428,4 +457,6 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
 
         Toast.makeText(this, "Couldn't create the item", Toast.LENGTH_LONG).show();
     }
+
+
 }

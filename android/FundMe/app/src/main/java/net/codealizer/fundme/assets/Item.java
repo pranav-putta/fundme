@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import net.codealizer.fundme.ui.main.CreateItemActivity;
 import net.codealizer.fundme.util.ServiceManager;
 
 import java.io.Serializable;
@@ -28,6 +29,10 @@ public class Item implements Parcelable {
     public List<String> tags;
     public List<String> loved;
     public int viewed;
+    public List<String> buyRequests;
+    public boolean sold;
+    public List<Comment> comments;
+    public int condition;
 
     public static final Parcelable.Creator<Item> CREATOR
             = new Parcelable.Creator<Item>() {
@@ -53,9 +58,13 @@ public class Item implements Parcelable {
         tags = ServiceManager.convertStringToArray(in.readString());
         loved = ServiceManager.convertStringToArray(in.readString());
         viewed = in.readInt();
+        buyRequests = ServiceManager.convertStringToArray(in.readString());
+        sold = Boolean.parseBoolean(in.readString());
+        condition = in.readInt();
+        comments = in.createTypedArrayList(Comment.CREATOR);
     }
 
-    public Item(String title, String description, double price, int zipCode, long dateCreated, Bitmap image, List<String> tags, List<String> loved, int viewed) {
+    public Item(String title, String description, double price, int zipCode, long dateCreated, Bitmap image, List<String> tags, List<String> loved, int viewed, List<String> buyRequests, boolean sold, List<Comment> comments, int condition) {
         this.uid = uid;
         this.title = title;
         this.description = description;
@@ -66,10 +75,39 @@ public class Item implements Parcelable {
         this.tags = tags;
         this.loved = loved;
         this.viewed = viewed;
+        this.buyRequests = buyRequests;
+        this.sold = sold;
+        this.comments = comments;
+        this.condition = condition;
 
         if (loved == null) {
             this.loved = new ArrayList<>();
         }
+
+        if (buyRequests == null) {
+            this.buyRequests = new ArrayList<>();
+        }
+
+        if (comments == null) {
+            this.comments = new ArrayList<>();
+        }
+    }
+
+    public Item(DatabaseItem item) {
+        uid = item.uid;
+        title = item.title;
+        description = item.description;
+        price = item.price;
+        zipCode = item.zipCode;
+        dateCreated = item.dateCreated;
+        userUID = item.userUID;
+        imageURL = item.imageURL;
+        tags = item.tags;
+        loved = item.loved;
+        viewed = item.viewed;
+        buyRequests = item.buyRequests;
+        sold = item.sold;
+        condition = item.condition;
     }
 
     public Item() {
@@ -94,7 +132,14 @@ public class Item implements Parcelable {
         parcel.writeString(ServiceManager.convertArrayToString(tags));
         parcel.writeString(ServiceManager.convertArrayToString(loved));
         parcel.writeInt(viewed);
+        parcel.writeString(ServiceManager.convertArrayToString(buyRequests));
+        parcel.writeString(String.valueOf(sold));
+        parcel.writeInt(condition);
+        try {
+            parcel.writeTypedArray(comments.toArray(new Parcelable[0]), 0);
+        } catch (Exception ex) {
 
+        }
     }
 
     public String getUid() {
@@ -192,5 +237,33 @@ public class Item implements Parcelable {
 
     public void setViewed(int viewed) {
         this.viewed = viewed;
+    }
+
+    public List<String> getBuyRequests() {
+        return buyRequests;
+    }
+
+    public void setBuyRequests(List<String> buyRequests) {
+        this.buyRequests = buyRequests;
+    }
+
+    public boolean isSold() {
+        return sold;
+    }
+
+    public void setSold(boolean sold) {
+        this.sold = sold;
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
+    }
+
+    public int getCondition() {
+        return condition;
+    }
+
+    public void setCondition(int condition) {
+        this.condition = condition;
     }
 }

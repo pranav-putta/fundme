@@ -10,6 +10,7 @@ import android.os.Bundle;
 import com.google.firebase.auth.FirebaseAuth;
 
 import net.codealizer.fundme.assets.DatabaseUser;
+import net.codealizer.fundme.assets.Notification;
 import net.codealizer.fundme.assets.Organization;
 import net.codealizer.fundme.assets.User;
 import net.codealizer.fundme.ui.launch.LaunchActivity;
@@ -81,7 +82,6 @@ public class UserDataManager {
         context.startActivity(i);
     }
 
-
     /**
      * Quick check for if user is logged in
      */
@@ -104,14 +104,16 @@ public class UserDataManager {
         editor.putString("rating", String.valueOf(user.rating));
         editor.putStringSet("organizationUids", new HashSet<String>(new DatabaseUser(user).organizationUids));
         editor.putStringSet("itemUids", new HashSet<String>(new DatabaseUser(user).itemUids));
+        editor.putString("virtualMoney", String.valueOf(user.virtualMoney));
+        editor.putString("address", user.address);
         // Input the profile picture
         editor.putString("bitmap_profile_picture", (user.getProfilePicture()));
         editor.putStringSet("joinedOrganizations", new HashSet<String>(user.joinedOrganizations));
+        editor.putStringSet("itemsBought", new HashSet<String>(user.itemsBought));
+        editor.putStringSet("notifications", new HashSet<String>(Notification.toJson(user.getNotifications())));
 
         editor.putBoolean(KEY_IS_LOGGED_IN, true);
         editor.apply();
-
-        ArrayList<String> lol = new ArrayList<String>(preferences.getStringSet("itemUids", null));
 
         mUser = user;
     }
@@ -140,6 +142,8 @@ public class UserDataManager {
         user.setProfilePicture((preferences.getString("bitmap_profile_picture", "")));
         user.setMoneyRaised(Double.parseDouble(preferences.getString("moneyRaised", "0")));
         user.setRating(Double.parseDouble(preferences.getString("rating", "0")));
+        user.setVirtualMoney(Double.parseDouble(preferences.getString("virtualMoney", "0")));
+        user.setAddress(preferences.getString("address", ""));
         if (preferences.getStringSet("organizationUids", null) != null) {
             user.setOrganizationUids(new ArrayList<>(preferences.getStringSet("organizationUids", null)));
         }
@@ -148,6 +152,12 @@ public class UserDataManager {
         }
         if (preferences.getStringSet("joinedOrganizations", null) != null) {
             user.setJoinedOrganizations(new ArrayList<String>(preferences.getStringSet("joinedOrganizations", null)));
+        }
+        if (preferences.getStringSet("itemsBought", null) != null) {
+            user.setItemsBought(new ArrayList<String>(preferences.getStringSet("itemsBought", null)));
+        }
+        if (preferences.getStringSet("notifications", null) != null) {
+            user.setNotifications(Notification.fromJson(new ArrayList<String>(preferences.getStringSet("notifications", null))));
         }
 
         mUser = user;

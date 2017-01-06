@@ -1,36 +1,52 @@
 package net.codealizer.fundme.ui.main.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.lapism.searchview.SearchView;
 
 import net.codealizer.fundme.FundMe;
 import net.codealizer.fundme.R;
+import net.codealizer.fundme.assets.Item;
 import net.codealizer.fundme.assets.SearchItem;
 import net.codealizer.fundme.assets.User;
 import net.codealizer.fundme.ui.main.CreateItemActivity;
 import net.codealizer.fundme.ui.main.CreateOrganizationActivity;
 import net.codealizer.fundme.ui.main.ViewItemActivity;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
+import net.codealizer.fundme.ui.util.CircleTransform;
 import net.codealizer.fundme.util.firebase.AuthenticationManager;
 import net.codealizer.fundme.util.DataManager;
 import net.codealizer.fundme.util.firebase.DatabaseManager;
 import net.codealizer.fundme.util.ServiceManager;
 import net.codealizer.fundme.util.listeners.OnAuthenticatedListener;
 import net.codealizer.fundme.util.listeners.OnCompletedListener;
+import net.codealizer.fundme.util.listeners.OnDownloadListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -46,6 +62,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
 
     SwipeRefreshLayout swipeRefreshLayout;
 
+    RecyclerView list;
+
+    private List<Item> items;
+    private ProgressDialog dialog;
+
     public SearchView searchView;
 
 
@@ -60,6 +81,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
         super.onStart();
 
         initialize();
+
+        dialog = AlertDialogManager.showProgressDialog(getActivity());
+        onRefresh();
     }
 
 
@@ -69,6 +93,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
         addItem = (FloatingActionsMenu) getView().findViewById(R.id.home_create_new_button);
         swipeRefreshLayout = (SwipeRefreshLayout) getView().findViewById(R.id.home_swipe_layout);
 
+        list = (RecyclerView) getView().findViewById(R.id.home_items_list);
 
         newItem.setOnClickListener(this);
         newOrganization.setOnClickListener(this);
@@ -102,6 +127,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
 
     @Override
     public void onRefresh() {
+        dialog.show();
         swipeRefreshLayout.setRefreshing(true);
 
         if (ServiceManager.isNetworkAvailable(getActivity())) {
@@ -116,9 +142,27 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
         DatabaseManager.saveItemsAndOrganizations(getActivity(), new OnCompletedListener() {
             @Override
             public void onServiceSuccessful() {
-                AlertDialogManager.showMessageSnackbar(addItem, "Refreshed data!");
 
-                swipeRefreshLayout.setRefreshing(false);
+                DatabaseManager.getAllItems(new OnDownloadListener() {
+                    @Override
+                    public <D> void onDownloadSuccessful(D data) {
+                        items = (List<Item>) data;
+
+                        AlertDialogManager.showMessageSnackbar(addItem, "Refreshed data!");
+
+                        swipeRefreshLayout.setRefreshing(false);
+                        dialog.hide();
+                        list.setLayoutManager(new LinearLayoutManager(getActivity()));
+                        list.setItemAnimator(new DefaultItemAnimator());
+                        list.setAdapter(new HomeAdapter(items));
+                    }
+
+                    @Override
+                    public void onDownloadFailed(String message) {
+                        onAuthenticationFailed(message);
+                    }
+                });
+
             }
 
             @Override
@@ -155,6 +199,80 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
 
     @Override
     public void onSearchAction(String currentQuery) {
+
+    }
+
+    class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
+
+        List<Item> mItems;
+
+        public HomeAdapter(List<Item> items) {
+            mItems = items;
+        }
+
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new ViewHolder(LayoutInflater.from(getActivity()).inflate(R.layout.card_home_item, parent, false));
+        }
+
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int position) {
+            final Item item = mItems.get(position);
+
+            holder.title.setText(item.title);
+            holder.date.setText(new SimpleDateFormat("EEEE, MMMM dd, yyyy").format(new Date(item.dateCreated)));
+            holder.backdrop.setColorFilter(Color.argb(50, 0, 0, 0));
+            Glide.with(getActivity()).load(item.getImageURL())
+                    .crossFade()
+                    .thumbnail(0.5f)
+                    .into(holder.backdrop);
+            holder.liked.setText(String.valueOf(item.getLoved().size()));
+            holder.viewed.setText(String.valueOf(item.getViewed()));
+            holder.view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), ViewItemActivity.class);
+                    intent.putExtra(ViewItemActivity.KEY_ITEM_UID, item.getUid());
+                    startActivity(intent);
+                }
+            });
+            holder.card.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), ViewItemActivity.class);
+                    intent.putExtra(ViewItemActivity.KEY_ITEM_UID, item.getUid());
+                    startActivity(intent);
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return mItems.size();
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+
+            private TextView title;
+            private TextView date;
+            private ImageView backdrop;
+            private TextView liked;
+            private TextView viewed;
+            private Button view;
+            private CardView card;
+
+            public ViewHolder(View itemView) {
+                super(itemView);
+
+                title = (TextView) itemView.findViewById(R.id.card_home_item_title);
+                date = (TextView) itemView.findViewById(R.id.card_home_item_date);
+                backdrop = (ImageView) itemView.findViewById(R.id.card_home_item_backdrop);
+                liked = (TextView) itemView.findViewById(R.id.liked_count);
+                viewed = (TextView) itemView.findViewById(R.id.viewed_count);
+                view = (Button) itemView.findViewById(R.id.card_home_item_view_button);
+                card = (CardView) itemView.findViewById(R.id.card_home_item);
+            }
+        }
 
     }
 }

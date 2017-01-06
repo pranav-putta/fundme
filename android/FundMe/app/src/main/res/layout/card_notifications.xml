@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/card_notifications"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/activity_vertical_margin">
+
+        <ImageView
+            android:id="@+id/card_notifications_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:id="@+id/card_notifications_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_toRightOf="@id/card_notifications_image"
+            android:text="Pranav Putta has requested to buy your waterbottle" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/card_notifications_description"
+            android:layout_alignRight="@id/card_notifications_description"
+            android:layout_below="@id/card_notifications_description"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/card_notifications_accept"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/activity_vertical_margin"
+                android:layout_weight="1"
+                android:text="Accept"
+                android:theme="@style/AppTheme.ColoredButton" />
+
+            <Button
+                android:id="@+id/card_notifications_reject"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Revoke"
+                android:textColor="@color/md_black_1000"
+                android:theme="@style/AppTheme.WhiteButton" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

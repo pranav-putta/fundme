@@ -15,10 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import net.codealizer.fundme.R;
-import net.codealizer.fundme.ViewOrganizationActivity;
-import net.codealizer.fundme.assets.Item;
+import net.codealizer.fundme.ui.main.ViewOrganizationActivity;
 import net.codealizer.fundme.assets.Organization;
-import net.codealizer.fundme.ui.main.CreateOrganizationActivity;
 import net.codealizer.fundme.util.db.LocalDatabaseManager;
 
 import java.util.ArrayList;

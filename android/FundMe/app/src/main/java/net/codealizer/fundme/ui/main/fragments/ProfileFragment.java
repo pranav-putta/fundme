@@ -56,7 +56,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private ViewPager pager;
     private TabLayout tabs;
 
-    private TextView followers;
+    private TextView credits;
     private TextView items;
     private TextView organizations;
 
@@ -96,7 +96,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         toolbarBackdrop = (ImageView) v.findViewById(R.id.toolbar_profile_backdrop);
         name = (TextView) v.findViewById(R.id.toolbar_profile_name);
 
-        followers = (TextView) v.findViewById(R.id.followers);
+        credits = (TextView) v.findViewById(R.id.profile_credits);
         items = (TextView) v.findViewById(R.id.items);
         organizations = (TextView) v.findViewById(R.id.organizations);
 
@@ -112,20 +112,17 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         tabs = (TabLayout) v.findViewById(R.id.toolbar_profile_tabs);
         tabs.setupWithViewPager(pager);
 
-        followers.setText("0");
         items.setText(String.valueOf(user.getItemUids().size()));
         organizations.setText(String.valueOf(user.getOrganizationUids().size()));
 
-        followers.setOnClickListener(this);
-
         name.setText(user.getName());
 
+        credits.setText(String.valueOf((int) user.getVirtualMoney()));
 
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(fragment, "Followers");
         adapter.addFragment(itemsFragment, "Items");
         adapter.addFragment(organizationsFragment, "Organizations");
         viewPager.setAdapter(adapter);

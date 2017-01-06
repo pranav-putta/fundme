@@ -16,6 +16,7 @@ public class DatabaseOrganization {
     public List<String> loved;
     public int viewed;
     public List<String> members;
+    public int moneyRaised;
 
     public DatabaseOrganization (Organization item) {
         uid = item.uid;
@@ -30,6 +31,7 @@ public class DatabaseOrganization {
         loved = item.getLoved();
         viewed = item.getViewed();
         members = item.getMembers();
+        moneyRaised = item.moneyRaised;
 
         if (loved == null) {
             loved = new ArrayList<>();

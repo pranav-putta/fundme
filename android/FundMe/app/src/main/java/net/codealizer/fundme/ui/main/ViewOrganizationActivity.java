@@ -1,4 +1,4 @@
-package net.codealizer.fundme;
+package net.codealizer.fundme.ui.main;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -40,6 +40,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import net.codealizer.fundme.FundMe;
+import net.codealizer.fundme.MembersActivity;
+import net.codealizer.fundme.R;
 import net.codealizer.fundme.assets.Organization;
 import net.codealizer.fundme.ui.main.CreateOrganizationActivity;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
@@ -294,7 +297,16 @@ public class ViewOrganizationActivity extends AppCompatActivity implements OnDow
             case R.id.view_organization_join_group_button:
                 join();
                 break;
+            case R.id.view_organization_members_button:
+                members();
+                break;
         }
+    }
+
+    private void members() {
+        Intent intent = new Intent(this, MembersActivity.class);
+        intent.putExtra(MembersActivity.KEY_ORGANIZATION_UID, mOrganization.getUid());
+        startActivity(intent);
     }
 
     private void retrieveOrganizationInformation() {
@@ -377,8 +389,8 @@ public class ViewOrganizationActivity extends AppCompatActivity implements OnDow
         location.setText(loc);
         distance.setText(d);
         goal.setMax((float) mOrganization.getPrice());
-        goal.setProgress(200f);
-        goalText.setText("$200 of $" + ((int) mOrganization.getPrice()));
+        goal.setProgress(mOrganization.getMoneyRaised());
+        goalText.setText("$" + mOrganization.getMoneyRaised() + " of $" + mOrganization.getPrice());
 
         mGoogleApiClient.unregisterConnectionCallbacks(this);
         mGoogleApiClient.unregisterConnectionFailedListener(this);

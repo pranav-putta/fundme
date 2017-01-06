@@ -53,6 +53,9 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
     private static final String KEY_TAGS = "tags";
     private static final String KEY_LOVED = "loved";
     private static final String KEY_VIEWED = "viewed";
+    private static final String KEY_BUY_REQ = "buyRequests";
+    private static final String KEY_SOLD = "sold";
+    private static final String KEY_MONEY_RAISED  = "moneyRaised";
 
     public LocalDatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -68,12 +71,12 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_UID + " TEXT,"
                 + KEY_TITLE + " TEXT," + KEY_DESCRIPTION + " TEXT," + KEY_PRICE + " TEXT," + KEY_ZIPCODE + " TEXT," +
                 KEY_DATE_CREATED + " TEXT," + KEY_IMAGE + " TEXT," + KEY_USER_UID + " TEXT," +
-                KEY_LINK + " TEXT," + KEY_IMAGE_URL + " TEXT" + ")";
+                KEY_LINK + " TEXT," + KEY_IMAGE_URL + " TEXT," + KEY_MONEY_RAISED + " TEXT" + ")";
         String CREATE_ITEMS_TABLE = "CREATE TABLE " + TABLE_ITEMS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_UID + " TEXT,"
                 + KEY_TITLE + " TEXT," + KEY_DESCRIPTION + " TEXT," + KEY_PRICE + " TEXT," + KEY_ZIPCODE + " TEXT," +
                 KEY_DATE_CREATED + " TEXT," + KEY_IMAGE + " TEXT," + KEY_USER_UID + " TEXT," + KEY_IMAGE_URL + " TEXT," + KEY_TAGS + " TEXT,"
-                + KEY_LOVED + " TEXT," + KEY_VIEWED + " TEXT" + ")";
+                + KEY_LOVED + " TEXT," + KEY_VIEWED + " TEXT," + KEY_BUY_REQ + " TEXT, " + KEY_SOLD + " TEXT" + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
         db.execSQL(CREATE_ORGANIZATIONS_TABLE);
         db.execSQL(CREATE_ITEMS_TABLE);
@@ -127,6 +130,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
         values.put(KEY_USER_UID, organization.getUserUID());
         values.put(KEY_LINK, organization.getLink());
         values.put(KEY_IMAGE_URL, organization.getImageURL());
+        values.put(KEY_MONEY_RAISED, organization.getMoneyRaised());
 
 
         // Inserting Row
@@ -151,6 +155,8 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
         values.put(KEY_TAGS, ServiceManager.convertArrayToString(item.getTags()));
         values.put(KEY_LOVED, ServiceManager.convertArrayToString(item.getLoved()));
         values.put(KEY_VIEWED, item.getViewed());
+        values.put(KEY_BUY_REQ, ServiceManager.convertArrayToString(item.getBuyRequests()));
+        values.put(KEY_SOLD, item.isSold());
 
         // Inserting Row
         db.insert(TABLE_ITEMS, null, values);
@@ -179,6 +185,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
                 o.setUserUID(cursor.getString(8));
                 o.setLink(cursor.getString(9));
                 o.setImageURL(cursor.getString(10));
+                o.setMoneyRaised(Integer.parseInt(cursor.getString(11)));
                 // Adding contact to list
                 itemList.add(o);
             } while (cursor.moveToNext());
@@ -213,6 +220,8 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
                     o.setTags(ServiceManager.convertStringToArray(cursor.getString(10)));
                     o.setLoved(ServiceManager.convertStringToArray(cursor.getString(11)));
                     o.setViewed(Integer.parseInt(cursor.getString(12)));
+                    o.setBuyRequests(ServiceManager.convertStringToArray(cursor.getString(13)));
+                    o.setSold(Boolean.parseBoolean(cursor.getString(14)));
                     // Adding contact to list
                     itemList.add(o);
                 } catch (Exception ex) {
@@ -284,6 +293,8 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
         values.put(KEY_TAGS, ServiceManager.convertArrayToString(item.getTags()));
         values.put(KEY_LOVED, ServiceManager.convertArrayToString(item.getLoved()));
         values.put(KEY_VIEWED, item.getViewed());
+        values.put(KEY_BUY_REQ, ServiceManager.convertArrayToString(item.buyRequests));
+        values.put(KEY_SOLD, item.sold);
 
         // updating row
         return db.update(TABLE_ITEMS, values, KEY_UID + " = ?",
@@ -304,6 +315,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
         values.put(KEY_USER_UID, organization.getUserUID());
         values.put(KEY_LINK, organization.getLink());
         values.put(KEY_IMAGE_URL, organization.getImageURL());
+        values.put(KEY_MONEY_RAISED, organization.getMoneyRaised());
 
         // updating row
         return db.update(TABLE_ORGANIZATIONS, values, KEY_UID + " = ?",

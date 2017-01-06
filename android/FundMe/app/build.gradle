@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
@@ -18,13 +17,12 @@ android {
         }
     }
 }
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
+    compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.elmargomez.typer:typerlib:1.0.0'
     compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'com.android.support:design:25.0.1'
@@ -47,8 +45,10 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.lapism:searchview:4.0'
     compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
-
+    compile 'com.jaredrummler:material-spinner:1.1.0'
+    compile 'com.hudomju:swipe-to-dismiss-undo:1.0'
+    compile 'com.sun.mail:android-mail:1.5.5'
+    compile 'com.sun.mail:android-activation:1.5.5'
     testCompile 'junit:junit:4.12'
 }
-
 apply plugin: 'com.google.gms.google-services'

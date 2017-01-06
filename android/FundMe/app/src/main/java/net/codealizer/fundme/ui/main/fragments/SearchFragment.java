@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import net.codealizer.fundme.R;
-import net.codealizer.fundme.ViewOrganizationActivity;
+import net.codealizer.fundme.ui.main.ViewOrganizationActivity;
 import net.codealizer.fundme.assets.SearchItem;
 import net.codealizer.fundme.ui.main.ViewItemActivity;
 

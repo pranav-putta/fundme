@@ -2,14 +2,14 @@ package net.codealizer.fundme.ui.main;
 
 import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -19,13 +19,14 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import net.codealizer.fundme.FundMe;
 import net.codealizer.fundme.R;
+import net.codealizer.fundme.assets.Condition;
 import net.codealizer.fundme.assets.Item;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
 import net.codealizer.fundme.util.ServiceManager;
@@ -54,18 +56,18 @@ import net.codealizer.fundme.util.listeners.OnDownloadListener;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class ViewItemActivity extends AppCompatActivity implements OnDownloadListener, OnMapReadyCallback, LocationListener,
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, EasyPermissions.PermissionCallbacks, View.OnClickListener {
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, EasyPermissions.PermissionCallbacks, View.OnClickListener, Runnable {
 
     public static final String KEY_ITEM_UID = "net.codealizer.fundme.main.ViewItemActivity.ITEM_UID";
     public static final String KEY_ITEM = "net.codealizer.fundme.main.ViewItemActivity.ITEM";
 
     private static final int RC_PERMISSION_LOCATION = 1;
+    public static final int RC_ADDRESS = 2;
 
 
     private static final long LOCATION_INTERVAL = 1000;
@@ -82,11 +84,15 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
     private TextView loved;
     private TextView viewed;
     private boolean isLiked;
+    private RatingBar condition;
+    private TextView conditionText;
 
     private NestedScrollView content;
     private NestedScrollView unable;
 
     private LinearLayout buttons;
+    private Button buyButton;
+    private Button chatButton;
     private FloatingActionButton editButton;
 
     private MapFragment mapFragment;
@@ -108,6 +114,10 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
     private Menu menu;
 
     private int reloaded = 0;
+    private boolean isBought = false;
+    private boolean shouldUpdate = true;
+    private boolean isLocationFound = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,21 +133,50 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
     protected void onResume() {
         super.onResume();
 
-        // Force a reload of information
-        if (getIntent().hasExtra(KEY_ITEM_UID)) {
-            uid = getIntent().getStringExtra(KEY_ITEM_UID);
-        } else if (getIntent().hasExtra(KEY_ITEM)) {
-            mItem = getIntent().getParcelableExtra(KEY_ITEM);
-        }
+        if (shouldUpdate) {
+            // Force a reload of information
+            if (getIntent().hasExtra(KEY_ITEM_UID)) {
+                uid = getIntent().getStringExtra(KEY_ITEM_UID);
+            } else if (getIntent().hasExtra(KEY_ITEM)) {
+                mItem = getIntent().getParcelableExtra(KEY_ITEM);
+            }
 
-        if (reloaded > 0) {
-            if (mItem != null) {
-                uid = mItem.getUid();
-                mItem = null;
+            if (reloaded > 0) {
+                if (mItem != null) {
+                    uid = mItem.getUid();
+                    mItem = null;
+                }
+            }
+
+            initializeUI();
+        } else {
+            shouldUpdate = true;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == RC_ADDRESS) {
+            if (data.getBooleanExtra("complete", false)) {
+                AlertDialogManager.showBuyItemDialog(this, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        mItem = DatabaseManager.createItemRequest(mItem, ViewItemActivity.this);
+                        if (mItem.getBuyRequests().contains(FundMe.userDataManager.getUser().getUid())) {
+                            AlertDialogManager.showMessageSnackbar(container, "Requested item! Please wait for the owner to respond", Snackbar.LENGTH_LONG);
+                            buyButton.setText("Stop Buying");
+                            isBought = true;
+                        } else {
+                            AlertDialogManager.showMessageSnackbar(container, "Canceled item request!", Snackbar.LENGTH_LONG);
+                            buyButton.setText("Buy Item");
+                            isBought = false;
+                        }
+                    }
+                }, mItem);
+            } else {
+                AlertDialogManager.showMessageSnackbar(container, "Couldn't process the information");
             }
         }
-
-        initializeUI();
     }
 
     @Override
@@ -269,6 +308,7 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
         AlertDialogManager.showMessageSnackbar(container, "Couldn't find your location");
+        initializeData();
     }
 
     @Override
@@ -279,11 +319,62 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
                 intent.putExtra(CreateItemActivity.KEY_EDIT_ITEM, mItem);
 
                 this.startActivity(intent);
+                break;
+            case R.id.view_item_buy_item:
+                buyItem();
+                break;
+        }
+    }
+
+    private void buyItem() {
+        if (!isBought) {
+            // Check if the user has enough money to buy
+            double userMoney = FundMe.userDataManager.getUser().getVirtualMoney();
+            boolean canBuy = userMoney > mItem.getPrice();
+
+            if (canBuy) {
+                if (!FundMe.userDataManager.getUser().getAddress().isEmpty()) {
+                    AlertDialogManager.showConfirmAddressDialog(this, FundMe.userDataManager.getUser().address, mItem, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            mItem = DatabaseManager.createItemRequest(mItem, ViewItemActivity.this);
+                            AlertDialogManager.showMessageSnackbar(container, "Requested item! Please wait for the owner to respond", Snackbar.LENGTH_LONG);
+                            if (mItem.getBuyRequests().contains(FundMe.userDataManager.getUser().getUid())) {
+                                buyButton.setText("Stop Buying");
+                                isBought = true;
+                            } else {
+                                buyButton.setText("Buy Item");
+                                AlertDialogManager.showMessageSnackbar(container, "Canceled item request!", Snackbar.LENGTH_LONG);
+                                isBought = false;
+                            }
+                        }
+                    });
+                } else {
+                    shouldUpdate = false;
+                    AlertDialogManager.showInvalidAddressDialog(this);
+                }
+            } else {
+                AlertDialogManager.showInsufficientCreditsDialog(this);
+            }
+        } else {
+            mItem = DatabaseManager.removeItemRequest(mItem, this);
+            if (mItem.getBuyRequests().contains(FundMe.userDataManager.getUser().getUid())) {
+                AlertDialogManager.showMessageSnackbar(container, "Requested item! Please wait for the owner to respond", Snackbar.LENGTH_LONG);
+                buyButton.setText("Stop Buying");
+                isBought = true;
+            } else {
+                buyButton.setText("Buy Item");
+                AlertDialogManager.showMessageSnackbar(container, "Canceled item request!", Snackbar.LENGTH_LONG);
+                isBought = false;
+            }
+
         }
     }
 
 
     private void retrieveItemInformation() {
+        isLocationFound = false;
+
         if (uid != null) {
             if (ServiceManager.isNetworkAvailable(this)) {
                 DatabaseManager.getItem(uid, this);
@@ -310,6 +401,12 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
         content = (NestedScrollView) findViewById(R.id.view_item_content);
         loved = (TextView) findViewById(R.id.liked_count);
         viewed = (TextView) findViewById(R.id.viewed_count);
+        buyButton = (Button) findViewById(R.id.view_item_buy_item);
+        chatButton = (Button) findViewById(R.id.view_item_chat);
+        conditionText = (TextView) findViewById(R.id.view_item_condition_description);
+        condition = (RatingBar) findViewById(R.id.view_item_condition);
+
+        condition.setIsIndicator(true);
 
         setSupportActionBar(pToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -362,6 +459,9 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
         loved.setText(String.valueOf(mItem.getLoved().size()));
         viewed.setText(String.valueOf(mItem.getViewed()));
 
+        chatButton.setOnClickListener(this);
+        buyButton.setOnClickListener(this);
+
         mGoogleApiClient.unregisterConnectionCallbacks(this);
         mGoogleApiClient.unregisterConnectionFailedListener(this);
 
@@ -372,10 +472,13 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
         content.setVisibility(View.VISIBLE);
 
         if (mItem.getUserUID().equals(FundMe.userDataManager.getUser().getUid())) {
-            buttons.setVisibility(View.GONE);
+            buyButton.setVisibility(View.GONE);
+            chatButton.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 2));
+            chatButton.setVisibility(View.VISIBLE);
             editButton.setVisibility(View.VISIBLE);
         } else {
-            buttons.setVisibility(View.VISIBLE);
+            buyButton.setVisibility(View.VISIBLE);
+            chatButton.setVisibility(View.VISIBLE);
             editButton.setVisibility(View.GONE);
         }
 
@@ -386,6 +489,33 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
             menu.getItem(0).setIcon(R.drawable.ic_like_white);
             isLiked = false;
         }
+
+        if (mItem.getBuyRequests().contains(FundMe.userDataManager.getUser().getUid())) {
+            buyButton.setText("Stop Buying");
+            isBought = true;
+        } else {
+            buyButton.setText("Buy Item");
+            isBought = false;
+        }
+
+        if (mItem.isSold()) {
+            buyButton.setEnabled(false);
+            buyButton.setText("Sold");
+            buyButton.setTextColor(Color.BLACK);
+        }
+
+        chatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewItemActivity.this, CommentsActivity.class);
+                intent.putExtra(CommentsActivity.ITEM, mItem);
+                startActivity(intent);
+            }
+        });
+
+        condition.setRating(mItem.condition);
+        conditionText.setText(Condition.getCondition(mItem.condition).toString());
+
 
     }
 
@@ -489,6 +619,7 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
                 if (l != null && (System.currentTimeMillis() - l.getTime()) < 1_200_000) {
                     selectLocation(l);
                 } else {
+                    new Handler().postDelayed(this, 3_000);
                     fusedLocationProviderApi.requestLocationUpdates(mGoogleApiClient, locationRequest, this);
                 }
             } else {
@@ -503,6 +634,7 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
     }
 
     private void selectLocation(Location location) {
+        isLocationFound = true;
         findLocationClicked = false;
 
         Geocoder geocoder = new Geocoder(this);
@@ -512,7 +644,7 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
             if (addr.size() > 0) {
                 current = addr.get(0);
             }
-        } catch (IOException e) {
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
 
@@ -521,4 +653,15 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
 
     }
 
+    @Override
+    public void run() {
+        if (!isLocationFound) {
+            fusedLocationProviderApi.removeLocationUpdates(mGoogleApiClient, this);
+            AlertDialogManager.showMessageSnackbar(container, "Couldn't find your location");
+
+            selectLocation(null);
+
+            distance.setText("Current location unavailable");
+        }
+    }
 }

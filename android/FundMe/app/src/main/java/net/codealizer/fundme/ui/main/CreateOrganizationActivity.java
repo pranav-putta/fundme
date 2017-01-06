@@ -1,5 +1,6 @@
 package net.codealizer.fundme.ui.main;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -58,6 +59,7 @@ public class CreateOrganizationActivity extends AppCompatActivity implements Vie
     private static final long LOCATION_INTERVAL = 1000;
 
     public static final String KEY_EDIT_ORGANIZATION = "net.codealizer.fundme.ui.main.CreateOrganizationActivity.KEY_EDIT_ORGANIZATION";
+    private static final int RC_PERMISSION_IMAGE = 2000;
 
     FloatingActionButton chooseImageButton;
 
@@ -84,7 +86,6 @@ public class CreateOrganizationActivity extends AppCompatActivity implements Vie
     private Organization organization;
 
     //Location
-    int time;
     boolean found;
     private ProgressDialog dialog;
     private String current;
@@ -125,11 +126,15 @@ public class CreateOrganizationActivity extends AppCompatActivity implements Vie
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == ServiceManager.REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap image = (Bitmap) extras.get("data");
-            imageCover.setImageBitmap(image);
-            hasImageChanged = true;
+        if (requestCode == ServiceManager.REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK && ServiceManager.uri != null) {
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), ServiceManager.uri);
+                imageCover.setImageBitmap(ServiceManager.ImageHelper.compressImage(bitmap));
+                hasImageChanged = true;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         } else if (requestCode == ServiceManager.REQUEST_PICK_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri uri = data.getData();
 
@@ -173,14 +178,22 @@ public class CreateOrganizationActivity extends AppCompatActivity implements Vie
 
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
-        if (findLocationClicked) {
-            startCurrentLocation();
+        if (requestCode == RC_PERMISSION_LOCATION) {
+            if (findLocationClicked) {
+                startCurrentLocation();
+            }
+        } else if (requestCode == RC_PERMISSION_IMAGE) {
+            choosePicture();
         }
     }
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        Toast.makeText(this, "Cannot find your location", Toast.LENGTH_LONG).show();
+        if (requestCode == RC_PERMISSION_LOCATION) {
+            Toast.makeText(this, "Cannot find your location", Toast.LENGTH_LONG).show();
+        } else if (requestCode == RC_PERMISSION_IMAGE) {
+            Toast.makeText(this, "Couldn't create an image destination", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
@@ -273,7 +286,12 @@ public class CreateOrganizationActivity extends AppCompatActivity implements Vie
     }
 
     private void choosePicture() {
-        AlertDialogManager.showChoosePictureDialog(this);
+        String perms[] = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        if (EasyPermissions.hasPermissions(this, perms)) {
+            AlertDialogManager.showChoosePictureDialog(this);
+        } else {
+            EasyPermissions.requestPermissions(this, "Your images will be used for backdrops", RC_PERMISSION_IMAGE, perms);
+        }
     }
 
     private void selectLocation(Location location) {
@@ -349,7 +367,7 @@ public class CreateOrganizationActivity extends AppCompatActivity implements Vie
                 organization.setLink(link);
                 DatabaseManager.createOrganization(organization, this, this, true);
             } else {
-                DatabaseManager.createOrganization(new Organization(title, description, price, zipCode, dateCreated, image, link, new ArrayList<String>(), 0, new ArrayList<String>()),
+                DatabaseManager.createOrganization(new Organization(title, description, price, zipCode, dateCreated, image, link, new ArrayList<String>(), 0, new ArrayList<String>(), 0),
                         this, this, false);
 
             }

@@ -86,8 +86,8 @@ public class SignUpEmailPage2Fragment extends Fragment implements View.OnClickLi
         }
 
         if (!cancel) {
-            Pair<String, String> firstNamePair = new Pair<>("first_name", first);
-            Pair<String, String> lastNamePair = new Pair<>("last_name", last);
+            Pair<String, String> firstNamePair = new Pair<>("firstName", first);
+            Pair<String, String> lastNamePair = new Pair<>("lastName", last);
             Pair<String, String> passwordPair = new Pair<>("password", pass);
 
             listener.onScreenProgress(2, firstNamePair, lastNamePair, passwordPair);

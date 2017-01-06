@@ -22,8 +22,7 @@
             android:layout_height="0dp"
             android:layout_weight="75"
             android:fitsSystemWindows="true"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/item" />
+            android:scaleType="centerCrop" />
 
 
         <LinearLayout

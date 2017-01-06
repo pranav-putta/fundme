@@ -14,6 +14,10 @@ public class DatabaseItem {
     public List<String> tags;
     public List<String> loved;
     public int viewed;
+    public List<String> buyRequests;
+    public boolean sold;
+    public List<Comment> comments;
+    public int condition;
 
     public DatabaseItem(Item item) {
         uid = item.uid;
@@ -27,5 +31,9 @@ public class DatabaseItem {
         tags = item.tags;
         loved = item.loved;
         viewed = item.viewed;
+        buyRequests = item.buyRequests;
+        sold = item.sold;
+        comments = item.comments;
+        condition = item.condition;
     }
 }
