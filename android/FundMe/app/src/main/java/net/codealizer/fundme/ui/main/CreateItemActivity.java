@@ -289,8 +289,12 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
             priceEditText.setText(String.valueOf(Math.round(item.getPrice())));
             tagsEditText.setText(ServiceManager.convertArrayToString(item.getTags()).replaceAll("__,__", " "));
             locationEditText.setText(String.valueOf(item.getZipCode()));
-            condition.setSelectedIndex(item.getCondition() - 1);
 
+            if (item.condition > 0) {
+                condition.setSelectedIndex(item.getCondition() - 1);
+            } else {
+                condition.setSelectedIndex(0);
+            }
             hasImageChanged = true;
 
         }
@@ -326,6 +330,8 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void startCurrentLocation() {
+        int conditi = condition.getSelectedIndex();
+
         String perms[] = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
         findLocationClicked = true;
         if (EasyPermissions.hasPermissions(this, perms)) {
@@ -363,7 +369,7 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
             Bitmap image = (((BitmapDrawable) imageCover.getDrawable()).getBitmap());
             String title = titleEditText.getText().toString();
             String description = descriptionEditText.getText().toString();
-            double price = Double.parseDouble(priceEditText.getText().toString().replace("$", ""));
+            double price = Double.parseDouble(priceEditText.getText().toString().replace("$", "").replace(",", ""));
             int zipCode = Integer.parseInt(locationEditText.getText().toString());
             long dateCreated = System.currentTimeMillis();
             String rawTags = tagsEditText.getText().toString();
@@ -376,6 +382,14 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
             dialog = AlertDialogManager.showProgressDialog(this);
 
             if (getIntent().hasExtra(KEY_EDIT_ITEM)) {
+                item.image = ((BitmapDrawable) imageCover.getDrawable()).getBitmap();
+                item.title = titleEditText.getText().toString();
+                item.description = descriptionEditText.getText().toString();
+                item.price = Double.parseDouble(priceEditText.getText().toString().replace("$", "").replace(",", ""));
+                item.zipCode = Integer.parseInt(locationEditText.getText().toString());
+                item.tags = Arrays.asList(tagsEditText.getText().toString().split(" "));
+                item.condition = condition.getSelectedIndex() + 1;
+
                 DatabaseManager.createItem(item, this, this, true);
             } else {
                 DatabaseManager.createItem(new Item(title, description, price, zipCode, dateCreated, image, tags, loved, viewed, itemsBought, false, new ArrayList<Comment>(), cond), this, this, false);
@@ -405,6 +419,15 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
         if (priceEditText.getText().toString().isEmpty()) {
             priceEditText.setError("Required field");
             valid = false;
+        }
+
+        try {
+            double price = Double.parseDouble(priceEditText.getText().toString().replace("$", "").replace(",", ""));
+            if (price > 1 && price < 1000) {
+                throw new Exception();
+            }
+        } catch (Exception ex) {
+            priceEditText.setError("The");
         }
 
         if (locationEditText.getText().toString().isEmpty()) {

@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -356,6 +357,7 @@ public class ViewOrganizationActivity extends AppCompatActivity implements OnDow
         unable.setVisibility(View.VISIBLE);
         content.setVisibility(View.GONE);
 
+
         reloaded += 1;
     }
 
@@ -404,11 +406,9 @@ public class ViewOrganizationActivity extends AppCompatActivity implements OnDow
         viewed.setText(String.valueOf(mOrganization.getViewed()));
 
         if (mOrganization.getUserUID().equals(FundMe.userDataManager.getUser().getUid())) {
-            buttons.setVisibility(View.GONE);
+            joinGroupButton.setText("My Group");
+            joinGroupButton.setEnabled(false);
             editButton.setVisibility(View.VISIBLE);
-        } else {
-            buttons.setVisibility(View.VISIBLE);
-            editButton.setVisibility(View.GONE);
         }
 
         if (mOrganization.getLoved().contains(FundMe.userDataManager.getUser().getUid())) {

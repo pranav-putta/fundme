@@ -34,6 +34,7 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
+import net.codealizer.fundme.FundMe;
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.assets.Item;
 import net.codealizer.fundme.assets.Organization;
@@ -354,6 +355,8 @@ public class CreateOrganizationActivity extends AppCompatActivity implements Vie
             int zipCode = Integer.parseInt(locationEditText.getText().toString());
             long dateCreated = System.currentTimeMillis();
             String link = linkEditText.getText().toString();
+            ArrayList<String> members = new ArrayList<>();
+            members.add(FundMe.userDataManager.getUser().getUid());
 
             dialog = AlertDialogManager.showProgressDialog(this);
 
@@ -363,11 +366,10 @@ public class CreateOrganizationActivity extends AppCompatActivity implements Vie
                 organization.setDescription(description);
                 organization.setPrice(price);
                 organization.setZipCode(zipCode);
-                organization.setDateCreated(dateCreated);
                 organization.setLink(link);
                 DatabaseManager.createOrganization(organization, this, this, true);
             } else {
-                DatabaseManager.createOrganization(new Organization(title, description, price, zipCode, dateCreated, image, link, new ArrayList<String>(), 0, new ArrayList<String>(), 0),
+                DatabaseManager.createOrganization(new Organization(title, description, price, zipCode, dateCreated, image, link, new ArrayList<String>(), 0, members, 0),
                         this, this, false);
 
             }

@@ -513,7 +513,11 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
             }
         });
 
-        condition.setRating(mItem.condition);
+        if (mItem.condition > 0) {
+            condition.setRating(mItem.condition);
+        } else {
+            condition.setRating(1);
+        }
         conditionText.setText(Condition.getCondition(mItem.condition).toString());
 
 

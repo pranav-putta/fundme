@@ -30,6 +30,7 @@ import com.lapism.searchview.SearchView;
 import net.codealizer.fundme.FundMe;
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.assets.Item;
+import net.codealizer.fundme.assets.ItemComparator;
 import net.codealizer.fundme.assets.SearchItem;
 import net.codealizer.fundme.assets.User;
 import net.codealizer.fundme.ui.main.CreateItemActivity;
@@ -46,6 +47,7 @@ import net.codealizer.fundme.util.listeners.OnCompletedListener;
 import net.codealizer.fundme.util.listeners.OnDownloadListener;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -208,6 +210,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
 
         public HomeAdapter(List<Item> items) {
             mItems = items;
+
+            Collections.sort(mItems, new ItemComparator());
         }
 
         @Override

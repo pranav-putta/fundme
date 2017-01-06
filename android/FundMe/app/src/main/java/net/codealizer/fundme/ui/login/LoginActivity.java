@@ -255,7 +255,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             progressDialog = AlertDialogManager.showProgressDialog(this);
             AuthenticationManager.attemptGoogleLogin(acct, this, this);
         } else {
-            onAuthenticationFailed("Could nto connect to your Google account");
+            onAuthenticationFailed("Could not connect to your Google account");
         }
     }
 

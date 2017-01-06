@@ -9,6 +9,7 @@ import net.codealizer.fundme.util.ServiceManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -266,4 +267,6 @@ public class Item implements Parcelable {
     public void setCondition(int condition) {
         this.condition = condition;
     }
+
+
 }
