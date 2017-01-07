@@ -28,3 +28,7 @@ At the home screen, notice the floating action button at the bottom right hand o
 #### <i class="icon-pencil"></i> What are credits?
 
 To ensure that there is a secure transaction of money when a user purchases an item, we created an in-app-purchase system. A user may navigate to the **Shop** screen to purchase credits, which have the same value as the US dollar.  These credits can then be used to purchase items and donations
+
+#### License and Credits
+
+This mobile application was designed, developed, and programmed by Pranav Putta for Android. The application was completely developed for production using the Android Studio IDE, under the Apache 2 License. 
