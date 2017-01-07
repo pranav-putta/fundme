@@ -13,8 +13,8 @@ Download and Run
 5. Install the application to your device
 
 > **Note:**
-
 > - Android 7.0.1 may not be available to all phones. However, ensure that you are running the latest version at the time
+
 #### <i class="icon-user"></i> Create an account
 On the launch screen of the application, click the **Sign Up** button, located at the bottom of the screen. Choose one of the following providers to create an account with -- Facebook, Google, Email. Once logged into the application, you can view your profile by selecting the **Profile** tab in the navigation drawer, which you can access by swiping right. You can also logout by opening the navigation drawer and clicking on the **Logout** tab.
 
