@@ -27,6 +27,7 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.lapism.searchview.SearchView;
 
+import net.codealizer.fundme.Config;
 import net.codealizer.fundme.FundMe;
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.assets.Item;
@@ -38,6 +39,7 @@ import net.codealizer.fundme.ui.main.CreateOrganizationActivity;
 import net.codealizer.fundme.ui.main.ViewItemActivity;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
 import net.codealizer.fundme.ui.util.CircleTransform;
+import net.codealizer.fundme.util.db.LocalDatabaseManager;
 import net.codealizer.fundme.util.firebase.AuthenticationManager;
 import net.codealizer.fundme.util.DataManager;
 import net.codealizer.fundme.util.firebase.DatabaseManager;
@@ -84,8 +86,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
 
         initialize();
 
-        dialog = AlertDialogManager.showProgressDialog(getActivity());
-        onRefresh();
+
+        if (shouldRefresh()) {
+
+            onRefresh();
+        } else {
+            items = new LocalDatabaseManager(getActivity()).getAllItems();
+            list.setLayoutManager(new LinearLayoutManager(getActivity()));
+            list.setItemAnimator(new DefaultItemAnimator());
+            list.setAdapter(new HomeAdapter(items));
+        }
     }
 
 
@@ -102,6 +112,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
 
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary, R.color.yellow_primary, R.color.md_red_400);
         swipeRefreshLayout.setOnRefreshListener(this);
+    }
+
+    private boolean shouldRefresh() {
+        if (System.currentTimeMillis() - Config.lastRefresh > 5 * 60 * 1000) {
+            Config.lastRefresh = System.currentTimeMillis();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -129,6 +148,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
 
     @Override
     public void onRefresh() {
+        dialog = AlertDialogManager.showProgressDialog(getActivity());
+
         dialog.show();
         swipeRefreshLayout.setRefreshing(true);
 
@@ -163,7 +184,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
                     public void onDownloadFailed(String message) {
                         onAuthenticationFailed(message);
                     }
-                });
+                }, getActivity());
 
             }
 

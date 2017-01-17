@@ -56,6 +56,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
     private static final String KEY_BUY_REQ = "buyRequests";
     private static final String KEY_SOLD = "sold";
     private static final String KEY_MONEY_RAISED  = "moneyRaised";
+    private static final String KEY_CONDITION = "condition";
 
     public LocalDatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -76,7 +77,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_UID + " TEXT,"
                 + KEY_TITLE + " TEXT," + KEY_DESCRIPTION + " TEXT," + KEY_PRICE + " TEXT," + KEY_ZIPCODE + " TEXT," +
                 KEY_DATE_CREATED + " TEXT," + KEY_IMAGE + " TEXT," + KEY_USER_UID + " TEXT," + KEY_IMAGE_URL + " TEXT," + KEY_TAGS + " TEXT,"
-                + KEY_LOVED + " TEXT," + KEY_VIEWED + " TEXT," + KEY_BUY_REQ + " TEXT, " + KEY_SOLD + " TEXT" + ")";
+                + KEY_LOVED + " TEXT," + KEY_VIEWED + " TEXT," + KEY_BUY_REQ + " TEXT, " + KEY_SOLD + " TEXT," + KEY_CONDITION + " TEXT" + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
         db.execSQL(CREATE_ORGANIZATIONS_TABLE);
         db.execSQL(CREATE_ITEMS_TABLE);
@@ -157,6 +158,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
         values.put(KEY_VIEWED, item.getViewed());
         values.put(KEY_BUY_REQ, ServiceManager.convertArrayToString(item.getBuyRequests()));
         values.put(KEY_SOLD, item.isSold());
+        values.put(KEY_CONDITION, item.getCondition());
 
         // Inserting Row
         db.insert(TABLE_ITEMS, null, values);
@@ -222,6 +224,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
                     o.setViewed(Integer.parseInt(cursor.getString(12)));
                     o.setBuyRequests(ServiceManager.convertStringToArray(cursor.getString(13)));
                     o.setSold(Boolean.parseBoolean(cursor.getString(14)));
+                    o.setCondition(Integer.parseInt(cursor.getString(15)));
                     // Adding contact to list
                     itemList.add(o);
                 } catch (Exception ex) {
@@ -295,6 +298,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
         values.put(KEY_VIEWED, item.getViewed());
         values.put(KEY_BUY_REQ, ServiceManager.convertArrayToString(item.buyRequests));
         values.put(KEY_SOLD, item.sold);
+        values.put(KEY_CONDITION, item.getCondition());
 
         // updating row
         return db.update(TABLE_ITEMS, values, KEY_UID + " = ?",
@@ -368,4 +372,15 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
     }
 
 
+    public void resetItems() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEMS);
+        String CREATE_ITEMS_TABLE = "CREATE TABLE " + TABLE_ITEMS + "("
+                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_UID + " TEXT,"
+                + KEY_TITLE + " TEXT," + KEY_DESCRIPTION + " TEXT," + KEY_PRICE + " TEXT," + KEY_ZIPCODE + " TEXT," +
+                KEY_DATE_CREATED + " TEXT," + KEY_IMAGE + " TEXT," + KEY_USER_UID + " TEXT," + KEY_IMAGE_URL + " TEXT," + KEY_TAGS + " TEXT,"
+                + KEY_LOVED + " TEXT," + KEY_VIEWED + " TEXT," + KEY_BUY_REQ + " TEXT, " + KEY_SOLD + " TEXT," + KEY_CONDITION + " TEXT" + ")";
+
+        db.execSQL(CREATE_ITEMS_TABLE);
+    }
 }

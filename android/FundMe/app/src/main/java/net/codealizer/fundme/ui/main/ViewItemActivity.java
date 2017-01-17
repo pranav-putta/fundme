@@ -298,6 +298,8 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
 
+
+
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
         if (findLocationClicked) {

@@ -12,6 +12,6 @@ public class ItemComparator implements Comparator<Item> {
         public int compare(Item item, Item t1) {
             long compareLongDate = item.getDateCreated();
 
-            return (int) (compareLongDate - t1.dateCreated);
+            return (int) (t1.dateCreated - compareLongDate);
         }
     }

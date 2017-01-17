@@ -45,13 +45,13 @@ public class SendMail extends AsyncTask<Void, Void, Void> {
             this.subject = "Shipping address";
             this.message = "Hello " + user.getName() + ", \nYour item, \"" + item.title + "\" has been sold to " + user2.firstName + " " + user2.lastName + " for $" + item.price + ". " +
                     "The money received has all been donated to your preferred organization - " + organization.getTitle() + ". \n\n\n RECIPIENT NAME: " + user2.firstName + " " + user2.lastName
-                    + "\n ADDRESS: " + user2.address;
+                    + "\n ADDRESS: " + user2.address + "\nCONTACT EMAIL: " + user2.email;
         } else {
             this.email = user2.email;
             this.subject = "Receipt";
             this.message = "Hello " + user2.firstName + " " + user2.lastName + ", \n Thank you for purchasing \"" + item.title + "\". Your total purchasing cost was $" +
                     item.price + ". The item will be shipped to you" +
-                    " soon. Thank you.";
+                    " soon. Thank you.\n\nCONTACT EMAIL: " + user.email;
         }
     }
 

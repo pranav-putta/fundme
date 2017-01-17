@@ -1,5 +1,6 @@
 package net.codealizer.fundme.util.firebase;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -636,7 +637,7 @@ public class DatabaseManager {
         }
     }
 
-    public static void getAllItems(final OnDownloadListener listener) {
+    public static void getAllItems(final OnDownloadListener listener, final Context context) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference(ITEM_DATABASE_REF);
 
@@ -676,6 +677,13 @@ public class DatabaseManager {
                     } catch (IOException | InterruptedException | ExecutionException ignored) {
 
                     }
+                }
+
+                LocalDatabaseManager manager = new LocalDatabaseManager(context);
+                manager.resetItems();
+
+                for (Item item : items) {
+                    manager.addItem(item);
                 }
 
                 listener.onDownloadSuccessful(items);
