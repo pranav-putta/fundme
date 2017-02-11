@@ -8,6 +8,10 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Scroller;
 import java.lang.reflect.Field;
 
+/**
+ * Custom view class for a view pager that can be changed with only the press of tabs
+ */
+
 public class NonSwipeableViewPager extends ViewPager {
 
     public NonSwipeableViewPager(Context context) {

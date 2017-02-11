@@ -148,7 +148,7 @@
             android:label="@string/title_activity_shop"
             android:theme="@style/AppTheme.Toolbar" />
         <activity
-            android:name=".MembersActivity"
+            android:name=".ui.main.MembersActivity"
             android:label="@string/title_activity_members"
             android:theme="@style/AppTheme.Toolbar"></activity>
     </application>

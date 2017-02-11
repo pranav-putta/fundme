@@ -27,6 +27,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderApi;
@@ -282,7 +283,8 @@ public class CreateItemActivity extends AppCompatActivity implements View.OnClic
         if (getIntent().hasExtra(KEY_EDIT_ITEM)) {
             item = getIntent().getParcelableExtra(KEY_EDIT_ITEM);
 
-            imageCover.setImageBitmap(item.getImage());
+            Glide.with(this).load(item.getImageURL())
+                    .into(imageCover);
 
             titleEditText.setText(item.getTitle());
             descriptionEditText.setText(item.getDescription());

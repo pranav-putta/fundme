@@ -17,17 +17,22 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import net.codealizer.fundme.util.listeners.OnDownloadListener;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -90,20 +95,50 @@ public class ServiceManager {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    public static Bundle convertToBundle(Object object) {
-        Bundle data = new Bundle();
-        Class c = object.getClass();
+    public static String dataFromURL (String u) {
+        HttpURLConnection connection = null;
+        BufferedReader reader = null;
 
-        for (Field f : c.getFields()) {
+        try {
+            URL url = new URL(u);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.connect();
+
+
+            InputStream stream = connection.getInputStream();
+
+            reader = new BufferedReader(new InputStreamReader(stream));
+
+            StringBuffer buffer = new StringBuffer();
+            String line = "";
+
+            while ((line = reader.readLine()) != null) {
+                buffer.append(line+"\n");
+                Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
+
+            }
+
+            return buffer.toString();
+
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
             try {
-                if (java.lang.reflect.Modifier.isPublic(f.getModifiers()))
-                    data.putString(f.getName(), String.valueOf(f.get(object)));
-            } catch (IllegalAccessException ignore) {
-                data.putString(f.getName(), "");
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
+        return null;
 
-        return data;
     }
 
     public static void hideSoftKeyboard(Context c, View view) {
@@ -114,7 +149,7 @@ public class ServiceManager {
     public static Uri captureImage(Activity activity) {
         File filename = null;
         try {
-            filename = createImageFile();
+            filename = createImageFile(activity);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -138,12 +173,11 @@ public class ServiceManager {
         return uri;
     }
 
-    private static File createImageFile() throws IOException {
+    private static File createImageFile(Context context) throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DCIM), "Camera");
+        File storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
                 ".jpg",         /* suffix */
@@ -160,10 +194,6 @@ public class ServiceManager {
         intent.setAction(Intent.ACTION_GET_CONTENT);
 
         activity.startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQUEST_PICK_IMAGE);
-    }
-
-    public static void getCurrentLocation(Activity activity, LocationListener listener) {
-
     }
 
     public static long distance(Address a1, Address a2) {

@@ -3,6 +3,12 @@ package net.codealizer.fundme.assets;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Database user for a user
+ *
+ * This is the user which is uploaded to the server
+ */
+
 public class DatabaseUser {
     public String uid;
     public String firstName;

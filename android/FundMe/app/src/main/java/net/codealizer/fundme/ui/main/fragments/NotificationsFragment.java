@@ -162,6 +162,7 @@ public class NotificationsFragment extends Fragment implements OnDownloadListene
                 });
             }
 
+
             @Override
             public void onAuthenticationFailed(String message) {
                 progressDialog.hide();

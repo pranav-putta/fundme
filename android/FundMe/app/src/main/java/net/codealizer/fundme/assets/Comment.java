@@ -4,7 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by Pranav on 12/31/16.
+ * Object class for a comment
+ *
+ * Stores corresponding user name, comment, user image url, and the time of its creation
  */
 
 public class Comment implements Parcelable {

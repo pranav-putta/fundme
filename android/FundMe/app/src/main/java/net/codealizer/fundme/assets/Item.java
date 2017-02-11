@@ -14,7 +14,13 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Pranav on 12/20/16.
+ * Item class
+ *
+ * This is where all the item information is stored, and refined
+ *
+ * This class is different from the DatabaseItem class in that it automatically loads information such as
+ * the bitmap representation fo the item, while DatabaseItem only stores textual information that it is
+ * applicable to the FirebaseDatabase
  */
 
 public class Item implements Parcelable {

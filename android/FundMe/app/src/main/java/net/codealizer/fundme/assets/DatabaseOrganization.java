@@ -3,6 +3,11 @@ package net.codealizer.fundme.assets;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Database organization for an organization
+ *
+ * This is the item which is uploaded to the server
+ */
 public class DatabaseOrganization {
     public String uid;
     public String title;

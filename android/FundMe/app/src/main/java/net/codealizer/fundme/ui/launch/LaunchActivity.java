@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import net.codealizer.fundme.Config;
 import net.codealizer.fundme.FundMe;
 import net.codealizer.fundme.assets.User;
 import net.codealizer.fundme.ui.main.MainActivity;
@@ -16,6 +17,10 @@ import net.codealizer.fundme.util.firebase.DatabaseManager;
 import net.codealizer.fundme.util.ServiceManager;
 import net.codealizer.fundme.util.listeners.OnAuthenticatedListener;
 import net.codealizer.fundme.util.listeners.OnCompletedListener;
+
+/**
+ * Starting activity when the application is launched
+ */
 
 public class LaunchActivity extends AppCompatActivity implements OnAuthenticatedListener {
 
@@ -69,6 +74,7 @@ public class LaunchActivity extends AppCompatActivity implements OnAuthenticated
 
                 Intent intent = new Intent(LaunchActivity.this, MainActivity.class);
                 intent.putExtra("refreshed", true);
+                Config.lastRefresh = System.currentTimeMillis();
                 startActivity(intent);
             }
 

@@ -19,7 +19,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,10 +41,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import net.codealizer.fundme.FundMe;
-import net.codealizer.fundme.MembersActivity;
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.assets.Organization;
-import net.codealizer.fundme.ui.main.CreateOrganizationActivity;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
 import net.codealizer.fundme.util.ServiceManager;
 import net.codealizer.fundme.util.firebase.DatabaseManager;

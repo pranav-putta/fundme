@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.assets.Item;
 import net.codealizer.fundme.assets.Organization;
@@ -50,7 +52,8 @@ public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.View
         final Item item = mItems.get(position);
 
         holder.setTitle(item.getTitle());
-        holder.setBackdrop((item.getImage()));
+        Glide.with(mContext).load(item.getImageURL())
+                .into(holder.backdrop);
         holder.setPrice(item.getPrice());
         holder.setCardClickListener(new View.OnClickListener() {
             @Override
@@ -91,9 +94,6 @@ public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.View
             title.setText(t);
         }
 
-        void setBackdrop(Bitmap image) {
-            backdrop.setImageBitmap(image);
-        }
 
         void setCardClickListener(View.OnClickListener clickListener) {
             card.setOnClickListener(clickListener);

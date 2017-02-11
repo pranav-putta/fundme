@@ -2,6 +2,12 @@ package net.codealizer.fundme.assets;
 
 import java.util.List;
 
+/**
+ * Database item for an item
+ *
+ * This is the item which is uploaded to the server
+ */
+
 public class DatabaseItem {
     public String uid;
     public String title;

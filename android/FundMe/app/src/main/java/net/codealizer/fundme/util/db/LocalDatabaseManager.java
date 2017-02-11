@@ -55,7 +55,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
     private static final String KEY_VIEWED = "viewed";
     private static final String KEY_BUY_REQ = "buyRequests";
     private static final String KEY_SOLD = "sold";
-    private static final String KEY_MONEY_RAISED  = "moneyRaised";
+    private static final String KEY_MONEY_RAISED = "moneyRaised";
     private static final String KEY_CONDITION = "condition";
 
     public LocalDatabaseManager(Context context) {
@@ -150,7 +150,10 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
         values.put(KEY_PRICE, item.getPrice());
         values.put(KEY_ZIPCODE, item.getZipCode());
         values.put(KEY_DATE_CREATED, item.getDateCreated());
-        values.put(KEY_IMAGE, ServiceManager.ImageHelper.encodeToBase64(item.getImage()));
+        try {
+            values.put(KEY_IMAGE, ServiceManager.ImageHelper.encodeToBase64(item.getImage()));
+        } catch (Exception ignore) {
+        }
         values.put(KEY_USER_UID, item.getUserUID());
         values.put(KEY_IMAGE_URL, item.getImageURL());
         values.put(KEY_TAGS, ServiceManager.convertArrayToString(item.getTags()));

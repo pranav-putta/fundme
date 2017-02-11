@@ -1,5 +1,9 @@
 package net.codealizer.fundme.assets;
 
+/**
+ * Enum object class corresponding to the condition or rating of an item
+ */
+
 public enum Condition {
     USED(1), ACCEPTABLE(2), GOOD(3), VERY_GOOD(4), BRAND_NEW(5);
     private int value;

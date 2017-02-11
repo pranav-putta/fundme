@@ -1,6 +1,5 @@
 package net.codealizer.fundme.util.firebase;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,9 +22,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.gson.Gson;
 
 import net.codealizer.fundme.FundMe;
-import net.codealizer.fundme.MembersActivity;
 import net.codealizer.fundme.assets.Comment;
 import net.codealizer.fundme.assets.DatabaseItem;
 import net.codealizer.fundme.assets.DatabaseOrganization;
@@ -35,6 +34,7 @@ import net.codealizer.fundme.assets.Notification;
 import net.codealizer.fundme.assets.Organization;
 import net.codealizer.fundme.assets.SearchItem;
 import net.codealizer.fundme.assets.User;
+import net.codealizer.fundme.util.HttpHandler;
 import net.codealizer.fundme.util.ServiceManager;
 import net.codealizer.fundme.util.db.LocalDatabaseManager;
 import net.codealizer.fundme.util.listeners.OnAuthenticatedListener;
@@ -45,7 +45,6 @@ import net.codealizer.fundme.util.listeners.OnUploadListener;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
@@ -656,7 +655,7 @@ public class DatabaseManager {
                         final long dateCreated = Long.parseLong(data.child("dateCreated").getValue().toString());
                         final String userUID = data.child("userUID").getValue().toString();
                         final String imageURL = data.child("imageURL").getValue().toString();
-                        final Bitmap image = ServiceManager.ImageHelper.getBitmapFromUrl(imageURL);
+                        final Bitmap image = null;
                         final List<String> tags = data.child("tags").getValue(new GenericTypeIndicator<List<String>>() {
                         });
                         final List<String> loved = data.child("loved").getValue(new GenericTypeIndicator<List<String>>() {
@@ -674,7 +673,7 @@ public class DatabaseManager {
                         o.setImageURL(imageURL);
 
                         items.add(o);
-                    } catch (IOException | InterruptedException | ExecutionException ignored) {
+                    } catch (Exception ignored) {
 
                     }
                 }
@@ -1334,7 +1333,6 @@ public class DatabaseManager {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot data : dataSnapshot.getChildren()) {
                         String uid = data.child("uid").getValue().toString();
-                        if (data.hasChild("userUID") && data.child("userUID").getValue().toString().equals(user.getUid())) {
                             try {
                                 final String title = data.child("title").getValue().toString();
                                 final String description = data.child("description").getValue().toString();
@@ -1359,7 +1357,7 @@ public class DatabaseManager {
                                 manager.addOrganization(o);
                             } catch (IOException | InterruptedException | ExecutionException ignored) {
                             }
-                        }
+
                     }
 
                     itemReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -1367,7 +1365,6 @@ public class DatabaseManager {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             for (DataSnapshot data : dataSnapshot.getChildren()) {
                                 String uid = data.child("uid").getValue().toString();
-                                if (data.hasChild("userUID") && data.child("userUID").getValue().toString().equals(user.getUid())) {
                                     try {
                                         final String title = data.child("title").getValue().toString();
                                         final String description = data.child("description").getValue().toString();
@@ -1396,7 +1393,7 @@ public class DatabaseManager {
                                         manager.addItem(o);
                                     } catch (IOException | InterruptedException | ExecutionException ignored) {
                                     }
-                                }
+
                             }
 
                             listener.onServiceSuccessful();

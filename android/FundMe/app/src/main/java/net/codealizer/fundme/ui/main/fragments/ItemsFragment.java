@@ -14,6 +14,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
+import net.codealizer.fundme.FundMe;
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.assets.Item;
 import net.codealizer.fundme.ui.main.CreateItemActivity;
@@ -58,8 +61,15 @@ public class ItemsFragment extends Fragment {
         list = (RecyclerView) getView().findViewById(R.id.items_list);
         notFound = (TextView) getView().findViewById(R.id.search_no_results);
         ArrayList<Item> items = new LocalDatabaseManager(getActivity()).getAllItems();
+        ArrayList<Item> finalItems = new ArrayList<>();
 
-        Adapter adapter = new Adapter(new LocalDatabaseManager(getActivity()).getAllItems());
+        for (Item item : items) {
+            if (item.getUserUID().equals(FundMe.userDataManager.getUser().getUid())) {
+                finalItems.add(item);
+            }
+        }
+
+        Adapter adapter = new Adapter(finalItems);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         list.setLayoutManager(layoutManager);
         list.setItemAnimator(new DefaultItemAnimator());
@@ -115,7 +125,8 @@ public class ItemsFragment extends Fragment {
             holder.title.setText(items.get(position).getTitle());
             holder.description.setText(items.get(position).getDescription());
             holder.price.setText("$" + String.valueOf(price));
-            holder.image.setImageBitmap(items.get(position).getImage());
+            Glide.with(getActivity()).load(items.get(position).getImageURL())
+                    .into(holder.image);
             holder.card.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

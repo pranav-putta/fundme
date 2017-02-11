@@ -10,7 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Pranav on 12/20/16.
+ * Organization class
+ *
+ * This is where all the organization information is stored, and refined
+ *
+ * This class is different from the DatabaseOrganization class in that it automatically loads information such as
+ * the bitmap representation fo the item, while DatabaseOrganization only stores textual information that it is
+ * applicable to the FirebaseDatabase
  */
 
 public class Organization implements Parcelable {

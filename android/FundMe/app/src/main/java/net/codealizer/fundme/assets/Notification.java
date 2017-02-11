@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Pranav on 12/28/16.
+ * Notification object class
+ *
+ * Stores information in correspondence to its specific organization
  */
 
 public class Notification implements Parcelable {

@@ -165,35 +165,26 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
         DatabaseManager.saveItemsAndOrganizations(getActivity(), new OnCompletedListener() {
             @Override
             public void onServiceSuccessful() {
+                LocalDatabaseManager localDatabaseManager = new LocalDatabaseManager(getActivity());
+                items = localDatabaseManager.getAllItems();
 
-                DatabaseManager.getAllItems(new OnDownloadListener() {
-                    @Override
-                    public <D> void onDownloadSuccessful(D data) {
-                        items = (List<Item>) data;
+                AlertDialogManager.showMessageSnackbar(addItem, "Refreshed data!");
 
-                        AlertDialogManager.showMessageSnackbar(addItem, "Refreshed data!");
-
-                        swipeRefreshLayout.setRefreshing(false);
-                        dialog.hide();
-                        list.setLayoutManager(new LinearLayoutManager(getActivity()));
-                        list.setItemAnimator(new DefaultItemAnimator());
-                        list.setAdapter(new HomeAdapter(items));
-                    }
-
-                    @Override
-                    public void onDownloadFailed(String message) {
-                        onAuthenticationFailed(message);
-                    }
-                }, getActivity());
-
+                swipeRefreshLayout.setRefreshing(false);
+                dialog.hide();
+                list.setLayoutManager(new LinearLayoutManager(getActivity()));
+                list.setItemAnimator(new DefaultItemAnimator());
+                list.setAdapter(new HomeAdapter(items));
             }
 
             @Override
             public void onServiceFailed() {
-                onAuthenticationFailed("Could not refresh");
+                onAuthenticationFailed("Something went wrong :(");
             }
         });
+
     }
+
 
     @Override
     public void onAuthenticationFailed(String message) {

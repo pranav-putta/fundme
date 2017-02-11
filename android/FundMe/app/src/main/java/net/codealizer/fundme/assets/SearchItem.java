@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Pranav on 12/24/16.
- */
+ * Stores search data for each item as a text item
+ * */
 
 public class SearchItem implements SearchSuggestion {
 

@@ -5,8 +5,8 @@ package net.codealizer.fundme;
  */
 
 public class Config {
-    public static final String EMAIL = "pranav.putta22@gmail.com";
-    public static final String PASSWORD = "computerWhiz1012";
+    public static final String EMAIL = "fundme.codealizer@gmail.com";
+    public static final String PASSWORD = "codealizerStudios112";
 
     public static long lastRefresh = 0;
 

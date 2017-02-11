@@ -1,9 +1,7 @@
-package net.codealizer.fundme;
+package net.codealizer.fundme.ui.main;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,8 +16,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import net.codealizer.fundme.R;
 import net.codealizer.fundme.assets.User;
-import net.codealizer.fundme.ui.main.CommentsActivity;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
 import net.codealizer.fundme.ui.util.CircleTransform;
 import net.codealizer.fundme.util.firebase.DatabaseManager;
