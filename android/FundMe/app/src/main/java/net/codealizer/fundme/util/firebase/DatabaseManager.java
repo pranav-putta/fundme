@@ -49,12 +49,18 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
-
+/**
+ * Interfacing class for acccessing Firebase database
+ */
 public class DatabaseManager {
 
+    // Database reference for users
     private static final String USER_DATABASE_REF = "/server/fundme/users";
+    // Store reference
     private static final String STORAGE_REF = "gs://fundme-d9ecd.appspot.com";
+    // Item database reference
     private static final String ITEM_DATABASE_REF = "/server/fundme/items";
+    // Organization database reference
     private static final String ORGANIZATION_DATABASE_REF = "/server/fundme/organizations";
 
     /**
@@ -893,8 +899,96 @@ public class DatabaseManager {
      * @param context  Application context
      * @param listener Callback listener
      */
-    public static void saveItemsAndOrganizations(final Context context, OnCompletedListener listener) {
-        new SaveToDatabaseTask(context, listener, FundMe.userDataManager.getUser()).execute();
+    public static void saveItemsAndOrganizations(final Context context, final OnCompletedListener listener) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference organizationReference = database.getReference(ORGANIZATION_DATABASE_REF);
+        final DatabaseReference itemReference = database.getReference(ITEM_DATABASE_REF);
+
+        final LocalDatabaseManager manager = new LocalDatabaseManager(context);
+
+        organizationReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    String uid = data.child("uid").getValue().toString();
+                    try {
+                        final String title = data.child("title").getValue().toString();
+                        final String description = data.child("description").getValue().toString();
+                        final double price = Double.parseDouble(data.child("price").getValue().toString());
+                        final int zipCode = Integer.parseInt(data.child("zipCode").getValue().toString());
+                        final long dateCreated = Long.parseLong(data.child("dateCreated").getValue().toString());
+                        final String userUID = data.child("userUID").getValue().toString();
+                        final String link = data.child("link").getValue().toString();
+                        final String imageURL = data.child("imageURL").getValue().toString();
+                        final Bitmap image = ServiceManager.ImageHelper.getBitmapFromUrl(imageURL);
+                        final List<String> loved = data.child("loved").getValue(new GenericTypeIndicator<List<String>>() {
+                        });
+                        int viewed = data.child("viewed").getValue(new GenericTypeIndicator<Integer>() {
+                        });
+                        final List<String> members = data.child("members").getValue(new GenericTypeIndicator<List<String>>() {
+                        });
+                        Organization o = new Organization(title, description, price, zipCode, dateCreated, image, link, loved, viewed, members, 0);
+                        o.setUid(uid);
+                        o.setUserUID(userUID);
+                        o.setImageURL(imageURL);
+
+                        manager.addOrganization(o);
+                    } catch (IOException | InterruptedException | ExecutionException ignored) {
+                    }
+
+                }
+
+                itemReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot data : dataSnapshot.getChildren()) {
+                            String uid = data.child("uid").getValue().toString();
+                            try {
+                                final String title = data.child("title").getValue().toString();
+                                final String description = data.child("description").getValue().toString();
+                                final double price = Double.parseDouble(data.child("price").getValue().toString());
+                                final int zipCode = Integer.parseInt(data.child("zipCode").getValue().toString());
+                                final long dateCreated = Long.parseLong(data.child("dateCreated").getValue().toString());
+                                final String userUID = data.child("userUID").getValue().toString();
+                                final String imageURL = data.child("imageURL").getValue().toString();
+                                final Bitmap image = ServiceManager.ImageHelper.getBitmapFromUrl(imageURL);
+                                final List<String> tags = data.child("tags").getValue(new GenericTypeIndicator<List<String>>() {
+                                });
+                                final List<String> loved = data.child("loved").getValue(new GenericTypeIndicator<List<String>>() {
+                                });
+                                final int viewed = Integer.parseInt(data.child("viewed").getValue().toString());
+                                final List<String> itemsBought = data.child("buyRequests").getValue(new GenericTypeIndicator<List<String>>() {
+                                });
+                                final List<Comment> comments = data.child("comments").getValue(new GenericTypeIndicator<List<Comment>>() {
+                                });
+                                final int condition = Integer.parseInt(data.child("condition").getValue().toString());
+
+                                Item o = new Item(title, description, price, zipCode, dateCreated, image, tags, loved, viewed, itemsBought, false, comments, condition);
+                                o.setUid(uid);
+                                o.setUserUID(userUID);
+                                o.setImageURL(imageURL);
+
+                                manager.addItem(o);
+                            } catch (IOException | InterruptedException | ExecutionException ignored) {
+                            }
+
+                        }
+
+                        listener.onServiceSuccessful();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        listener.onServiceFailed();
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                listener.onServiceFailed();
+            }
+        });
     }
 
     /**
@@ -1086,7 +1180,39 @@ public class DatabaseManager {
         return item;
     }
 
-    public static void getUsers(final ArrayList<String> userUids, final OnDownloadListener listener) {
+    public static void getUser(final String userUid, final OnDownloadListener listener) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference reference = database.getReference(USER_DATABASE_REF);
+
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Bundle userData = new Bundle();
+
+                for (DataSnapshot data : dataSnapshot.child(userUid).getChildren()) {
+                    String key = data.getKey();
+
+                    if (key.equals("itemsBought") || key.equals("organizationUids") || key.equals("itemUids") || key.equals("joinedOrganizations") || key.equals("notifications")) {
+                        GenericTypeIndicator<List<String>> t = new GenericTypeIndicator<List<String>>() {
+                        };
+                        userData.putStringArrayList(key, (ArrayList<String>) data.getValue(t));
+                    } else {
+                        userData.putString(key, data.getValue().toString());
+                    }
+                }
+
+                final User u = new User(userUid, userData);
+                listener.onDownloadSuccessful(u);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public static void getUsers(final List<String> userUids, final OnDownloadListener listener) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference reference = database.getReference(USER_DATABASE_REF);
 
@@ -1261,26 +1387,29 @@ public class DatabaseManager {
                 userReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot datasnapshot) {
-                        for (String uid : memberUIDs) {
+                        if (memberUIDs != null) {
 
-                            DataSnapshot dataSnapshot = datasnapshot.child(uid);
+                            for (String uid : memberUIDs) {
 
-                            if (dataSnapshot != null && dataSnapshot.exists()) {
-                                Bundle data = new Bundle();
+                                DataSnapshot dataSnapshot = datasnapshot.child(uid);
 
-                                for (DataSnapshot d : dataSnapshot.getChildren()) {
-                                    String key = d.getKey();
+                                if (dataSnapshot != null && dataSnapshot.exists()) {
+                                    Bundle data = new Bundle();
 
-                                    if (key.equals("itemsBought") || key.equals("organizationUids") || key.equals("itemUids") || key.equals("joinedOrganizations") || key.equals("notifications")) {
-                                        GenericTypeIndicator<List<String>> t = new GenericTypeIndicator<List<String>>() {
-                                        };
-                                        data.putStringArrayList(key, (ArrayList<String>) d.getValue(t));
-                                    } else {
-                                        data.putString(key, d.getValue().toString());
+                                    for (DataSnapshot d : dataSnapshot.getChildren()) {
+                                        String key = d.getKey();
+
+                                        if (key.equals("itemsBought") || key.equals("organizationUids") || key.equals("itemUids") || key.equals("joinedOrganizations") || key.equals("notifications")) {
+                                            GenericTypeIndicator<List<String>> t = new GenericTypeIndicator<List<String>>() {
+                                            };
+                                            data.putStringArrayList(key, (ArrayList<String>) d.getValue(t));
+                                        } else {
+                                            data.putString(key, d.getValue().toString());
+                                        }
                                     }
+                                    final User u = new User(uid, data);
+                                    members.add(u);
                                 }
-                                final User u = new User(uid, data);
-                                members.add(u);
                             }
                         }
 
@@ -1333,30 +1462,30 @@ public class DatabaseManager {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot data : dataSnapshot.getChildren()) {
                         String uid = data.child("uid").getValue().toString();
-                            try {
-                                final String title = data.child("title").getValue().toString();
-                                final String description = data.child("description").getValue().toString();
-                                final double price = Double.parseDouble(data.child("price").getValue().toString());
-                                final int zipCode = Integer.parseInt(data.child("zipCode").getValue().toString());
-                                final long dateCreated = Long.parseLong(data.child("dateCreated").getValue().toString());
-                                final String userUID = data.child("userUID").getValue().toString();
-                                final String link = data.child("link").getValue().toString();
-                                final String imageURL = data.child("imageURL").getValue().toString();
-                                final Bitmap image = ServiceManager.ImageHelper.getBitmapFromUrl(imageURL);
-                                final List<String> loved = data.child("loved").getValue(new GenericTypeIndicator<List<String>>() {
-                                });
-                                int viewed = data.child("viewed").getValue(new GenericTypeIndicator<Integer>() {
-                                });
-                                final List<String> members = data.child("members").getValue(new GenericTypeIndicator<List<String>>() {
-                                });
-                                Organization o = new Organization(title, description, price, zipCode, dateCreated, image, link, loved, viewed, members, 0);
-                                o.setUid(uid);
-                                o.setUserUID(userUID);
-                                o.setImageURL(imageURL);
+                        try {
+                            final String title = data.child("title").getValue().toString();
+                            final String description = data.child("description").getValue().toString();
+                            final double price = Double.parseDouble(data.child("price").getValue().toString());
+                            final int zipCode = Integer.parseInt(data.child("zipCode").getValue().toString());
+                            final long dateCreated = Long.parseLong(data.child("dateCreated").getValue().toString());
+                            final String userUID = data.child("userUID").getValue().toString();
+                            final String link = data.child("link").getValue().toString();
+                            final String imageURL = data.child("imageURL").getValue().toString();
+                            final Bitmap image = ServiceManager.ImageHelper.getBitmapFromUrl(imageURL);
+                            final List<String> loved = data.child("loved").getValue(new GenericTypeIndicator<List<String>>() {
+                            });
+                            int viewed = data.child("viewed").getValue(new GenericTypeIndicator<Integer>() {
+                            });
+                            final List<String> members = data.child("members").getValue(new GenericTypeIndicator<List<String>>() {
+                            });
+                            Organization o = new Organization(title, description, price, zipCode, dateCreated, image, link, loved, viewed, members, 0);
+                            o.setUid(uid);
+                            o.setUserUID(userUID);
+                            o.setImageURL(imageURL);
 
-                                manager.addOrganization(o);
-                            } catch (IOException | InterruptedException | ExecutionException ignored) {
-                            }
+                            manager.addOrganization(o);
+                        } catch (IOException | InterruptedException | ExecutionException ignored) {
+                        }
 
                     }
 
@@ -1365,34 +1494,34 @@ public class DatabaseManager {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             for (DataSnapshot data : dataSnapshot.getChildren()) {
                                 String uid = data.child("uid").getValue().toString();
-                                    try {
-                                        final String title = data.child("title").getValue().toString();
-                                        final String description = data.child("description").getValue().toString();
-                                        final double price = Double.parseDouble(data.child("price").getValue().toString());
-                                        final int zipCode = Integer.parseInt(data.child("zipCode").getValue().toString());
-                                        final long dateCreated = Long.parseLong(data.child("dateCreated").getValue().toString());
-                                        final String userUID = data.child("userUID").getValue().toString();
-                                        final String imageURL = data.child("imageURL").getValue().toString();
-                                        final Bitmap image = ServiceManager.ImageHelper.getBitmapFromUrl(imageURL);
-                                        final List<String> tags = data.child("tags").getValue(new GenericTypeIndicator<List<String>>() {
-                                        });
-                                        final List<String> loved = data.child("loved").getValue(new GenericTypeIndicator<List<String>>() {
-                                        });
-                                        final int viewed = Integer.parseInt(data.child("viewed").getValue().toString());
-                                        final List<String> itemsBought = data.child("buyRequests").getValue(new GenericTypeIndicator<List<String>>() {
-                                        });
-                                        final List<Comment> comments = data.child("comments").getValue(new GenericTypeIndicator<List<Comment>>() {
-                                        });
-                                        final int condition = Integer.parseInt(data.child("condition").getValue().toString());
+                                try {
+                                    final String title = data.child("title").getValue().toString();
+                                    final String description = data.child("description").getValue().toString();
+                                    final double price = Double.parseDouble(data.child("price").getValue().toString());
+                                    final int zipCode = Integer.parseInt(data.child("zipCode").getValue().toString());
+                                    final long dateCreated = Long.parseLong(data.child("dateCreated").getValue().toString());
+                                    final String userUID = data.child("userUID").getValue().toString();
+                                    final String imageURL = data.child("imageURL").getValue().toString();
+                                    final Bitmap image = ServiceManager.ImageHelper.getBitmapFromUrl(imageURL);
+                                    final List<String> tags = data.child("tags").getValue(new GenericTypeIndicator<List<String>>() {
+                                    });
+                                    final List<String> loved = data.child("loved").getValue(new GenericTypeIndicator<List<String>>() {
+                                    });
+                                    final int viewed = Integer.parseInt(data.child("viewed").getValue().toString());
+                                    final List<String> itemsBought = data.child("buyRequests").getValue(new GenericTypeIndicator<List<String>>() {
+                                    });
+                                    final List<Comment> comments = data.child("comments").getValue(new GenericTypeIndicator<List<Comment>>() {
+                                    });
+                                    final int condition = Integer.parseInt(data.child("condition").getValue().toString());
 
-                                        Item o = new Item(title, description, price, zipCode, dateCreated, image, tags, loved, viewed, itemsBought, false, comments, condition);
-                                        o.setUid(uid);
-                                        o.setUserUID(userUID);
-                                        o.setImageURL(imageURL);
+                                    Item o = new Item(title, description, price, zipCode, dateCreated, image, tags, loved, viewed, itemsBought, false, comments, condition);
+                                    o.setUid(uid);
+                                    o.setUserUID(userUID);
+                                    o.setImageURL(imageURL);
 
-                                        manager.addItem(o);
-                                    } catch (IOException | InterruptedException | ExecutionException ignored) {
-                                    }
+                                    manager.addItem(o);
+                                } catch (IOException | InterruptedException | ExecutionException ignored) {
+                                }
 
                             }
 

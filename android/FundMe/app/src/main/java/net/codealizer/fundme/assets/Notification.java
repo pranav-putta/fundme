@@ -106,8 +106,10 @@ public class Notification implements Parcelable {
     public static List<String> toJson(List<Notification> notificationList) {
         List<String> json = new ArrayList<>();
 
-        for (Notification n : notificationList) {
-            json.add(n.toJson());
+        if (notificationList != null) {
+            for (Notification n : notificationList) {
+                json.add(n.toJson());
+            }
         }
 
         return json;

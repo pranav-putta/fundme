@@ -192,14 +192,20 @@ public class ViewOrganizationActivity extends AppCompatActivity implements OnDow
     }
 
     private void join() {
-        if (joined) {
-            joined = false;
-            joinGroupButton.setText("Join");
-            mOrganization = DatabaseManager.joinOrganization(mOrganization, this, false);
+        if (joinGroupButton.getText().toString().equals("Withdraw")) {
+            AlertDialogManager.showMessageDialog("Withdraw Money",
+                    "An email with further instructions on how to withdraw money from FundMe will be sent to "
+                            + FundMe.userDataManager.getUser().getEmail(), this);
         } else {
-            joined = true;
-            joinGroupButton.setText("Leave");
-            mOrganization = DatabaseManager.joinOrganization(mOrganization, this, true);
+            if (joined) {
+                joined = false;
+                joinGroupButton.setText("Join");
+                mOrganization = DatabaseManager.joinOrganization(mOrganization, this, false);
+            } else {
+                joined = true;
+                joinGroupButton.setText("Leave");
+                mOrganization = DatabaseManager.joinOrganization(mOrganization, this, true);
+            }
         }
     }
 
@@ -389,7 +395,7 @@ public class ViewOrganizationActivity extends AppCompatActivity implements OnDow
         distance.setText(d);
         goal.setMax((float) mOrganization.getPrice());
         goal.setProgress(mOrganization.getMoneyRaised());
-        goalText.setText("$" + mOrganization.getMoneyRaised() + " of $" + mOrganization.getPrice());
+        goalText.setText("$" + mOrganization.getMoneyRaised() + " of $" + (int) mOrganization.getPrice());
 
         mGoogleApiClient.unregisterConnectionCallbacks(this);
         mGoogleApiClient.unregisterConnectionFailedListener(this);
@@ -403,9 +409,16 @@ public class ViewOrganizationActivity extends AppCompatActivity implements OnDow
         viewed.setText(String.valueOf(mOrganization.getViewed()));
 
         if (mOrganization.getUserUID().equals(FundMe.userDataManager.getUser().getUid())) {
-            joinGroupButton.setText("My Group");
-            joinGroupButton.setEnabled(false);
+            joinGroupButton.setText("Withdraw");
             editButton.setVisibility(View.VISIBLE);
+        } else {
+            if (mOrganization.getMembers().contains(FundMe.userDataManager.getUser().getUid())) {
+                joinGroupButton.setText("Leave");
+                joined = true;
+            } else {
+                joinGroupButton.setText("Join");
+                joined = false;
+            }
         }
 
         if (mOrganization.getLoved().contains(FundMe.userDataManager.getUser().getUid())) {
@@ -414,14 +427,6 @@ public class ViewOrganizationActivity extends AppCompatActivity implements OnDow
         } else {
             menu.getItem(0).setIcon(R.drawable.ic_like_white);
             isLiked = false;
-        }
-
-        if (mOrganization.getMembers().contains(FundMe.userDataManager.getUser().getUid())) {
-            joinGroupButton.setText("Leave");
-            joined = true;
-        } else {
-            joinGroupButton.setText("Join");
-            joined = false;
         }
 
 

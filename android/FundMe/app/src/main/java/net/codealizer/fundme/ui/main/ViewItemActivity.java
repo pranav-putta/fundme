@@ -18,6 +18,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,6 +31,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderApi;
@@ -48,12 +51,16 @@ import net.codealizer.fundme.FundMe;
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.assets.Condition;
 import net.codealizer.fundme.assets.Item;
+import net.codealizer.fundme.assets.User;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
+import net.codealizer.fundme.ui.util.CircleTransform;
 import net.codealizer.fundme.util.ServiceManager;
 import net.codealizer.fundme.util.firebase.DatabaseManager;
+import net.codealizer.fundme.util.firebase.UserDataManager;
 import net.codealizer.fundme.util.listeners.OnDownloadListener;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,6 +93,9 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
     private boolean isLiked;
     private RatingBar condition;
     private TextView conditionText;
+    private ImageView userImage;
+    private TextView userName;
+    private CardView soldByCard;
 
     private NestedScrollView content;
     private NestedScrollView unable;
@@ -407,6 +417,9 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
         chatButton = (Button) findViewById(R.id.view_item_chat);
         conditionText = (TextView) findViewById(R.id.view_item_condition_description);
         condition = (RatingBar) findViewById(R.id.view_item_condition);
+        userImage = (ImageView) findViewById(R.id.card_sold_by_image);
+        userName = (TextView) findViewById(R.id.card_sold_by_name);
+        soldByCard = (CardView) findViewById(R.id.view_item_sold_by_card);
 
         condition.setIsIndicator(true);
 
@@ -523,6 +536,42 @@ public class ViewItemActivity extends AppCompatActivity implements OnDownloadLis
         conditionText.setText(Condition.getCondition(mItem.condition).toString());
 
 
+        if (!mItem.getUserUID().equals(FundMe.userDataManager.getUser().getUid())) {
+            DatabaseManager.getUser(mItem.getUserUID(), new OnDownloadListener() {
+                @Override
+                public <D> void onDownloadSuccessful(D data) {
+                    User user  = (User) data;
+
+                    setupSoldByCard(user);
+                }
+
+                @Override
+                public void onDownloadFailed(String message) {
+                    soldByCard.setVisibility(View.GONE);
+                }
+            });
+        } else {
+            setupSoldByCard(FundMe.userDataManager.getUser());
+        }
+    }
+
+    private void setupSoldByCard(User user) {
+        if (user != null && user.getProfilePicture() != null) {
+            Glide.with(ViewItemActivity.this).load(user.getProfilePic())
+                    .crossFade()
+                    .thumbnail(0.5f)
+                    .bitmapTransform(new CircleTransform(ViewItemActivity.this))
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(userImage);
+            userName.setText(user.getName());
+        } else if (user != null && user.getProfilePicture() == null) {
+            Glide.with(ViewItemActivity.this).load(R.mipmap.new_item_placeholder).crossFade()
+                    .thumbnail(0.5f)
+                    .bitmapTransform(new CircleTransform(ViewItemActivity.this))
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(userImage);
+            userName.setText(user.getName());
+        }
     }
 
     private String getShortState(String state) {

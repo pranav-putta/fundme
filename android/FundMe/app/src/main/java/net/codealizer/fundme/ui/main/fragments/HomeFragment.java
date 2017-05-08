@@ -11,6 +11,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ import net.codealizer.fundme.assets.User;
 import net.codealizer.fundme.ui.main.CreateItemActivity;
 import net.codealizer.fundme.ui.main.CreateOrganizationActivity;
 import net.codealizer.fundme.ui.main.ViewItemActivity;
+import net.codealizer.fundme.ui.main.adapters.ItemsListDecoration;
 import net.codealizer.fundme.ui.util.AlertDialogManager;
 import net.codealizer.fundme.ui.util.CircleTransform;
 import net.codealizer.fundme.util.db.LocalDatabaseManager;
@@ -91,8 +93,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
 
             onRefresh();
         } else {
+            StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+            ItemsListDecoration decoration = new ItemsListDecoration(16);
+            list.setLayoutManager(layoutManager);
+            list.addItemDecoration(decoration);
             items = new LocalDatabaseManager(getActivity()).getAllItems();
-            list.setLayoutManager(new LinearLayoutManager(getActivity()));
             list.setItemAnimator(new DefaultItemAnimator());
             list.setAdapter(new HomeAdapter(items));
         }
@@ -172,7 +177,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
 
                 swipeRefreshLayout.setRefreshing(false);
                 dialog.hide();
-                list.setLayoutManager(new LinearLayoutManager(getActivity()));
+                StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+                ItemsListDecoration decoration = new ItemsListDecoration(16);
+                list.setLayoutManager(layoutManager);
+                list.addItemDecoration(decoration);
                 list.setItemAnimator(new DefaultItemAnimator());
                 list.setAdapter(new HomeAdapter(items));
             }
@@ -236,22 +244,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
             final Item item = mItems.get(position);
 
             holder.title.setText(item.title);
-            holder.date.setText(new SimpleDateFormat("EEEE, MMMM dd, yyyy").format(new Date(item.dateCreated)));
             holder.backdrop.setColorFilter(Color.argb(50, 0, 0, 0));
             Glide.with(getActivity()).load(item.getImageURL())
                     .crossFade()
                     .thumbnail(0.5f)
                     .into(holder.backdrop);
-            holder.liked.setText(String.valueOf(item.getLoved().size()));
-            holder.viewed.setText(String.valueOf(item.getViewed()));
-            holder.view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getActivity(), ViewItemActivity.class);
-                    intent.putExtra(ViewItemActivity.KEY_ITEM_UID, item.getUid());
-                    startActivity(intent);
-                }
-            });
+
             holder.card.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -270,22 +268,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Floa
         public class ViewHolder extends RecyclerView.ViewHolder {
 
             private TextView title;
-            private TextView date;
             private ImageView backdrop;
-            private TextView liked;
-            private TextView viewed;
-            private Button view;
             private CardView card;
 
             public ViewHolder(View itemView) {
                 super(itemView);
 
                 title = (TextView) itemView.findViewById(R.id.card_home_item_title);
-                date = (TextView) itemView.findViewById(R.id.card_home_item_date);
                 backdrop = (ImageView) itemView.findViewById(R.id.card_home_item_backdrop);
-                liked = (TextView) itemView.findViewById(R.id.liked_count);
-                viewed = (TextView) itemView.findViewById(R.id.viewed_count);
-                view = (Button) itemView.findViewById(R.id.card_home_item_view_button);
+
                 card = (CardView) itemView.findViewById(R.id.card_home_item);
             }
         }

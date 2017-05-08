@@ -24,50 +24,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f3669eb-7f1d-496a-858b-a544a82b5bb5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/ic_login_lg-web.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_login_lg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_login_lg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_login_lg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_login_lg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_login_lg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/HttpHandler.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Coordinate.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/MembersActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/MembersActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/ic_launcher-web.png" afterPath="$PROJECT_DIR$/app/src/main/ic_launcher-web.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/adapters/ItemsListDecoration.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/adapters/MasonryAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/util/MasonryCardItem.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/card_grid_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/ic_launch-web.png" afterPath="$PROJECT_DIR$/app/src/main/ic_launch-web.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launch.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launch.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launch.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launch.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launch.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launch.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launch.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launch.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launch.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launch.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/Config.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/Config.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Comment.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Comment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Condition.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Condition.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/DatabaseItem.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/DatabaseItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/DatabaseOrganization.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/DatabaseOrganization.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/DatabaseUser.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/DatabaseUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Item.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Item.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/ItemComparator.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/ItemComparator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Notification.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Notification.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Organization.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Organization.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/SearchItem.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/SearchItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/components/NonSwipeableViewPager.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/components/NonSwipeableViewPager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/launch/LaunchActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/launch/LaunchActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/login/fragments/SignUpEmailPage1Fragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/login/fragments/SignUpEmailPage1Fragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/CreateItemActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/CreateItemActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewItemActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewItemActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewOrganizationActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewOrganizationActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/adapters/ItemsListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/adapters/ItemsListAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/HomeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/HomeFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/ItemsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/ItemsFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/NotificationsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/NotificationsFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/ServiceManager.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/ServiceManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/OrganizationsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/OrganizationsFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/db/LocalDatabaseManager.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/db/LocalDatabaseManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/firebase/DatabaseManager.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/firebase/DatabaseManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_members.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_members.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_members.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_members.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_view_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_view_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/card_home_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/card_home_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
     </list>
     <ignored path="FundMe.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -101,254 +81,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LaunchActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/launch/LaunchActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
-              <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SignUpActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/login/SignUpActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Item.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Item.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2370">
-              <caret line="199" column="24" selection-start-line="199" selection-start-column="24" selection-end-line="199" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewItemActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewItemActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2595">
-              <caret line="448" column="49" selection-start-line="448" selection-start-column="49" selection-end-line="448" selection-end-column="49" />
-              <folding>
-                <element signature="method#onCreate#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#onResume#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#onActivityResult#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#onCreateOptionsMenu#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#like#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#onDownloadFailed#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#onMapReady#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#onLocationChanged#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#onConnected#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#onConnectionSuspended#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#onConnectionFailed#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#onClick#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#buyItem#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#retrieveItemInformation#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#initializeUI#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#getShortState#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#buildGoogleApiClient#0;class#ViewItemActivity#0" expanded="false" />
-                <element signature="method#run#0;class#ViewItemActivity#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ItemsFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/ItemsFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1215">
-              <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseManager.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/firebase/DatabaseManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="1372" column="28" selection-start-line="1372" selection-start-column="28" selection-end-line="1372" selection-end-column="28" />
-              <folding>
-                <element signature="docComment;method#createOrganization#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="method#createOrganization#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="class#3165:5872" expanded="false" />
-                <element signature="method#onDataChange#0;class#3165:5872" expanded="false" />
-                <element signature="class#3661:4757" expanded="false" />
-                <element signature="method#onUploadSuccessful#0;class#3661:4757" expanded="false" />
-                <element signature="method#onUploadFailed#0;class#3661:4757" expanded="false" />
-                <element signature="class#4886:5576" expanded="false" />
-                <element signature="method#onUploadSuccessful#0;class#4886:5576" expanded="false" />
-                <element signature="method#onUploadFailed#0;class#4886:5576" expanded="false" />
-                <element signature="method#onCancelled#0;class#3165:5872" expanded="false" />
-                <element signature="docComment;method#createItem#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="class#6532:9081" expanded="false" />
-                <element signature="method#onDataChange#0;class#6532:9081" expanded="false" />
-                <element signature="class#7019:8041" expanded="false" />
-                <element signature="method#onUploadSuccessful#0;class#7019:8041" expanded="false" />
-                <element signature="method#onUploadFailed#0;class#7019:8041" expanded="false" />
-                <element signature="class#8145:8785" expanded="false" />
-                <element signature="method#onUploadSuccessful#0;class#8145:8785" expanded="false" />
-                <element signature="method#onUploadFailed#0;class#8145:8785" expanded="false" />
-                <element signature="method#onCancelled#0;class#6532:9081" expanded="false" />
-                <element signature="method#addViewedItem#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="method#createComment#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="method#getItem#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="class#10455:13691" expanded="false" />
-                <element signature="method#onDataChange#0;class#10455:13691" expanded="false" />
-                <element signature="class#11730:11798" expanded="false" />
-                <element signature="class#11889:11957" expanded="false" />
-                <element signature="class#12035:12098" expanded="false" />
-                <element signature="class#12201:12269" expanded="false" />
-                <element signature="class#12353:12416" expanded="false" />
-                <element signature="class#12514:12583" expanded="false" />
-                <element signature="method#onCancelled#0;class#10455:13691" expanded="false" />
-                <element signature="method#likeItem#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="method#addViewedOrganization#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="method#getOrganization#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="class#16849:16917" expanded="false" />
-                <element signature="class#16995:17058" expanded="false" />
-                <element signature="class#17153:17221" expanded="false" />
-                <element signature="class#17315:17378" expanded="false" />
-                <element signature="method#onCancelled#0;class#15482:18281" expanded="false" />
-                <element signature="method#likeOrganization#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="method#joinOrganization#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="method#updateUser#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="method#updateUser#1;class#DatabaseManager#0" expanded="false" />
-                <element signature="e#21142#21531#0" expanded="true" />
-                <element signature="e#21530#21531#0" expanded="true" />
-                <element signature="method#removeNotification#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="method#getAllOrganizations#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="class#22332:24747" expanded="false" />
-                <element signature="method#onDataChange#0;class#22332:24747" expanded="false" />
-                <element signature="e#22512#22526#0" expanded="true" />
-                <element signature="class#23675:23739" expanded="false" />
-                <element signature="class#23813:23872" expanded="false" />
-                <element signature="class#23963:24027" expanded="false" />
-                <element signature="method#onCancelled#0;class#22332:24747" expanded="false" />
-                <element signature="method#revokeItem#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="class#26194:27744" expanded="false" />
-                <element signature="method#onDataChange#0;class#26194:27744" expanded="false" />
-                <element signature="class#26843:26915" expanded="false" />
-                <element signature="method#onCancelled#0;class#26194:27744" expanded="false" />
-                <element signature="e#28839#28845#0" expanded="true" />
-                <element signature="docComment;method#downloadUserDBData#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="class#33001:33069" expanded="false" />
-                <element signature="class#33565:34312" expanded="false" />
-                <element signature="method#onDownloadSuccessful#0;class#33565:34312" expanded="false" />
-                <element signature="method#onDownloadFailed#0;class#33565:34312" expanded="false" />
-                <element signature="class#34938:36258" expanded="false" />
-                <element signature="method#onDownloadSuccessful#0;class#34938:36258" expanded="false" />
-                <element signature="class#35210:35953" expanded="false" />
-                <element signature="method#onUploadSuccessful#0;class#35210:35953" expanded="false" />
-                <element signature="method#onUploadFailed#0;class#35210:35953" expanded="false" />
-                <element signature="method#onDownloadFailed#0;class#34938:36258" expanded="false" />
-                <element signature="method#onCancelled#0;class#32181:36484" expanded="false" />
-                <element signature="docComment;method#saveSearchData#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="method#saveSearchData#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="class#37472:41550" expanded="false" />
-                <element signature="method#onDataChange#0;class#37472:41550" expanded="false" />
-                <element signature="class#38048:38108" expanded="false" />
-                <element signature="class#38444:41341" expanded="false" />
-                <element signature="method#onDataChange#0;class#38444:41341" expanded="false" />
-                <element signature="class#39033:39101" expanded="false" />
-                <element signature="class#39486:41084" expanded="false" />
-                <element signature="method#onDataChange#0;class#39486:41084" expanded="false" />
-                <element signature="class#40131:40207" expanded="false" />
-                <element signature="method#onCancelled#0;class#39486:41084" expanded="false" />
-                <element signature="method#onCancelled#0;class#38444:41341" expanded="false" />
-                <element signature="method#onCancelled#0;class#37472:41550" expanded="false" />
-                <element signature="docComment;method#saveItemsAndOrganizations#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="docComment;method#uploadImage#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="method#uploadImage#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="e#42829#43489#0" expanded="true" />
-                <element signature="e#43099#43373#0" expanded="true" />
-                <element signature="e#43372#43373#0" expanded="true" />
-                <element signature="e#43488#43489#0" expanded="true" />
-                <element signature="docComment;method#downloadImage#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="method#downloadImage#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="e#44231#44462#0" expanded="true" />
-                <element signature="e#44461#44462#0" expanded="true" />
-                <element signature="e#44485#44689#0" expanded="true" />
-                <element signature="e#44688#44689#0" expanded="true" />
-                <element signature="method#createItemRequest#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="class#45499:47225" expanded="false" />
-                <element signature="method#onDataChange#0;class#45499:47225" expanded="false" />
-                <element signature="class#46088:46152" expanded="false" />
-                <element signature="method#onCancelled#0;class#45499:47225" expanded="false" />
-                <element signature="method#removeItemRequest#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="class#48342:50065" expanded="false" />
-                <element signature="method#onDataChange#0;class#48342:50065" expanded="false" />
-                <element signature="class#48931:48995" expanded="false" />
-                <element signature="method#onCancelled#0;class#48342:50065" expanded="false" />
-                <element signature="method#getUsers#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="class#50434:51840" expanded="false" />
-                <element signature="method#onDataChange#0;class#50434:51840" expanded="false" />
-                <element signature="e#50599#50605#0" expanded="true" />
-                <element signature="class#51141:51209" expanded="false" />
-                <element signature="method#onCancelled#0;class#50434:51840" expanded="false" />
-                <element signature="method#donate#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="class#52445:55978" expanded="false" />
-                <element signature="method#onDataChange#0;class#52445:55978" expanded="false" />
-                <element signature="class#53043:53107" expanded="false" />
-                <element signature="class#54763:55827" expanded="false" />
-                <element signature="method#onDownloadSuccessful#0;class#54763:55827" expanded="false" />
-                <element signature="method#onDownloadFailed#0;class#54763:55827" expanded="false" />
-                <element signature="method#onCancelled#0;class#52445:55978" expanded="false" />
-                <element signature="method#purchaseCredits#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="e#56512#56935#0" expanded="true" />
-                <element signature="e#56934#56935#0" expanded="true" />
-                <element signature="method#getMembersFromOrganization#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="class#57379:59645" expanded="false" />
-                <element signature="method#onDataChange#0;class#57379:59645" expanded="false" />
-                <element signature="class#57604:57660" expanded="false" />
-                <element signature="e#57719#57725#0" expanded="true" />
-                <element signature="class#57795:59434" expanded="false" />
-                <element signature="method#onDataChange#0;class#57795:59434" expanded="false" />
-                <element signature="class#58629:58709" expanded="false" />
-                <element signature="method#onCancelled#0;class#57795:59434" expanded="false" />
-                <element signature="method#onCancelled#0;class#57379:59645" expanded="false" />
-                <element signature="docComment;class#SaveToDatabaseTask#0;class#DatabaseManager#0" expanded="false" />
-                <element signature="method#SaveToDatabaseTask#0;class#SaveToDatabaseTask#0;class#DatabaseManager#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="HomeFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/HomeFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1830">
-              <caret line="173" column="30" selection-start-line="173" selection-start-column="30" selection-end-line="173" selection-end-column="30" />
-              <folding>
-                <element signature="e#6480#6481#0" expanded="true" />
-                <element signature="e#6561#6562#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthenticationManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/firebase/AuthenticationManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="59" column="36" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
+            <state relative-caret-position="165">
+              <caret line="11" column="52" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocalDatabaseManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/db/LocalDatabaseManager.java">
+      <file leaf-file-name="ViewOrganizationActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewOrganizationActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1905">
-              <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+            <state relative-caret-position="378">
+              <caret line="393" column="30" selection-start-line="393" selection-start-column="30" selection-end-line="393" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="card_home_item.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_home_item.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+              <folding>
+                <element signature="e#1219#1252#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="colors.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="41" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -362,10 +134,10 @@
         <option value="ASEnum" />
         <option value="layoutResourceFile" />
         <option value="ASInterface" />
-        <option value="ASClass" />
         <option value="resourceFile" />
         <option value="valueResourceFile" />
         <option value="layoutResourceFile_vertical" />
+        <option value="ASClass" />
       </list>
     </option>
   </component>
@@ -2510,14 +2282,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/card_home_item.xml" />
-        <option value="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/content_view_user.xml" />
-        <option value="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/fragment_profile.xml" />
-        <option value="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/item_item.xml" />
-        <option value="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout/toolbar_profile.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ShopActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_menu_drawer.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/shop_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/int-array.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/util/AlertDialogManager.java" />
@@ -2530,11 +2294,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/card_member.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/MembersActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/login/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/CreateOrganizationActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/User.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/SendMail.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewItemActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/NotificationsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
@@ -2545,7 +2307,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/DatabaseOrganization.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/DatabaseUser.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/ItemComparator.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Notification.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Organization.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/SearchItem.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/components/NonSwipeableViewPager.java" />
@@ -2553,21 +2314,32 @@
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/Config.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/launch/LaunchActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/ServiceManager.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewOrganizationActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/HttpHandler.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/CreateItemActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/ItemsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/adapters/ItemsListAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/db/LocalDatabaseManager.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/HomeFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_view_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewItemActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/firebase/DatabaseManager.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Notification.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/db/LocalDatabaseManager.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/OrganizationsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/card_grid_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/util/MasonryCardItem.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/adapters/MasonryAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/adapters/ItemsListDecoration.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/HomeFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewOrganizationActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/card_home_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1920" />
-    <option name="height" value="993" />
+    <option name="width" value="1280" />
+    <option name="height" value="729" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -2595,7 +2367,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
@@ -2614,9 +2385,440 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xml" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mipmap" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fundme" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fundme" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fundme" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="firebase" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fundme" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fundme" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fundme" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fundme" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fragments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fundme" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adapters" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fundme" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="login" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fundme" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="login" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fragments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fundme" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="launch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fundme" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FundMe" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fundme" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane />
       </pane>
@@ -2628,10 +2830,10 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/java" />
-    <property name="device.picker.selection" value="a0b76fbe" />
+    <property name="device.picker.selection" value="Nexus_6_API_24" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads" />
     <property name="ScreenshotViewer.SavePath" value="$USER_HOME$/Downloads" />
-    <property name="SearchEverywhereHistoryKey" value="ZZZ+++&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="profile picture&#9;PSI&#9;JAVA://net.codealizer.fundme.assets.DatabaseUser#profilePictureURL&#10;ZZZ+++&#9;null&#9;null" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="DEBUGGABLE_DEVICE" value="emulator-5554" />
@@ -3024,16 +3226,23 @@
       <option name="project" value="LOCAL" />
       <updated>1484690643909</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Final State Build">
+      <created>1486783719235</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1486783719235</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="993" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="729" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7872697" sideWeight="0.32714054" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3930571" sideWeight="0.39882854" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.85746866" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -3041,18 +3250,19 @@
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39319873" sideWeight="0.4978701" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3930571" sideWeight="0.60117143" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21311475" sideWeight="0.48626816" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21207178" sideWeight="0.48626816" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53241235" sideWeight="0.67285943" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328541" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5307951" sideWeight="0.67285943" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267974" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.51916933" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39983845" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -3062,7 +3272,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875606" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -3125,7 +3334,8 @@
     <MESSAGE value="Refreshed design, connected to database servers" />
     <MESSAGE value="Pre-final build" />
     <MESSAGE value="Final Area Build" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final Area Build" />
+    <MESSAGE value="Final State Build" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final State Build" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3136,251 +3346,63 @@
           <properties />
           <option name="timeStamp" value="298" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewItemActivity.java</url>
+          <line>542</line>
+          <properties />
+          <option name="timeStamp" value="309" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewItemActivity.java</url>
+          <line>559</line>
+          <properties />
+          <option name="timeStamp" value="310" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/firebase/DatabaseManager.java</url>
+          <line>350</line>
+          <properties />
+          <option name="timeStamp" value="311" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/firebase/DatabaseManager.java</url>
+          <line>364</line>
+          <properties />
+          <option name="timeStamp" value="312" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewOrganizationActivity.java</url>
+          <line>327</line>
+          <properties />
+          <option name="timeStamp" value="313" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewOrganizationActivity.java</url>
+          <line>367</line>
+          <properties />
+          <option name="timeStamp" value="314" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/MembersActivity.java</url>
+          <line>55</line>
+          <properties />
+          <option name="timeStamp" value="315" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/OrganizationsFragment.java</url>
+          <line>111</line>
+          <properties />
+          <option name="timeStamp" value="320" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="301" />
+      <option name="time" value="321" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/int-array.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="38" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="87" column="32" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/SendMail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="39" column="100" selection-start-line="39" selection-start-column="100" selection-end-line="39" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_patty.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-25/android.jar!/android/location/Address.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="128" column="18" selection-start-line="128" selection-start-column="18" selection-end-line="128" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/support-fragment/25.0.1/support-fragment-25.0.1-sources.jar!/android/support/v4/app/FragmentActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="904" column="23" selection-start-line="904" selection-start-column="23" selection-end-line="904" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="225" column="0" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/NotificationsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
-          <folding>
-            <element signature="e#7961#8329#0" expanded="false" />
-            <element signature="e#8328#8329#0" expanded="false" />
-            <element signature="e#8377#9934#0" expanded="false" />
-            <element signature="e#9933#9934#0" expanded="false" />
-            <element signature="e#9982#10273#0" expanded="false" />
-            <element signature="e#10272#10273#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_notifications.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/CreateOrganizationActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4800">
-          <caret line="371" column="165" selection-start-line="371" selection-start-column="165" selection-end-line="371" selection-end-column="165" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2250">
-          <caret line="150" column="47" selection-start-line="150" selection-start-column="47" selection-end-line="150" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/ProfileFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="63" column="21" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/design/R 2.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/util/AlertDialogManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2730">
-          <caret line="211" column="52" selection-start-line="211" selection-start-column="52" selection-end-line="211" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#10226#10227#0" expanded="false" />
-            <element signature="e#10292#10293#0" expanded="false" />
-            <element signature="method#showCommentDialog#0;class#AlertDialogManager#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="17" column="46" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Condition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="72" selection-start-line="3" selection-start-column="72" selection-end-line="3" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Coordinate.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/DatabaseOrganization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/DatabaseUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/ItemComparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="68" selection-start-line="7" selection-start-column="68" selection-end-line="7" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Notification.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Organization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/SearchItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/components/NonSwipeableViewPager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="11" column="85" selection-start-line="11" selection-start-column="85" selection-end-line="11" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/login/fragments/SignUpEmailPage1Fragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1455">
-          <caret line="153" column="48" selection-start-line="153" selection-start-column="48" selection-end-line="153" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/login/fragments/SignUpEmailPage2Fragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/login/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3255">
-          <caret line="257" column="45" selection-start-line="257" selection-start-column="45" selection-end-line="257" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/login/SignInActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="31" column="53" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/serviceAccountKey.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -3399,45 +3421,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="19" selection-start-line="0" selection-start-column="0" selection-end-line="44" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/launch/LaunchActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewOrganizationActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="525" column="35" selection-start-line="525" selection-start-column="35" selection-end-line="525" selection-end-column="35" />
-          <folding>
-            <element signature="method#onCreateOptionsMenu#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#onDownloadSuccessful#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#onOptionsItemSelected#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#like#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#join#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#onDownloadFailed#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#onMapReady#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#onLocationChanged#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#onConnected#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#onConnectionSuspended#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#onConnectionFailed#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#onRequestPermissionsResult#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#onPermissionsGranted#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#onPermissionsDenied#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#onClick#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#members#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#retrieveOrganizationInformation#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#initializeData#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#getShortState#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#buildGoogleApiClient#0;class#ViewOrganizationActivity#0" expanded="false" />
-            <element signature="method#selectLocation#0;class#ViewOrganizationActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3452,25 +3435,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="94">
           <caret line="275" column="13" selection-start-line="275" selection-start-column="13" selection-end-line="275" selection-end-column="13" />
-          <folding>
-            <element signature="method#onCreate#0;class#CreateItemActivity#0" expanded="false" />
-            <element signature="method#onCreateOptionsMenu#0;class#CreateItemActivity#0" expanded="false" />
-            <element signature="method#onOptionsItemSelected#0;class#CreateItemActivity#0" expanded="false" />
-            <element signature="method#onClick#0;class#CreateItemActivity#0" expanded="false" />
-            <element signature="method#onConnected#0;class#CreateItemActivity#0" expanded="false" />
-            <element signature="method#onConnectionSuspended#0;class#CreateItemActivity#0" expanded="false" />
-            <element signature="method#onConnectionFailed#0;class#CreateItemActivity#0" expanded="false" />
-            <element signature="method#onLocationChanged#0;class#CreateItemActivity#0" expanded="false" />
-            <element signature="method#beforeTextChanged#0;class#8793:9911" expanded="false" />
-            <element signature="method#afterTextChanged#0;class#8793:9911" expanded="false" />
-            <element signature="method#selectLocation#0;class#CreateItemActivity#0" expanded="false" />
-            <element signature="method#buildGoogleApiClient#0;class#CreateItemActivity#0" expanded="false" />
-            <element signature="method#onServiceSuccessful#0;class#CreateItemActivity#0" expanded="false" />
-            <element signature="method#onServiceFailed#0;class#CreateItemActivity#0" expanded="false" />
-            <element signature="method#onAuthenticationSuccessful#0;class#CreateItemActivity#0" expanded="false" />
-            <element signature="method#onAuthenticationFailed#0;class#CreateItemActivity#0" expanded="false" />
-            <element signature="method#onNetworkError#0;class#CreateItemActivity#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3478,14 +3442,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1215">
           <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/adapters/ItemsListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="53" column="41" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -3497,52 +3453,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewItemActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2595">
-          <caret line="448" column="49" selection-start-line="448" selection-start-column="49" selection-end-line="448" selection-end-column="49" />
-          <folding>
-            <element signature="method#onCreate#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#onResume#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#onActivityResult#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#onCreateOptionsMenu#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#like#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#onDownloadFailed#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#onMapReady#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#onLocationChanged#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#onConnected#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#onConnectionSuspended#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#onConnectionFailed#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#onClick#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#buyItem#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#retrieveItemInformation#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#initializeUI#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#getShortState#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#buildGoogleApiClient#0;class#ViewItemActivity#0" expanded="false" />
-            <element signature="method#run#0;class#ViewItemActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/login/SignUpActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/FundMe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#13115#13116#0" expanded="false" />
+            <element signature="e#13147#13148#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3582,178 +3501,562 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/firebase/DatabaseManager.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/FundMe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="1372" column="28" selection-start-line="1372" selection-start-column="28" selection-end-line="1372" selection-end-column="28" />
-          <folding>
-            <element signature="docComment;method#createOrganization#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="method#createOrganization#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="class#3165:5872" expanded="false" />
-            <element signature="method#onDataChange#0;class#3165:5872" expanded="false" />
-            <element signature="class#3661:4757" expanded="false" />
-            <element signature="method#onUploadSuccessful#0;class#3661:4757" expanded="false" />
-            <element signature="method#onUploadFailed#0;class#3661:4757" expanded="false" />
-            <element signature="class#4886:5576" expanded="false" />
-            <element signature="method#onUploadSuccessful#0;class#4886:5576" expanded="false" />
-            <element signature="method#onUploadFailed#0;class#4886:5576" expanded="false" />
-            <element signature="method#onCancelled#0;class#3165:5872" expanded="false" />
-            <element signature="docComment;method#createItem#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="class#6532:9081" expanded="false" />
-            <element signature="method#onDataChange#0;class#6532:9081" expanded="false" />
-            <element signature="class#7019:8041" expanded="false" />
-            <element signature="method#onUploadSuccessful#0;class#7019:8041" expanded="false" />
-            <element signature="method#onUploadFailed#0;class#7019:8041" expanded="false" />
-            <element signature="class#8145:8785" expanded="false" />
-            <element signature="method#onUploadSuccessful#0;class#8145:8785" expanded="false" />
-            <element signature="method#onUploadFailed#0;class#8145:8785" expanded="false" />
-            <element signature="method#onCancelled#0;class#6532:9081" expanded="false" />
-            <element signature="method#addViewedItem#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="method#createComment#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="method#getItem#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="class#10455:13691" expanded="false" />
-            <element signature="method#onDataChange#0;class#10455:13691" expanded="false" />
-            <element signature="class#11730:11798" expanded="false" />
-            <element signature="class#11889:11957" expanded="false" />
-            <element signature="class#12035:12098" expanded="false" />
-            <element signature="class#12201:12269" expanded="false" />
-            <element signature="class#12353:12416" expanded="false" />
-            <element signature="class#12514:12583" expanded="false" />
-            <element signature="method#onCancelled#0;class#10455:13691" expanded="false" />
-            <element signature="method#likeItem#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="method#addViewedOrganization#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="method#getOrganization#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="class#16849:16917" expanded="false" />
-            <element signature="class#16995:17058" expanded="false" />
-            <element signature="class#17153:17221" expanded="false" />
-            <element signature="class#17315:17378" expanded="false" />
-            <element signature="method#onCancelled#0;class#15482:18281" expanded="false" />
-            <element signature="method#likeOrganization#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="method#joinOrganization#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="method#updateUser#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="method#updateUser#1;class#DatabaseManager#0" expanded="false" />
-            <element signature="e#21142#21531#0" expanded="true" />
-            <element signature="e#21530#21531#0" expanded="true" />
-            <element signature="method#removeNotification#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="method#getAllOrganizations#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="class#22332:24747" expanded="false" />
-            <element signature="method#onDataChange#0;class#22332:24747" expanded="false" />
-            <element signature="e#22512#22526#0" expanded="true" />
-            <element signature="class#23675:23739" expanded="false" />
-            <element signature="class#23813:23872" expanded="false" />
-            <element signature="class#23963:24027" expanded="false" />
-            <element signature="method#onCancelled#0;class#22332:24747" expanded="false" />
-            <element signature="method#revokeItem#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="class#26194:27744" expanded="false" />
-            <element signature="method#onDataChange#0;class#26194:27744" expanded="false" />
-            <element signature="class#26843:26915" expanded="false" />
-            <element signature="method#onCancelled#0;class#26194:27744" expanded="false" />
-            <element signature="e#28839#28845#0" expanded="true" />
-            <element signature="docComment;method#downloadUserDBData#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="class#33001:33069" expanded="false" />
-            <element signature="class#33565:34312" expanded="false" />
-            <element signature="method#onDownloadSuccessful#0;class#33565:34312" expanded="false" />
-            <element signature="method#onDownloadFailed#0;class#33565:34312" expanded="false" />
-            <element signature="class#34938:36258" expanded="false" />
-            <element signature="method#onDownloadSuccessful#0;class#34938:36258" expanded="false" />
-            <element signature="class#35210:35953" expanded="false" />
-            <element signature="method#onUploadSuccessful#0;class#35210:35953" expanded="false" />
-            <element signature="method#onUploadFailed#0;class#35210:35953" expanded="false" />
-            <element signature="method#onDownloadFailed#0;class#34938:36258" expanded="false" />
-            <element signature="method#onCancelled#0;class#32181:36484" expanded="false" />
-            <element signature="docComment;method#saveSearchData#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="method#saveSearchData#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="class#37472:41550" expanded="false" />
-            <element signature="method#onDataChange#0;class#37472:41550" expanded="false" />
-            <element signature="class#38048:38108" expanded="false" />
-            <element signature="class#38444:41341" expanded="false" />
-            <element signature="method#onDataChange#0;class#38444:41341" expanded="false" />
-            <element signature="class#39033:39101" expanded="false" />
-            <element signature="class#39486:41084" expanded="false" />
-            <element signature="method#onDataChange#0;class#39486:41084" expanded="false" />
-            <element signature="class#40131:40207" expanded="false" />
-            <element signature="method#onCancelled#0;class#39486:41084" expanded="false" />
-            <element signature="method#onCancelled#0;class#38444:41341" expanded="false" />
-            <element signature="method#onCancelled#0;class#37472:41550" expanded="false" />
-            <element signature="docComment;method#saveItemsAndOrganizations#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="docComment;method#uploadImage#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="method#uploadImage#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="e#42829#43489#0" expanded="true" />
-            <element signature="e#43099#43373#0" expanded="true" />
-            <element signature="e#43372#43373#0" expanded="true" />
-            <element signature="e#43488#43489#0" expanded="true" />
-            <element signature="docComment;method#downloadImage#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="method#downloadImage#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="e#44231#44462#0" expanded="true" />
-            <element signature="e#44461#44462#0" expanded="true" />
-            <element signature="e#44485#44689#0" expanded="true" />
-            <element signature="e#44688#44689#0" expanded="true" />
-            <element signature="method#createItemRequest#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="class#45499:47225" expanded="false" />
-            <element signature="method#onDataChange#0;class#45499:47225" expanded="false" />
-            <element signature="class#46088:46152" expanded="false" />
-            <element signature="method#onCancelled#0;class#45499:47225" expanded="false" />
-            <element signature="method#removeItemRequest#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="class#48342:50065" expanded="false" />
-            <element signature="method#onDataChange#0;class#48342:50065" expanded="false" />
-            <element signature="class#48931:48995" expanded="false" />
-            <element signature="method#onCancelled#0;class#48342:50065" expanded="false" />
-            <element signature="method#getUsers#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="class#50434:51840" expanded="false" />
-            <element signature="method#onDataChange#0;class#50434:51840" expanded="false" />
-            <element signature="e#50599#50605#0" expanded="true" />
-            <element signature="class#51141:51209" expanded="false" />
-            <element signature="method#onCancelled#0;class#50434:51840" expanded="false" />
-            <element signature="method#donate#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="class#52445:55978" expanded="false" />
-            <element signature="method#onDataChange#0;class#52445:55978" expanded="false" />
-            <element signature="class#53043:53107" expanded="false" />
-            <element signature="class#54763:55827" expanded="false" />
-            <element signature="method#onDownloadSuccessful#0;class#54763:55827" expanded="false" />
-            <element signature="method#onDownloadFailed#0;class#54763:55827" expanded="false" />
-            <element signature="method#onCancelled#0;class#52445:55978" expanded="false" />
-            <element signature="method#purchaseCredits#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="e#56512#56935#0" expanded="true" />
-            <element signature="e#56934#56935#0" expanded="true" />
-            <element signature="method#getMembersFromOrganization#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="class#57379:59645" expanded="false" />
-            <element signature="method#onDataChange#0;class#57379:59645" expanded="false" />
-            <element signature="class#57604:57660" expanded="false" />
-            <element signature="e#57719#57725#0" expanded="true" />
-            <element signature="class#57795:59434" expanded="false" />
-            <element signature="method#onDataChange#0;class#57795:59434" expanded="false" />
-            <element signature="class#58629:58709" expanded="false" />
-            <element signature="method#onCancelled#0;class#57795:59434" expanded="false" />
-            <element signature="method#onCancelled#0;class#57379:59645" expanded="false" />
-            <element signature="docComment;class#SaveToDatabaseTask#0;class#DatabaseManager#0" expanded="false" />
-            <element signature="method#SaveToDatabaseTask#0;class#SaveToDatabaseTask#0;class#DatabaseManager#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/HomeFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1830">
-          <caret line="173" column="30" selection-start-line="173" selection-start-column="30" selection-end-line="173" selection-end-column="30" />
-          <folding>
-            <element signature="e#6480#6481#0" expanded="true" />
-            <element signature="e#6561#6562#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="165">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/DataManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/firebase/AuthenticationManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
-          <caret line="59" column="36" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
+          <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-540">
+          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_items.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_notifications.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_comments.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="21" selection-start-line="8" selection-start-column="4" selection-end-line="40" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_comments.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="19" column="60" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_comments.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_view_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+          <folding>
+            <element signature="e#5182#5217#0" expanded="true" />
+            <element signature="e#5401#5434#0" expanded="true" />
+            <element signature="e#5905#5938#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_view_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/launch/LaunchActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="69" column="30" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-405">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/DatabaseUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap/profile_background.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap/login_bg.jpeg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap/ic_login_logo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap/new_item_placeholder.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/firebase/UserDataManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="165" column="16" selection-start-line="165" selection-start-column="16" selection-end-line="165" selection-end-column="16" />
+          <folding>
+            <element signature="e#6040#6041#0" expanded="false" />
+            <element signature="e#6068#6069#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewItemActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-35">
+          <caret line="572" column="0" selection-start-line="572" selection-start-column="0" selection-end-line="572" selection-end-column="0" />
+          <folding>
+            <element signature="method#onCreate#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#onResume#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#onActivityResult#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#like#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#onDownloadFailed#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#onMapReady#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#onLocationChanged#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#onConnected#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#onConnectionSuspended#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#onConnectionFailed#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#onClick#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#buyItem#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#retrieveItemInformation#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#getShortState#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#buildGoogleApiClient#0;class#ViewItemActivity#0" expanded="false" />
+            <element signature="method#run#0;class#ViewItemActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Organization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/DatabaseOrganization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/assets/Notification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="112" column="9" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/MembersActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/firebase/DatabaseManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="350" column="0" selection-start-line="350" selection-start-column="0" selection-end-line="350" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#DatabaseManager#0" expanded="false" />
+            <element signature="docComment;method#createOrganization#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#createOrganization#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#3355:6062" expanded="false" />
+            <element signature="method#onDataChange#0;class#3355:6062" expanded="false" />
+            <element signature="class#3851:4947" expanded="false" />
+            <element signature="method#onUploadSuccessful#0;class#3851:4947" expanded="false" />
+            <element signature="method#onUploadFailed#0;class#3851:4947" expanded="false" />
+            <element signature="class#5076:5766" expanded="false" />
+            <element signature="method#onUploadSuccessful#0;class#5076:5766" expanded="false" />
+            <element signature="method#onUploadFailed#0;class#5076:5766" expanded="false" />
+            <element signature="method#onCancelled#0;class#3355:6062" expanded="false" />
+            <element signature="docComment;method#createItem#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#createItem#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#6722:9271" expanded="false" />
+            <element signature="method#onDataChange#0;class#6722:9271" expanded="false" />
+            <element signature="class#7209:8231" expanded="false" />
+            <element signature="method#onUploadSuccessful#0;class#7209:8231" expanded="false" />
+            <element signature="method#onUploadFailed#0;class#7209:8231" expanded="false" />
+            <element signature="class#8335:8975" expanded="false" />
+            <element signature="method#onUploadSuccessful#0;class#8335:8975" expanded="false" />
+            <element signature="method#onUploadFailed#0;class#8335:8975" expanded="false" />
+            <element signature="method#onCancelled#0;class#6722:9271" expanded="false" />
+            <element signature="method#addViewedItem#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#createComment#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#getItem#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#10645:13881" expanded="false" />
+            <element signature="method#onDataChange#0;class#10645:13881" expanded="false" />
+            <element signature="class#11920:11988" expanded="false" />
+            <element signature="class#12079:12147" expanded="false" />
+            <element signature="class#12225:12288" expanded="false" />
+            <element signature="class#12391:12459" expanded="false" />
+            <element signature="class#12543:12606" expanded="false" />
+            <element signature="class#12704:12773" expanded="false" />
+            <element signature="method#onCancelled#0;class#10645:13881" expanded="false" />
+            <element signature="method#likeItem#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#onDataChange#0;class#15672:18471" expanded="false" />
+            <element signature="class#17039:17107" expanded="false" />
+            <element signature="class#17185:17248" expanded="false" />
+            <element signature="class#17343:17411" expanded="false" />
+            <element signature="class#17505:17568" expanded="false" />
+            <element signature="method#onCancelled#0;class#15672:18471" expanded="false" />
+            <element signature="method#likeOrganization#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#joinOrganization#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#updateUser#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#updateUser#1;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#removeNotification#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#getAllOrganizations#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#22522:24937" expanded="false" />
+            <element signature="method#onDataChange#0;class#22522:24937" expanded="false" />
+            <element signature="class#23865:23929" expanded="false" />
+            <element signature="class#24003:24062" expanded="false" />
+            <element signature="class#24153:24217" expanded="false" />
+            <element signature="method#onCancelled#0;class#22522:24937" expanded="false" />
+            <element signature="method#revokeItem#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#26384:27934" expanded="false" />
+            <element signature="method#onDataChange#0;class#26384:27934" expanded="false" />
+            <element signature="class#27033:27105" expanded="false" />
+            <element signature="method#onCancelled#0;class#26384:27934" expanded="false" />
+            <element signature="method#getAllItems#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#28865:31638" expanded="false" />
+            <element signature="method#onDataChange#0;class#28865:31638" expanded="false" />
+            <element signature="class#30047:30111" expanded="false" />
+            <element signature="class#30198:30262" expanded="false" />
+            <element signature="class#30466:30530" expanded="false" />
+            <element signature="class#30624:30689" expanded="false" />
+            <element signature="method#onCancelled#0;class#28865:31638" expanded="false" />
+            <element signature="docComment;method#downloadUserDBData#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#downloadUserDBData#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#32371:36674" expanded="false" />
+            <element signature="method#onDataChange#0;class#32371:36674" expanded="false" />
+            <element signature="class#33191:33259" expanded="false" />
+            <element signature="class#33755:34502" expanded="false" />
+            <element signature="method#onDownloadSuccessful#0;class#33755:34502" expanded="false" />
+            <element signature="method#onDownloadFailed#0;class#33755:34502" expanded="false" />
+            <element signature="class#35128:36448" expanded="false" />
+            <element signature="method#onDownloadSuccessful#0;class#35128:36448" expanded="false" />
+            <element signature="class#35400:36143" expanded="false" />
+            <element signature="method#onUploadSuccessful#0;class#35400:36143" expanded="false" />
+            <element signature="method#onUploadFailed#0;class#35400:36143" expanded="false" />
+            <element signature="method#onDownloadFailed#0;class#35128:36448" expanded="false" />
+            <element signature="method#onCancelled#0;class#32371:36674" expanded="false" />
+            <element signature="docComment;method#saveSearchData#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#saveSearchData#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#37662:41740" expanded="false" />
+            <element signature="method#onDataChange#0;class#37662:41740" expanded="false" />
+            <element signature="class#38238:38298" expanded="false" />
+            <element signature="class#38634:41531" expanded="false" />
+            <element signature="method#onDataChange#0;class#38634:41531" expanded="false" />
+            <element signature="class#39223:39291" expanded="false" />
+            <element signature="class#39676:41274" expanded="false" />
+            <element signature="method#onDataChange#0;class#39676:41274" expanded="false" />
+            <element signature="class#40321:40397" expanded="false" />
+            <element signature="method#onCancelled#0;class#39676:41274" expanded="false" />
+            <element signature="method#onCancelled#0;class#38634:41531" expanded="false" />
+            <element signature="method#onCancelled#0;class#37662:41740" expanded="false" />
+            <element signature="docComment;method#saveItemsAndOrganizations#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#saveItemsAndOrganizations#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#42445:47694" expanded="false" />
+            <element signature="method#onDataChange#0;class#42445:47694" expanded="false" />
+            <element signature="class#43700:43764" expanded="false" />
+            <element signature="class#43838:43897" expanded="false" />
+            <element signature="class#43988:44052" expanded="false" />
+            <element signature="class#44594:47520" expanded="false" />
+            <element signature="method#onDataChange#0;class#44594:47520" expanded="false" />
+            <element signature="class#45873:45945" expanded="false" />
+            <element signature="class#46040:46112" expanded="false" />
+            <element signature="class#46332:46404" expanded="false" />
+            <element signature="class#46506:46579" expanded="false" />
+            <element signature="method#onCancelled#0;class#44594:47520" expanded="false" />
+            <element signature="docComment;method#uploadImage#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#uploadImage#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="docComment;method#downloadImage#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#downloadImage#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#createItemRequest#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#51263:52989" expanded="false" />
+            <element signature="method#onDataChange#0;class#51263:52989" expanded="false" />
+            <element signature="class#51852:51916" expanded="false" />
+            <element signature="method#onCancelled#0;class#51263:52989" expanded="false" />
+            <element signature="method#removeItemRequest#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#54106:55829" expanded="false" />
+            <element signature="method#onDataChange#0;class#54106:55829" expanded="false" />
+            <element signature="class#54695:54759" expanded="false" />
+            <element signature="method#onCancelled#0;class#54106:55829" expanded="false" />
+            <element signature="method#getUser#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#56185:57275" expanded="false" />
+            <element signature="method#onDataChange#0;class#56185:57275" expanded="false" />
+            <element signature="class#56728:56792" expanded="false" />
+            <element signature="method#onCancelled#0;class#56185:57275" expanded="false" />
+            <element signature="method#getUsers#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#57591:58997" expanded="false" />
+            <element signature="method#onDataChange#0;class#57591:58997" expanded="false" />
+            <element signature="class#58298:58366" expanded="false" />
+            <element signature="method#onCancelled#0;class#57591:58997" expanded="false" />
+            <element signature="method#donate#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#59602:63135" expanded="false" />
+            <element signature="method#onDataChange#0;class#59602:63135" expanded="false" />
+            <element signature="class#60200:60264" expanded="false" />
+            <element signature="class#61920:62984" expanded="false" />
+            <element signature="method#onDownloadSuccessful#0;class#61920:62984" expanded="false" />
+            <element signature="method#onDownloadFailed#0;class#61920:62984" expanded="false" />
+            <element signature="method#onCancelled#0;class#59602:63135" expanded="false" />
+            <element signature="method#purchaseCredits#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#getMembersFromOrganization#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#64536:66951" expanded="false" />
+            <element signature="method#onDataChange#0;class#64536:66951" expanded="false" />
+            <element signature="class#64761:64817" expanded="false" />
+            <element signature="class#64952:66740" expanded="false" />
+            <element signature="method#onDataChange#0;class#64952:66740" expanded="false" />
+            <element signature="class#65869:65953" expanded="false" />
+            <element signature="method#onCancelled#0;class#64952:66740" expanded="false" />
+            <element signature="method#onCancelled#0;class#64536:66951" expanded="false" />
+            <element signature="docComment;class#SaveToDatabaseTask#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#SaveToDatabaseTask#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#SaveToDatabaseTask#0;class#SaveToDatabaseTask#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#SaveToDatabaseTask#0;class#DatabaseManager#0" expanded="false" />
+            <element signature="class#68024:73565" expanded="false" />
+            <element signature="method#onDataChange#0;class#68024:73565" expanded="false" />
+            <element signature="class#69339:69407" expanded="false" />
+            <element signature="class#69485:69548" expanded="false" />
+            <element signature="class#69643:69711" expanded="false" />
+            <element signature="class#70289:73367" expanded="false" />
+            <element signature="method#onDataChange#0;class#70289:73367" expanded="false" />
+            <element signature="class#71624:71700" expanded="false" />
+            <element signature="class#71799:71875" expanded="false" />
+            <element signature="class#72103:72179" expanded="false" />
+            <element signature="class#72285:72362" expanded="false" />
+            <element signature="method#onCancelled#0;class#70289:73367" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/util/db/LocalDatabaseManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1905">
-          <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+        <state relative-caret-position="-2141">
+          <caret line="194" column="84" selection-start-line="194" selection-start-column="84" selection-end-line="194" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/ProfileFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="64" column="26" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/OrganizationsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="50" column="97" selection-start-line="50" selection-start-column="97" selection-end-line="50" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/adapters/ItemsListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="44" column="83" selection-start-line="44" selection-start-column="83" selection-end-line="44" selection-end-column="83" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/adapters/MasonryAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1306#1307#0" expanded="true" />
+            <element signature="e#1342#1343#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/util/MasonryCardItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_grid_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/adapters/ItemsListDecoration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#339#340#0" expanded="true" />
+            <element signature="e#374#375#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/fragments/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="52" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/net/codealizer/fundme/ui/main/ViewOrganizationActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="393" column="30" selection-start-line="393" selection-start-column="30" selection-end-line="393" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_home_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+          <folding>
+            <element signature="e#1219#1252#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="41" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
           <folding />
         </state>
       </provider>

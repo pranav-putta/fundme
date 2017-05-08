@@ -57,6 +57,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
     private static final String KEY_SOLD = "sold";
     private static final String KEY_MONEY_RAISED = "moneyRaised";
     private static final String KEY_CONDITION = "condition";
+    private static final String KEY_MEMBERS = "members";
 
     public LocalDatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -72,7 +73,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_UID + " TEXT,"
                 + KEY_TITLE + " TEXT," + KEY_DESCRIPTION + " TEXT," + KEY_PRICE + " TEXT," + KEY_ZIPCODE + " TEXT," +
                 KEY_DATE_CREATED + " TEXT," + KEY_IMAGE + " TEXT," + KEY_USER_UID + " TEXT," +
-                KEY_LINK + " TEXT," + KEY_IMAGE_URL + " TEXT," + KEY_MONEY_RAISED + " TEXT" + ")";
+                KEY_LINK + " TEXT," + KEY_IMAGE_URL + " TEXT," + KEY_MONEY_RAISED + " TEXT," + KEY_MEMBERS + " TEXT" + ")";
         String CREATE_ITEMS_TABLE = "CREATE TABLE " + TABLE_ITEMS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_UID + " TEXT,"
                 + KEY_TITLE + " TEXT," + KEY_DESCRIPTION + " TEXT," + KEY_PRICE + " TEXT," + KEY_ZIPCODE + " TEXT," +
@@ -132,7 +133,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
         values.put(KEY_LINK, organization.getLink());
         values.put(KEY_IMAGE_URL, organization.getImageURL());
         values.put(KEY_MONEY_RAISED, organization.getMoneyRaised());
-
+        values.put(KEY_MEMBERS, ServiceManager.convertArrayToString(organization.getMembers()));
 
         // Inserting Row
         db.insert(TABLE_ORGANIZATIONS, null, values);
@@ -191,6 +192,7 @@ public class LocalDatabaseManager extends SQLiteOpenHelper {
                 o.setLink(cursor.getString(9));
                 o.setImageURL(cursor.getString(10));
                 o.setMoneyRaised(Integer.parseInt(cursor.getString(11)));
+                o.setMembers(ServiceManager.convertStringToArray(cursor.getString(12)));
                 // Adding contact to list
                 itemList.add(o);
             } while (cursor.moveToNext());

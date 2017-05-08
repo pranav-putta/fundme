@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import net.codealizer.fundme.FundMe;
 import net.codealizer.fundme.R;
 import net.codealizer.fundme.ui.main.ViewOrganizationActivity;
 import net.codealizer.fundme.assets.Organization;
@@ -47,7 +48,7 @@ public class OrganizationsFragment extends Fragment {
     private void initialize() {
         list = (RecyclerView) getView().findViewById(R.id.items_list);
         notFound = (TextView) getView().findViewById(R.id.search_no_results);
-        ArrayList<Organization> items = new LocalDatabaseManager(getActivity()).getAllOrganizations();
+        List<Organization> items = new LocalDatabaseManager(getActivity()).getAllOrganizations();
 
         OrganizationsFragment.Adapter adapter = new OrganizationsFragment.Adapter(new LocalDatabaseManager(getActivity()).getAllOrganizations());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
