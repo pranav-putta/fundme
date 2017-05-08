@@ -8,7 +8,7 @@ Download and Run
 
 1. Ensure that you are running the latest version of Android. Currently, Android 7.0.1 is the most updated version
 2.  Go to the **Settings Application** of your phone, and navigate to <kbd> Lock Screen & Secuirty </kbd>. Ensure that the option **"Unknown Sources"** is enabled.
-3.  Download the application from the landing site
+3.  Download the application from the landing site or "app-release.apk" from github
 4.  Locate the downloaded and file and open it
 5. Install the application to your device
 
